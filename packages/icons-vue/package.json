@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-vue",
-  "version": "0.0.1",
+  "version": "0.0.2",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -8,14 +8,9 @@
     "preview": "vite preview",
     "release": "release-it"
   },
-  "main": "./dist/icon.umd.cjs",
-  "module": "./dist/icon.js",
-  "exports": {
-    ".": {
-      "import": "./dist/icon.js",
-      "require": "./dist/icon.umd.cjs"
-    }
-  },
+  "main": "dist/icon.umd.cjs",
+  "module": "dist/icon.js",
+  "style": "dist/style.css",
   "files": [
     "dist",
     "README.md",

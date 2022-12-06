@@ -1,7 +1,8 @@
 import { App } from 'vue';
-import config from '../package.json';
+import pkgConfig from '../package.json';
 import Icon from './Icon.vue';
-
+import config from './iconfont/config.json';
+const version = pkgConfig.version;
 function install(app: App) {
   const packages = [Icon];
   packages.forEach((item: any) => {
@@ -14,5 +15,5 @@ function install(app: App) {
 }
 
 
-export { install, Icon };
-export default { install, version: config.version };
+export { install, Icon, config, version };
+export default { install, version, config };
