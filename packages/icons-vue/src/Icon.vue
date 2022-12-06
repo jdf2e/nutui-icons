@@ -56,7 +56,7 @@ const render = () => {
   <render />
 </template>
 <style lang="scss">
-@import "./iconfont/iconfont.css";
+@import "../../../iconfont/iconfont.css";
 :root {
   --nut-icon-height: 20px;
   --nut-icon-width: 20px;

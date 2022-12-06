@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import Icon from "./Icon.vue";
-import icons from "./iconfont/config.json";
+import icons from "../../../iconfont/config.json";
 const copyTag = (name: string) => {
   const text = `<Icon name="${name}" />`;
   const displayText = `&lt;nut-icon name="${name}"&gt;&lt;/nut-icon&gt;`;
