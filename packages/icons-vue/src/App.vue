@@ -1,5 +1,6 @@
 <script setup lang="ts">
 import Icon from "./Icon.vue";
+import add from "./components/add.vue";
 import icons from "../../../iconfont/config.json";
 const copyTag = (name: string) => {
   const text = `<Icon name="${name}" />`;
@@ -17,40 +18,33 @@ const copyTag = (name: string) => {
 </script>
 
 <template>
-  <Icon name="dongdong" />
+  <add width="100" height="100" color="blue" />
 
   <h2>基本用法</h2>
-  <nut-cell>
-    <Icon name="dongdong" />
-    <Icon name="JD" />
-  </nut-cell>
+  <Icon name="dongdong" />
+  <Icon name="JD" />
   <h2>图片链接</h2>
-  <nut-cell>
-    <Icon
-      size="40"
-      name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
-    >
-    </Icon>
-  </nut-cell>
+  <Icon
+    size="40"
+    name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
+  >
+  </Icon>
   <h2>图标颜色</h2>
-  <nut-cell>
-    <Icon name="dongdong" color="#fa2c19" />
-    <Icon name="dongdong" color="#64b578" />
-    <Icon name="JD" color="#fa2c19" />
-  </nut-cell>
+  <Icon name="dongdong" color="#fa2c19" />
+  <Icon name="dongdong" color="#64b578" />
+  <Icon name="JD" color="#fa2c19" />
 
   <h2>图标大小</h2>
-  <nut-cell>
-    <Icon name="dongdong" />
-    <Icon name="dongdong" size="24" />
-    <Icon name="dongdong" size="26" />
-  </nut-cell>
+  <Icon name="dongdong" />
+  <Icon name="dongdong" size="24" />
+  <Icon name="dongdong" size="26" />
 
   <nut-cell-group
     v-for="item in icons.data"
     :title="item.name"
     :key="item.nameEn"
   >
+    <h2>{{ item.name }}</h2>
     <nut-cell>
       <ul>
         <li v-for="_item in item.icons" :key="_item">
@@ -65,6 +59,7 @@ const copyTag = (name: string) => {
     :title="item.name"
     :key="item.nameEn"
   >
+    <h2>{{ item.name }}</h2>
     <nut-cell>
       <ul>
         <li v-for="it in item.icons" :key="it.name">

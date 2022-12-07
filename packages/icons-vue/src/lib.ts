@@ -14,6 +14,10 @@ function install(app: App) {
   });
 }
 
+import Add from './components/Add.vue';
+import Addfollow from './components/Addfollow.vue';
+import ArrowDown from './components/ArrowDown.vue';
 
-export { install, Icon, config, version };
-export default { install, version, config };
+
+export { install, Icon, config, version, Add, Addfollow, ArrowDown };
+export default { install, version, config, Add, Addfollow, ArrowDown };

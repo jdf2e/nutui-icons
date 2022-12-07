@@ -1,0 +1,18 @@
+{
+  "scripts": {
+    "dev": "tsc --watch --incremental"
+  },
+  "devDependencies": {
+    "@types/fs-extra": "^9.0.13",
+    "@types/glob": "^8.0.0",
+    "@types/node": "^18.11.10",
+    "@types/svg-parser": "^2.0.3",
+    "consola": "^2.15.3",
+    "fs-extra": "^11.1.0",
+    "glob": "^8.0.3",
+    "svg-parser": "^2.0.4",
+    "svg-sprite-loader": "^6.0.11",
+    "svgo": "^3.0.2",
+    "typescript": "^4.9.3"
+  }
+}

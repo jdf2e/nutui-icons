@@ -25,7 +25,7 @@
   "dependencies": {
     "vue": "^3.2.41"
   },
-  "author": "richard1015",
+  "author": "jdf2e",
   "license": "MIT",
   "release-it": {
     "git": {
@@ -36,7 +36,6 @@
     }
   },
   "devDependencies": {
-    "@types/node": "^18.11.10",
     "@vitejs/plugin-vue": "^3.2.0",
     "release-it": "^15.5.1",
     "sass": "^1.56.1",
