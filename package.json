@@ -1,6 +1,7 @@
 {
   "scripts": {
-    "dev": "tsc --watch --incremental"
+    "dev": "tsc --watch --incremental",
+    "generate": "node dist/generate.js"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",

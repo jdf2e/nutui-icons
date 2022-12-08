@@ -1,16 +1,17 @@
 {
   "name": "@nutui/icons-vue",
-  "version": "0.0.2",
+  "version": "0.0.3",
   "type": "module",
   "scripts": {
     "dev": "vite",
-    "build": "vue-tsc && vite build",
+    "build": "vue-tsc && vite build --config vite.config.build.umd.ts && vite build --config vite.config.build.es.ts",
+    "build:site": "vue-tsc && vite build",
     "preview": "vite preview",
     "release": "release-it"
   },
-  "main": "dist/icon.umd.cjs",
-  "module": "dist/icon.js",
-  "style": "dist/style.css",
+  "main": "dist/lib/index.umd.cjs",
+  "module": "dist/es/index.es.js",
+  "style": "dist/lib/style.css",
   "files": [
     "dist",
     "README.md",
