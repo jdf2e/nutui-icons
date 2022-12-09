@@ -10,7 +10,9 @@ const banner = `/*!
 */`;
 
 let input = {
-  Icon: `./src/Icon.vue`
+  Icon: `./src/Icon.vue`,
+  IconFontConfig: `./src/buildEntry/iconFontConfig.ts`,
+  SvgConfig: `./src/buildEntry/svgConfig.ts`,
 };
 
 iconsConfig.map((name) => {
@@ -34,9 +36,6 @@ export default defineConfig({
       input,
       output: {
         banner,
-        paths: {
-          '@/Add.vue': './Add.js',
-        },
         entryFileNames: '[name].js',
         dir: resolve(__dirname, './dist/es/icons/'),
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
