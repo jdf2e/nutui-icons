@@ -45,7 +45,11 @@ let f = `${process.cwd()}/packages/icons-svg/*.svg`;
 
 new glob.Glob(f, {}, (err: any, files: string[]) => {
 
-    let entry = `/** 此文件由 script generate 脚本生成 */\nexport { default as Icon } from "./icons/Icon.js";\n`;
+    let entry = `/** 此文件由 script generate 脚本生成 */
+export { config as IconFontConfig } from "./icons/IconFontConfig.js";
+// export { SvgConfig } from "./icons/SvgConfig.js";
+export { default as Icon } from "./icons/Icon.js";
+\n`;
     let entryArray: string[] = [];
 
     files.forEach((filepath: string) => {
