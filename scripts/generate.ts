@@ -11,8 +11,8 @@ const getTemplate = (viewBox: string, pathd: string) => {
 const props = defineProps({
 name: { type: String, default: "" },
 color: { type: String, default: "" },
-width: { type: [String, Number], default: "16" },
-height: { type: [String, Number], default: "16" },
+width: { type: [String, Number], default: "16px" },
+height: { type: [String, Number], default: "16px" },
 });
 
 const emit = defineEmits<{
@@ -48,7 +48,7 @@ new glob.Glob(f, {}, (err: any, files: string[]) => {
     let entry = `/** 此文件由 script generate 脚本生成 */
 export { config as IconFontConfig } from "./icons/IconFontConfig.js";
 // export { SvgConfig } from "./icons/SvgConfig.js";
-export { default as Icon } from "./icons/Icon.js";
+export { default as IconFont } from "./icons/IconFont.js";
 \n`;
     let entryArray: string[] = [];
 
@@ -77,6 +77,18 @@ export { default as Icon } from "./icons/Icon.js";
 
     outputFile(`${process.cwd()}/packages/icons-vue/dist/es/index.es.js`, entry, 'utf8', (error) => {
         consola.success(`入口文件文件写入成功`);
+    });
+    let entryTSC = `import { DefineComponent } from 'vue';
+export declare class IconFontConfig { static [key: string]:any }
+export declare class IconFont {}
+`;
+    let s = entryArray.map(item => {
+        return `export declare class ${item} {}`;
+    });
+    entryTSC += s.join('\n');
+    consola.success(entryTSC);
+    outputFile(`${process.cwd()}/packages/icons-vue/dist/types/index.d.ts`, entryTSC, 'utf8', (error) => {
+        consola.success(`TS类型文件文件写入成功`);
     });
     outputFile(`${process.cwd()}/packages/icons-vue/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
         consola.success(`文件列表配置写入成功`);
