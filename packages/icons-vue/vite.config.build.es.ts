@@ -10,7 +10,7 @@ const banner = `/*!
 */`;
 
 let input = {
-  Icon: `./src/Icon.vue`,
+  IconFont: `./src/IconFont.vue`,
   IconFontConfig: `./src/buildEntry/iconFontConfig.ts`,
   SvgConfig: `./src/buildEntry/svgConfig.ts`,
 };

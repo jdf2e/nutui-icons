@@ -1,8 +1,8 @@
 import { App } from 'vue';
-import Icon from '../Icon.vue';
+import IconFont from '../IconFont.vue';
 import config from '../../../../iconfont/config.json';
 function install(app: App) {
-  app.component('Icon', Icon);
+  app.component('IconFont', IconFont);
 }
-export { Icon, config };
+export { IconFont, config };
 export default { install, config };

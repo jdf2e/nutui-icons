@@ -1,9 +1,9 @@
 <script setup lang="ts">
-import Icon from "./Icon.vue";
+import IconFont from "./IconFont.vue";
 import add from "./components/add.vue";
 import icons from "../../../iconfont/config.json";
 const copyTag = (name: string) => {
-  const text = `<Icon name="${name}" />`;
+  const text = `<IconFont name="${name}" />`;
   const displayText = `&lt;nut-icon name="${name}"&gt;&lt;/nut-icon&gt;`;
   const input = document.createElement("input");
   document.body.appendChild(input);
@@ -21,23 +21,23 @@ const copyTag = (name: string) => {
   <add width="100" height="100" color="blue" />
 
   <h2>基本用法</h2>
-  <Icon name="dongdong" />
-  <Icon name="JD" />
+  <IconFont name="dongdong" />
+  <IconFont name="JD" />
   <h2>图片链接</h2>
-  <Icon
+  <IconFont
     size="40"
     name="https://img11.360buyimg.com/imagetools/jfs/t1/137646/13/7132/1648/5f4c748bE43da8ddd/a3f06d51dcae7b60.png"
   >
-  </Icon>
+  </IconFont>
   <h2>图标颜色</h2>
-  <Icon name="dongdong" color="#fa2c19" />
-  <Icon name="dongdong" color="#64b578" />
-  <Icon name="JD" color="#fa2c19" />
+  <IconFont name="dongdong" color="#fa2c19" />
+  <IconFont name="dongdong" color="#64b578" />
+  <IconFont name="JD" color="#fa2c19" />
 
   <h2>图标大小</h2>
-  <Icon name="dongdong" />
-  <Icon name="dongdong" size="24" />
-  <Icon name="dongdong" size="26" />
+  <IconFont name="dongdong" />
+  <IconFont name="dongdong" size="24" />
+  <IconFont name="dongdong" size="26" />
 
   <nut-cell-group
     v-for="item in icons.data"
@@ -48,7 +48,7 @@ const copyTag = (name: string) => {
     <nut-cell>
       <ul>
         <li v-for="_item in item.icons" :key="_item">
-          <Icon :name="_item" @click="copyTag(_item)" />
+          <IconFont :name="_item" @click="copyTag(_item)" />
           <span>{{ _item }}</span>
         </li>
       </ul>
@@ -63,12 +63,12 @@ const copyTag = (name: string) => {
     <nut-cell>
       <ul>
         <li v-for="it in item.icons" :key="it.name">
-          <Icon
+          <IconFont
             :name="it.name"
             :class="`nut-icon-${it['animation-name']} nut-icon-${it['animation-time']}`"
             @click="copyTag(it['animation-name'])"
           >
-          </Icon>
+          </IconFont>
           <span>{{ it["animation-name"] }}</span>
         </li>
       </ul>
