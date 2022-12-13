@@ -9,6 +9,7 @@ const getTemplate = (viewBox: string, pathd: string) => {
     return `
 <script setup lang="ts">
 const props = defineProps({
+class: { type: String, default: "nut-icon" },
 name: { type: String, default: "" },
 color: { type: String, default: "" },
 width: { type: [String, Number], default: "16px" },
@@ -25,6 +26,7 @@ emit("click", event);
 </script>
 <template>
 <svg
+    :class="class"
     xmlns="http://www.w3.org/2000/svg"
     :width="width"
     :height="height"
