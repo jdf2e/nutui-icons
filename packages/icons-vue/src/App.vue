@@ -1,6 +1,6 @@
 <script setup lang="ts">
 import IconFont from "./IconFont.vue";
-import add from "./components/add.vue";
+import Voice from "./components/Voice.vue";
 import icons from "../../../iconfont/config.json";
 const copyTag = (name: string) => {
   const text = `<IconFont name="${name}" />`;
@@ -18,7 +18,7 @@ const copyTag = (name: string) => {
 </script>
 
 <template>
-  <add width="100" height="100" color="blue" />
+  <Voice width="100" height="100" color="blue" />
 
   <h2>基本用法</h2>
   <IconFont name="dongdong" />

@@ -5,7 +5,7 @@ import { camelCase } from './camelCase';
 import { optimize } from 'svgo';
 import { outputFile, readFile } from 'fs-extra';
 import consola from 'consola';
-const getTemplate = (viewBox: string, pathd: string) => {
+const getTemplate = (viewBox: string, pathd: string[]) => {
     return `
 <script setup lang="ts">
 const props = defineProps({
@@ -35,11 +35,13 @@ emit("click", event);
     :aria-labelledby="name"
     role="presentation"
 >
-    <path
-    d="${pathd}"
-    fill="currentColor"
-    fill-opacity="0.9"
-    ></path>
+    ${pathd.map(d => {
+        return `<path
+        d="${d}"
+        fill="currentColor"
+        fill-opacity="0.9"
+        ></path>`
+    })}
 </svg>
 </template>`
 };
@@ -78,11 +80,13 @@ export { default as IconFont } from "./icons/IconFont.js";
 
             let g = optimize(res).data;
             const ast: any = parse(g).children[0];
-            let pathd = ast.children[0].properties.d;
+            let pathds: string[] = ast.children.map((item: any) => {
+                return item.properties.d;
+            })
             let viewBox = ast.properties.viewBox;
 
 
-            outputFile(`${process.cwd()}/packages/icons-vue/src/components/${filename}.vue`, getTemplate(viewBox, pathd), 'utf8', (error) => {
+            outputFile(`${process.cwd()}/packages/icons-vue/src/components/${filename}.vue`, getTemplate(viewBox, pathds), 'utf8', (error) => {
                 consola.success(`${filename} 文件写入成功`);
             });
         })
