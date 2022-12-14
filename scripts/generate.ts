@@ -47,10 +47,20 @@ let f = `${process.cwd()}/packages/icons-svg/*.svg`;
 
 new glob.Glob(f, {}, (err: any, files: string[]) => {
 
-    let entry = `/** 此文件由 script generate 脚本生成 */
+    let entryEs = `/** 此文件由 script generate 脚本生成 */
 export { config as IconFontConfig } from "./icons/IconFontConfig.js";
 // export { SvgConfig } from "./icons/SvgConfig.js";
 export { default as IconFont } from "./icons/IconFont.js";
+\n`;
+    let entryLib = `/** 此文件由 script generate 脚本生成 */
+    import { App } from 'vue';
+    import IconFont from '../IconFont.vue';
+    import config from '../../../../iconfont/config.json';
+    function install(app: App) {
+      app.component('IconFont', IconFont);
+    }
+    export { IconFont, config };
+    export default { install, config };
 \n`;
     let entryArray: string[] = [];
 
@@ -59,7 +69,8 @@ export { default as IconFont } from "./icons/IconFont.js";
         let name = sp[sp.length - 1].replace('.svg', '');
         let filename = camelCase(name, { pascalCase: true });
 
-        entry += `export { default as ${filename} } from "./icons/${filename}.js";\n`;
+        entryEs += `export { default as ${filename} } from "./icons/${filename}.js";\n`;
+        entryLib += `export { default as ${filename} } from "../components/${filename}.vue";\n`;
         entryArray.push(filename);
 
         readFile(filepath, { encoding: 'utf-8' }).then(res => {
@@ -77,8 +88,11 @@ export { default as IconFont } from "./icons/IconFont.js";
         })
     })
 
-    outputFile(`${process.cwd()}/packages/icons-vue/dist/es/index.es.js`, entry, 'utf8', (error) => {
-        consola.success(`入口文件文件写入成功`);
+    outputFile(`${process.cwd()}/packages/icons-vue/dist/es/index.es.js`, entryEs, 'utf8', (error) => {
+        consola.success(`ES 入口文件文件写入成功`);
+    });
+    outputFile(`${process.cwd()}/packages/icons-vue/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
+        consola.success(`Lib 入口文件文件写入成功`);
     });
     let entryTSC = `import { DefineComponent } from 'vue';
 export declare class IconFontConfig { static [key: string]:any }
