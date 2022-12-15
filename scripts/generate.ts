@@ -30,6 +30,7 @@ const getTemplate = (viewBox: string, pathd: string[]) => {
     const classes = computed(() => {
       const prefixCls = "nut-icon";
       return {
+        [props.class]: props.class,
         [prefixCls]: true,
         [prefixCls + "-" + props.name]: props.name,
       };
