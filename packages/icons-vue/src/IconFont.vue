@@ -191,6 +191,15 @@ const render = () => {
     animation-timing-function: ease-in-out;
     animation-delay: var(--animate-delay);
   }
+  @keyframes rotation {
+    0% {
+      -webkit-transform: rotate(0deg);
+    }
+    100% {
+      -webkit-transform: rotate(360deg);
+    }
+  }
+
   // 跳动
   @-webkit-keyframes nutJump {
     to {

@@ -1,9 +1,11 @@
 <script setup lang="ts">
+import { computed, CSSProperties } from "vue";
 const props = defineProps({
+  class: { type: String, default: "" },
   name: { type: String, default: "" },
   color: { type: String, default: "" },
-  width: { type: [String, Number], default: "16" },
-  height: { type: [String, Number], default: "16" },
+  width: { type: [String, Number], default: "16px" },
+  height: { type: [String, Number], default: "16px" },
 });
 
 const emit = defineEmits<{
@@ -13,14 +15,34 @@ const emit = defineEmits<{
 const onClick = (event: Event) => {
   emit("click", event);
 };
+const pxCheck = (value: string | number): string => {
+  return isNaN(Number(value)) ? String(value) : value + "px";
+};
+const classes = computed(() => {
+  const prefixCls = "nut-icon";
+  return {
+    [prefixCls]: true,
+    [prefixCls + "-" + props.name]: props.name,
+  };
+});
+
+const getStyle = computed(() => {
+  const style: CSSProperties = {};
+
+  style.height = pxCheck(props.height);
+  style.width = pxCheck(props.width);
+
+  return style;
+});
 </script>
 <template>
   <svg
+    :class="classes"
+    :style="getStyle"
+    @click="onClick"
     xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
     :color="color"
-    viewBox="viewBox"
+    viewBox="${viewBox}"
     :aria-labelledby="name"
     role="presentation"
   >

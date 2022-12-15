@@ -15,10 +15,13 @@ const copyTag = (name: string) => {
   }
   document.body.removeChild(input);
 };
+const onClick = () => {
+  console.log("7777");
+};
 </script>
 
 <template>
-  <Voice width="100" height="100" color="blue" />
+  <Voice @click="onClick" width="100" height="100" name="loading" color="blue" />
 
   <h2>基本用法</h2>
   <IconFont name="dongdong" />
