@@ -4,8 +4,8 @@ const props = defineProps({
   class: { type: String, default: "" },
   name: { type: String, default: "" },
   color: { type: String, default: "" },
-  width: { type: [String, Number], default: "16px" },
-  height: { type: [String, Number], default: "16px" },
+  width: { type: [String, Number], default: "" },
+  height: { type: [String, Number], default: "" },
 });
 
 const emit = defineEmits<{
