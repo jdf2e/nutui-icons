@@ -7,34 +7,54 @@ import { outputFile, readFile } from 'fs-extra';
 import consola from 'consola';
 const getTemplate = (viewBox: string, pathd: string[]) => {
     return `
-<script setup lang="ts">
-const props = defineProps({
-class: { type: String, default: "nut-icon" },
-name: { type: String, default: "" },
-color: { type: String, default: "" },
-width: { type: [String, Number], default: "16px" },
-height: { type: [String, Number], default: "16px" },
-});
-
-const emit = defineEmits<{
-(e: "click", event: Event): void;
-}>();
-
-const onClick = (event: Event) => {
-emit("click", event);
-};
-</script>
-<template>
-<svg
-    :class="class"
-    xmlns="http://www.w3.org/2000/svg"
-    :width="width"
-    :height="height"
-    :color="color"
-    viewBox="${viewBox}"
-    :aria-labelledby="name"
-    role="presentation"
->
+    <script setup lang="ts">
+    import { computed, CSSProperties } from "vue";
+    const props = defineProps({
+      class: { type: String, default: "" },
+      name: { type: String, default: "" },
+      color: { type: String, default: "" },
+      width: { type: [String, Number], default: "16px" },
+      height: { type: [String, Number], default: "16px" },
+    });
+    
+    const emit = defineEmits<{
+      (e: "click", event: Event): void;
+    }>();
+    
+    const onClick = (event: Event) => {
+      emit("click", event);
+    };
+    const pxCheck = (value: string | number): string => {
+      return isNaN(Number(value)) ? String(value) : value + "px";
+    };
+    const classes = computed(() => {
+      const prefixCls = "nut-icon";
+      return {
+        [prefixCls]: true,
+        [prefixCls + "-" + props.name]: props.name,
+      };
+    });
+    
+    const getStyle = computed(() => {
+      const style: CSSProperties = {};
+    
+      style.height = pxCheck(props.height);
+      style.width = pxCheck(props.width);
+    
+      return style;
+    });
+    </script>
+    <template>
+      <svg
+        :class="classes"
+        :style="getStyle"
+        @click="onClick"
+        xmlns="http://www.w3.org/2000/svg"
+        :color="color"
+        viewBox="${viewBox}"
+        :aria-labelledby="name"
+        role="presentation"
+      >
     ${pathd.map(d => {
         return `<path
         d="${d}"
