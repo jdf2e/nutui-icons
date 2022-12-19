@@ -70,14 +70,14 @@ const getStyle = computed(() => {
 </svg>
 </template>`
 };
-const getIconFontTemplate = (name: string) => {
+const getTaroIconFontTemplate = (name: string) => {
   return `
   <script setup lang="ts">
   import { h, useAttrs, useSlots } from "vue";
   const componentName = "nut-icon";
   const props = defineProps({
     name: { type: String, default: '${name}' },
-    fontSize: { type: [String, Number], default: "12" },
+    size: { type: [String, Number], default: "" },
     width: { type: [String, Number], default: "" },
     height: { type: [String, Number], default: "" },
     classPrefix: { type: String, default: "nut-icon" },
@@ -111,9 +111,9 @@ const getIconFontTemplate = (name: string) => {
       class: props.fontClassName + ' ' +componentName +' '+ props.classPrefix +'-'+ props.name,
       style: {
         color: props.color,
-        fontSize: pxCheck(props.fontSize),
-        width: pxCheck(props.width),
-        height: pxCheck(props.height),
+        fontSize: pxCheck(props.size),
+        width: pxCheck(props.size),
+        height: pxCheck(props.size),
       },
       onClick,
     },
@@ -174,7 +174,7 @@ export { default as IconFont } from "./icons/IconFont.js";
         consola.success(`${filename} 文件写入成功`);
       });
 
-      outputFile(`${process.cwd()}/packages/icons-vue-taro/src/components/${filename}.vue`, getIconFontTemplate(name), 'utf8', (error) => {
+      outputFile(`${process.cwd()}/packages/icons-vue-taro/src/components/${filename}.vue`, getTaroIconFontTemplate(name), 'utf8', (error) => {
         consola.success(`${filename} 文件写入成功`);
       });
     })
