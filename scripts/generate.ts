@@ -5,57 +5,61 @@ import { camelCase } from './camelCase';
 import { optimize } from 'svgo';
 import { outputFile, readFile } from 'fs-extra';
 import consola from 'consola';
-const getTemplate = (viewBox: string, pathd: string[]) => {
+const getSvgTemplate = (viewBox: string, pathd: string[]) => {
   return `
-    <script setup lang="ts">
-    import { computed, CSSProperties } from "vue";
-    const props = defineProps({
-      class: { type: String, default: "" },
-      name: { type: String, default: "" },
-      color: { type: String, default: "" },
-      width: { type: [String, Number], default: "" },
-      height: { type: [String, Number], default: "" },
-    });
-    
-    const emit = defineEmits<{
-      (e: "click", event: Event): void;
-    }>();
-    
-    const onClick = (event: Event) => {
-      emit("click", event);
-    };
-    const pxCheck = (value: string | number): string => {
-      return isNaN(Number(value)) ? String(value) : value + "px";
-    };
-    const classes = computed(() => {
-      const prefixCls = "nut-icon";
-      return {
-        [props.class]: props.class,
-        [prefixCls]: true,
-        [prefixCls + "-" + props.name]: props.name,
-      };
-    });
-    
-    const getStyle = computed(() => {
-      const style: CSSProperties = {};
-    
-      style.height = pxCheck(props.height);
-      style.width = pxCheck(props.width);
-    
-      return style;
-    });
-    </script>
-    <template>
-      <svg
-        :class="classes"
-        :style="getStyle"
-        @click="onClick"
-        xmlns="http://www.w3.org/2000/svg"
-        :color="color"
-        viewBox="${viewBox}"
-        :aria-labelledby="name"
-        role="presentation"
-      >
+<script setup lang="ts">
+import { computed, CSSProperties } from "vue";
+const props = defineProps({
+  class: { type: String, default: "" },
+  name: { type: String, default: "" },
+  color: { type: String, default: "" },
+  width: { type: [String, Number], default: "" },
+  height: { type: [String, Number], default: "" },
+});
+
+const emit = defineEmits<{
+  (e: "click", event: Event): void;
+}>();
+
+const onClick = (event: Event) => {
+  emit("click", event);
+};
+const pxCheck = (value: string | number): string | undefined => {
+  if (value) {
+    return isNaN(Number(value)) ? String(value) : value + "px";
+  } else {
+    return undefined;
+  }
+};
+const classes = computed(() => {
+  const prefixCls = "nut-icon";
+  return {
+    [props.class]: props.class,
+    [prefixCls]: true,
+    [prefixCls + "-" + props.name]: props.name,
+  };
+});
+
+const getStyle = computed(() => {
+  const style: CSSProperties = {};
+
+  style.height = pxCheck(props.height);
+  style.width = pxCheck(props.width);
+
+  return style;
+});
+</script>
+<template>
+  <svg
+    :class="classes"
+    :style="getStyle"
+    @click="onClick"
+    xmlns="http://www.w3.org/2000/svg"
+    :color="color"
+    viewBox="${viewBox}"
+    :aria-labelledby="name"
+    role="presentation"
+  >
     ${pathd.map(d => {
     return `<path
         d="${d}"
@@ -65,6 +69,65 @@ const getTemplate = (viewBox: string, pathd: string[]) => {
   })}
 </svg>
 </template>`
+};
+const getIconFontTemplate = (name: string) => {
+  return `
+  <script setup lang="ts">
+  import { h, useAttrs, useSlots } from "vue";
+  const componentName = "nut-icon";
+  const props = defineProps({
+    name: { type: String, default: '${name}' },
+    fontSize: { type: [String, Number], default: "12" },
+    width: { type: [String, Number], default: "" },
+    height: { type: [String, Number], default: "" },
+    classPrefix: { type: String, default: "nut-icon" },
+    fontClassName: { type: String, default: "nutui-iconfont" },
+    color: { type: String, default: "" },
+    tag: { type: String, default: "i" },
+  });
+  
+  const emit = defineEmits<{
+    (e: "click", event: Event): void;
+  }>();
+  
+  const onClick = (event: Event) => {
+    emit("click", event);
+  };
+  
+  const slots = useSlots();
+  const attrs = useAttrs();
+  
+  const pxCheck = (value: string | number): string | undefined => {
+    if (value) {
+      return isNaN(Number(value)) ? String(value) : value + "px";
+    } else {
+      return undefined;
+    }
+  };
+  
+  let vnode = h(
+    props.tag,
+    {
+      class: props.fontClassName + ' ' +componentName +' '+ props.classPrefix +'-'+ props.name,
+      style: {
+        color: props.color,
+        fontSize: pxCheck(props.fontSize),
+        width: pxCheck(props.width),
+        height: pxCheck(props.height),
+      },
+      onClick,
+    },
+    slots.default?.()
+  );
+  
+  const render = () => {
+    return vnode;
+  };
+  </script>
+  <template>
+    <render />
+  </template>
+  `
 };
 let f = `${process.cwd()}/packages/icons-svg/*.svg`;
 
@@ -107,18 +170,27 @@ export { default as IconFont } from "./icons/IconFont.js";
       let viewBox = ast.properties.viewBox;
 
 
-      outputFile(`${process.cwd()}/packages/icons-vue/src/components/${filename}.vue`, getTemplate(viewBox, pathds), 'utf8', (error) => {
+      outputFile(`${process.cwd()}/packages/icons-vue/src/components/${filename}.vue`, getSvgTemplate(viewBox, pathds), 'utf8', (error) => {
+        consola.success(`${filename} 文件写入成功`);
+      });
+
+      outputFile(`${process.cwd()}/packages/icons-vue-taro/src/components/${filename}.vue`, getIconFontTemplate(name), 'utf8', (error) => {
         consola.success(`${filename} 文件写入成功`);
       });
     })
   })
 
   outputFile(`${process.cwd()}/packages/icons-vue/dist/es/index.es.js`, entryEs, 'utf8', (error) => {
-    consola.success(`ES 入口文件文件写入成功`);
+    consola.success(`icons-vue ES 入口文件文件写入成功`);
   });
   outputFile(`${process.cwd()}/packages/icons-vue/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
-    consola.success(`Lib 入口文件文件写入成功`);
+    consola.success(`icons-vue Lib 入口文件文件写入成功`);
   });
+
+  outputFile(`${process.cwd()}/packages/icons-vue-taro/dist/es/index.es.js`, entryEs, 'utf8', (error) => {
+    consola.success(`icons-vue-taro ES 入口文件文件写入成功`);
+  });
+
   let entryTSC = `import { DefineComponent } from 'vue';
 export declare class IconFontConfig { static [key: string]:any }
 export declare class IconFont {}
@@ -131,7 +203,13 @@ export declare class IconFont {}
   outputFile(`${process.cwd()}/packages/icons-vue/dist/types/index.d.ts`, entryTSC, 'utf8', (error) => {
     consola.success(`TS类型文件文件写入成功`);
   });
+  outputFile(`${process.cwd()}/packages/icons-vue-taro/dist/types/index.d.ts`, entryTSC, 'utf8', (error) => {
+    consola.success(`TS类型文件文件写入成功`);
+  });
   outputFile(`${process.cwd()}/packages/icons-vue/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
-    consola.success(`文件列表配置写入成功`);
+    consola.success(`icons-vue 文件列表配置写入成功`);
+  });
+  outputFile(`${process.cwd()}/packages/icons-vue-taro/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
+    consola.success(`icons-vue-tar 文件列表配置写入成功`);
   });
 });
