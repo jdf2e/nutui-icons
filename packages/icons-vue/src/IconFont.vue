@@ -3,7 +3,7 @@ import { h, useAttrs, useSlots } from "vue";
 const componentName = "nut-icon";
 const props = defineProps({
   name: { type: String, default: "" },
-  fontSize: { type: [String, Number], default: "12" },
+  size: { type: [String, Number], default: "" },
   width: { type: [String, Number], default: "" },
   height: { type: [String, Number], default: "" },
   classPrefix: { type: String, default: "nut-icon" },
@@ -44,9 +44,9 @@ let vnode = h(
       : `${props.fontClassName} ${componentName} ${props.classPrefix}-${props.name}`,
     style: {
       color: props.color,
-      fontSize: pxCheck(props.fontSize),
-      width: pxCheck(props.width),
-      height: pxCheck(props.height),
+      fontSize: pxCheck(props.size),
+      width: pxCheck(props.width || props.size),
+      height: pxCheck(props.height || props.size),
     },
     onClick,
     src: _isImage ? props.name : "",
