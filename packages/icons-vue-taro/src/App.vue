@@ -23,9 +23,7 @@ const onClick = () => {
 <template>
   <Voice
     @click="onClick"
-    width="100"
-    height="100"
-    font-size="100"
+    size="100"
     color="blue"
   />
 
