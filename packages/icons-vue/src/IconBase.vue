@@ -15,8 +15,12 @@ const emit = defineEmits<{
 const onClick = (event: Event) => {
   emit("click", event);
 };
-const pxCheck = (value: string | number): string => {
-  return isNaN(Number(value)) ? String(value) : value + "px";
+const pxCheck = (value: string | number): string | undefined => {
+  if (value) {
+    return isNaN(Number(value)) ? String(value) : value + "px";
+  } else {
+    return undefined;
+  }
 };
 const classes = computed(() => {
   const prefixCls = "nut-icon";

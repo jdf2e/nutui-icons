@@ -27,8 +27,12 @@ const isImage = () => {
   return props.name ? props.name.indexOf("/") !== -1 : false;
 };
 
-const pxCheck = (value: string | number): string => {
-  return isNaN(Number(value)) ? String(value) : `${value}px`;
+const pxCheck = (value: string | number): string | undefined => {
+  if (value) {
+    return isNaN(Number(value)) ? String(value) : value + "px";
+  } else {
+    return undefined;
+  }
 };
 const _isImage = isImage();
 

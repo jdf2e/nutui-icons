@@ -21,7 +21,13 @@ const onClick = () => {
 </script>
 
 <template>
-  <Voice @click="onClick" width="100" height="100" name="loading" color="blue" />
+  <Voice
+    @click="onClick"
+    width="100"
+    height="100"
+    name="loading"
+    color="blue"
+  />
 
   <h2>基本用法</h2>
   <IconFont name="dongdong" />
@@ -79,7 +85,8 @@ const onClick = () => {
   </nut-cell-group>
 </template>
 
-<style scoped lang="scss">
+<style lang="scss">
+@import "./style_iconfont.scss";
 .nut-cell {
   > .nutui-iconfont {
     margin-right: 10px;

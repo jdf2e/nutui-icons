@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-vue",
-  "version": "0.0.13",
+  "version": "0.0.14",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -11,7 +11,7 @@
   },
   "main": "dist/lib/index.umd.cjs",
   "module": "dist/es/index.es.js",
-  "style": "dist/style.css",
+  "style": "dist/style_icon.css",
   "typings": "dist/types/index.d.ts",
   "files": [
     "dist",

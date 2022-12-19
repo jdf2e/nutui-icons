@@ -1,3 +1,4 @@
+import { resolve } from 'path';
 import { defineConfig } from 'vite';
 import config from './package.json';
 
@@ -6,21 +7,26 @@ const banner = `/*!
 * (c) 2022 @jdf2e.
 * Released under the MIT License.
 */`;
+let input = {
+  style_icon: `./src/style_icon.scss`,
+  style_iconfont: `./src/style_iconfont.scss`,
+};
+
 
 export default defineConfig({
   build: {
     minify: true,
-    lib: {
-      entry: '../../iconfont/iconfont_component.scss',
-      formats: ['es'],
-      name: 'style',
-      fileName: 'style'
+    cssCodeSplit: true,
+    assetsInlineLimit: 1024 * 200,
+    rollupOptions: {
+      input,
+      output: {
+        banner,
+        entryFileNames: '[name].js',
+        assetFileNames: `[name].[ext]`,
+        dir: resolve(__dirname, './dist/'),
+      }
     },
-    // rollupOptions: {
-    //   output: {
-    //     banner
-    //   }
-    // },
     emptyOutDir: false
   }
 });
