@@ -1,9 +1,14 @@
 
 
+
+
+
+
 <p align="center">
-⭐ NutUI SVG & IconFont icons.
+   <img alt="logo" src="https://img11.360buyimg.com/imagetools/jfs/t1/211965/25/7152/22022/61b16785E433119bb/aa41d7a9f7e823f3.png" width="150" style="margin-bottom: 10px;">
 </p>
 
+NutUI Icons 是统一生产、管理 NutUI 各框架的 Icons 组件资源的仓库。
 
 ## Packages
 
@@ -14,6 +19,6 @@
 - React Native: `建设中`
 
 
-## License
+## 开源协议
 
 [MIT License](./LICENSE)
