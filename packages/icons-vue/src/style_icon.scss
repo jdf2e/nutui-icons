@@ -1,4 +1,11 @@
-:root,
+:root {
+    --nut-icon-height: 16px;
+    --nut-icon-width: 16px;
+    --nut-icon-line-height: 16px;
+    --animate-duration: 1s;
+    --animate-delay: 0s;
+}
+
 page {
     --nut-icon-height: 20px;
     --nut-icon-width: 20px;
