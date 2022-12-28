@@ -180,14 +180,14 @@ export { default as IconFont } from "./icons/IconFont.js";
     })
   })
 
-  outputFile(`${process.cwd()}/packages/icons-vue/dist/es/index.es.js`, entryEs, 'utf8', (error) => {
+  outputFile(`${process.cwd()}/packages/icons-vue/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
     consola.success(`icons-vue ES 入口文件文件写入成功`);
   });
   outputFile(`${process.cwd()}/packages/icons-vue/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
     consola.success(`icons-vue Lib 入口文件文件写入成功`);
   });
 
-  outputFile(`${process.cwd()}/packages/icons-vue-taro/dist/es/index.es.js`, entryEs, 'utf8', (error) => {
+  outputFile(`${process.cwd()}/packages/icons-vue-taro/dist/es/index.es.js`, entryEs + 'import "../style_iconfont.css";', 'utf8', (error) => {
     consola.success(`icons-vue-taro ES 入口文件文件写入成功`);
   });
 
