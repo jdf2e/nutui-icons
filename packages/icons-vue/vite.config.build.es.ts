@@ -3,7 +3,8 @@ import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
 import config from './package.json';
 import { iconsConfig } from './src/components/iconsConfig';
-const banner = `/*!
+const banner = `import "./style.css";
+/*!
 * ${config.name} v${config.version} ${new Date()}
 * (c) 2022 @jdf2e.
 * Released under the MIT License.
