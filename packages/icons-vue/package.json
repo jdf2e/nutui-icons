@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-vue",
-  "version": "0.0.19",
+  "version": "0.0.20",
   "type": "module",
   "scripts": {
     "dev": "vite",
@@ -24,9 +24,7 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "dependencies": {
-    "vue": "^3.2.41"
-  },
+  "dependencies": {},
   "author": "jdf2e",
   "license": "MIT",
   "release-it": {
@@ -38,6 +36,7 @@
     }
   },
   "devDependencies": {
+    "vue": "^3.2.41",
     "@vitejs/plugin-vue": "^4.0.0",
     "release-it": "^15.5.1",
     "sass": "^1.56.1",
