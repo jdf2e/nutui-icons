@@ -1,14 +1,7 @@
 import { defineConfig } from 'vite'
 import vue from '@vitejs/plugin-vue'
 import { resolve } from 'path'
-import config from './package.json';
 import { iconsConfig } from './src/components/iconsConfig';
-const banner = `
-/*!
-* ${config.name} v${config.version} ${new Date()}
-* (c) 2022 @jdf2e.
-* Released under the MIT License.
-*/`;
 
 let input = {
   IconFont: `./src/IconFont.vue`,
@@ -36,7 +29,6 @@ export default defineConfig({
       external: ['vue'],
       input,
       output: {
-        banner,
         entryFileNames: '[name].js',
         dir: resolve(__dirname, './dist/es/icons/'),
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量

@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-vue",
-  "version": "0.0.21",
+  "version": "0.0.22",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build --config vite.config.build.umd.ts && vite build --config vite.config.build.es.ts && vite build --config vite.config.build.css.ts",
@@ -8,11 +8,7 @@
     "preview": "vite preview",
     "release": "release-it"
   },
-  "sideEffects": [
-    "dist/es/**/*",
-    "dist/style_icon.css",
-    "dist/style_iconfont.css"
-  ],
+  "sideEffects": false,
   "main": "dist/lib/index.umd.cjs",
   "module": "dist/es/index.es.js",
   "style": "dist/style_icon.css",
