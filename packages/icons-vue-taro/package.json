@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-vue-taro",
-  "version": "0.0.7",
+  "version": "0.0.8",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build --config vite.config.build.es.ts && vite build --config vite.config.build.css.ts",
@@ -8,8 +8,9 @@
     "preview": "vite preview",
     "release": "release-it"
   },
+  "type": "module",
   "module": "dist/es/index.es.js",
-  "style": "dist/style_icon.css",
+  "style": "dist/style_iconfont.css",
   "typings": "dist/types/index.d.ts",
   "files": [
     "dist",
