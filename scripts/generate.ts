@@ -45,7 +45,8 @@ const getStyle = computed(() => {
 
   style.height = pxCheck(props.height);
   style.width = pxCheck(props.width);
-
+  style.color = props.color;
+  
   return style;
 });
 </script>
@@ -55,7 +56,6 @@ const getStyle = computed(() => {
     :style="getStyle"
     @click="onClick"
     xmlns="http://www.w3.org/2000/svg"
-    :color="color"
     viewBox="${viewBox}"
     :aria-labelledby="name"
     role="presentation"
