@@ -1,7 +1,8 @@
 <script setup lang="ts">
 import IconFont from "./IconFont.vue";
-import Voice from "./components/Voice.vue";
+import Check from "./components/Check.vue";
 import icons from "../../../iconfont/config.json";
+import { ref } from "vue";
 const copyTag = (name: string) => {
   const text = `<IconFont name="${name}" />`;
   const displayText = `&lt;nut-icon name="${name}"&gt;&lt;/nut-icon&gt;`;
@@ -18,14 +19,14 @@ const copyTag = (name: string) => {
 const onClick = () => {
   console.log("7777");
 };
+const color = ref("red");
+setTimeout(() => {
+  color.value = "blue";
+}, 1000);
 </script>
 
 <template>
-  <Voice
-    @click="onClick"
-    size="100"
-    color="blue"
-  />
+  <Check @click="onClick" size="100" :color="color" />
 
   <h2>基本用法</h2>
   <IconFont name="dongdong" />

@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-vue-taro",
-  "version": "0.0.8",
+  "version": "0.0.9",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build --config vite.config.build.es.ts && vite build --config vite.config.build.css.ts",
