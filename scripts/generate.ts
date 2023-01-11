@@ -105,23 +105,28 @@ const getTaroIconFontTemplate = (name: string) => {
     }
   };
   
-  let vnode = h(
-    props.tag,
-    {
-      class: props.fontClassName + ' ' +componentName +' '+ props.classPrefix +'-'+ props.name,
-      style: {
-        color: props.color,
-        fontSize: pxCheck(props.size),
-        width: pxCheck(props.size),
-        height: pxCheck(props.size),
-      },
-      onClick,
-    },
-    slots.default?.()
-  );
-  
   const render = () => {
-    return vnode;
+    return h(
+      props.tag,
+      {
+        class:
+          props.fontClassName +
+          " " +
+          componentName +
+          " " +
+          props.classPrefix +
+          "-" +
+          props.name,
+        style: {
+          color: props.color,
+          fontSize: pxCheck(props.size),
+          width: pxCheck(props.size),
+          height: pxCheck(props.size),
+        },
+        onClick,
+      },
+      slots.default?.()
+    );
   };
   </script>
   <template>
