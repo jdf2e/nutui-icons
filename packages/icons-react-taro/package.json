@@ -1,0 +1,54 @@
+{
+  "name": "@nutui/icons-react-taro",
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "vite build --config vite.config.build.es.ts && vite build --config vite.config.build.umd.ts && vite build --config vite.config.build.css.ts && vite build --config vite.config.dts.ts",
+    "preview": "vite preview",
+    "release": "release-it"
+  },
+  "main": "dist/lib/index.umd.cjs",
+  "module": "dist/es/index.es.js",
+  "style": "dist/style_icon.css",
+  "typings": "dist/types/index.d.ts",
+  "files": [
+    "dist",
+    "README.md",
+    "package.json",
+    "LICENSE",
+    "CHANGELOG.md"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://registry.npmjs.org/"
+  },
+  "author": "jdf2e",
+  "license": "MIT",
+  "release-it": {
+    "git": {
+      "tag": false,
+      "commitMessage": "release: @nutui/icons-react-taro ${version}",
+      "addUntrackedFiles": true,
+      "requireCleanWorkingDir": false
+    }
+  },
+  "dependencies": {
+    "classnames": "^2.3.2"
+  },
+  "devDependencies": {
+    "@nutui/nutui-react": "^1.4.2",
+    "@types/react": "^18.0.26",
+    "@types/react-dom": "^18.0.9",
+    "@vitejs/plugin-react": "^3.0.0",
+    "camelcase": "^7.0.1",
+    "react": "^18.2.0",
+    "react-dom": "^18.2.0",
+    "release-it": "^15.5.1",
+    "rollup-plugin-dts": "^5.0.0",
+    "sass": "^1.56.1",
+    "typescript": "^4.9.3",
+    "vite": "^4.0.0",
+    "vite-plugin-dts": "^1.7.1"
+  }
+}

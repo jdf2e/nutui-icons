@@ -1,2 +1,0 @@
-# @nutui/icons-react
-
