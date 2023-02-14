@@ -165,6 +165,65 @@ Icon.displayName = 'NutIcon${compoentName}'
 `
     return template
 }
+
+const getTaroSvg = (compoentName: string, viewBox: string, d: any[]) => {
+    const template = `import classnames from 'classnames'
+export interface IconProps {
+    className?: string
+    style?: React.CSSProperties
+    name: string
+    color?: string
+    width?: string | number
+    height?: string | number
+    onClick: (event: React.MouseEvent) => void
+}
+const defaultProps = {
+    className: '',
+    style: undefined,
+    name: '',
+    width: '',
+    height: '',
+    onClick: () => undefined
+} as IconProps
+const ${compoentName} = (props: IconProps) => {
+    const {className, style, name, color, width, height, onClick} = {...defaultProps, ...props}
+    const handleClick: React.MouseEventHandler = (e) => {
+        onClick && onClick(e)
+    }
+    const pxCheck = (value: string | number): string => {
+        return isNaN(Number(value)) ? String(value) : value + "px";
+    };
+    const classes = () => {
+        const prefixCls = "nut-icon";
+        return classnames({
+            [\`\${className}\`]: className,
+            [prefixCls]: true,
+            [prefixCls + "-" + name]: name,
+        })
+    };
+    const getStyle = () => {
+        return {
+            ...style,
+            backgroundImage: \`url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="\${color || 'currentColor'}" viewBox="${viewBox}">${d.map(d => {return `<path d="${d}" fill-opacity="0.9"></path>`})}</svg>')\`,
+            height: pxCheck(height || ''),
+            width: pxCheck(width || '')
+        }
+    }
+    return <>
+        <span
+            className={classes()}
+            style={getStyle()}
+            onClick={handleClick}
+            color={color}
+        ></span>
+    </>
+}
+${compoentName}.defaultProps = defaultProps
+export default ${compoentName}
+`
+    return template
+}
+
 let entryEs = `/** 此文件由 script generate 脚本生成 */
 export { config as IconFontConfig } from "./icons/IconFontConfig.js";
 export { default as IconFont } from "./icons/IconFont.js";
@@ -207,11 +266,15 @@ new glob.Glob(pattern, {},(err, files) => {
                 consola.success(`${componentName} 文件写入成功`);
             });
 
+            fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getTaroSvg(componentName, viewBox, pathds), 'utf8', (error) => {
+                consola.success(`${componentName} 文件写入成功`);
+            });
+
         })
 
-        fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
-            consola.success(`${componentName} 文件写入成功`);
-        });
+        // fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
+        //     consola.success(`${componentName} 文件写入成功`);
+        // });
     })
     fsExtra.outputFile(`${process.cwd()}/packages/icons-react/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
         consola.success(`icons-react 文件列表配置写入成功`);
