@@ -70,6 +70,74 @@ const getStyle = computed(() => {
 </svg>
 </template>`
 };
+const getSvgBackgroundTemplate = (viewBox: string, pathd: string[], name: string) => {
+  return `
+<script setup lang="ts">
+  import { h, useAttrs, useSlots } from "vue";
+  const componentName = "nut-icon";
+  const props = defineProps({
+    name: { type: String, default: '${name}' },
+    size: { type: [String, Number], default: "" },
+    width: { type: [String, Number], default: "" },
+    height: { type: [String, Number], default: "" },
+    classPrefix: { type: String, default: "nut-icon" },
+    fontClassName: { type: String, default: "nutui-iconfont" },
+    color: { type: String, default: "" },
+    tag: { type: String, default: "view" },
+  });
+  
+  const emit = defineEmits<{
+    (e: "click", event: Event): void;
+  }>();
+  
+  const onClick = (event: Event) => {
+    emit("click", event);
+  };
+  
+  const slots = useSlots();
+  const attrs = useAttrs();
+  
+  const pxCheck = (value: string | number): string | undefined => {
+    if (value) {
+      return isNaN(Number(value)) ? String(value) : value + "px";
+    } else {
+      return undefined;
+    }
+  };
+  
+  const render = () => {
+    return h(
+      props.tag,
+      {
+        class:
+          props.fontClassName +
+          " " +
+          componentName +
+          " " +
+          props.classPrefix +
+          "-" +
+          props.name,
+        style: {
+          color: props.color,
+          fontSize: pxCheck(props.size),
+          width: pxCheck(props.size),
+          height: pxCheck(props.size),
+          background: ${`${"`"}url("data:image/svg+xml,%3Csvg viewBox='${viewBox}' xmlns='http://www.w3.org/2000/svg'%3E${pathd.map((path) => {
+            return `%3Cpath d='${path}' fill='${'${props.color}'}' fill-opacity='0.9'%3E%3C/path%3E`;
+          })}%3C/svg%3E")${"`"}`},
+          backgroundRepeat: 'no-repeat',
+        },
+        onClick,
+      },
+      slots.default?.()
+    );
+  };
+  </script>
+  <template>
+    <render />
+  </template>
+  `
+};
 const getTaroIconFontTemplate = (name: string) => {
   return `
   <script setup lang="ts">
@@ -179,7 +247,7 @@ export { default as IconFont } from "./icons/IconFont.js";
         consola.success(`${filename} 文件写入成功`);
       });
 
-      outputFile(`${process.cwd()}/packages/icons-vue-taro/src/components/${filename}.vue`, getTaroIconFontTemplate(name), 'utf8', (error) => {
+      outputFile(`${process.cwd()}/packages/icons-vue-taro/src/components/${filename}.vue`, getSvgBackgroundTemplate(viewBox, pathds, name), 'utf8', (error) => {
         consola.success(`${filename} 文件写入成功`);
       });
     })
@@ -192,7 +260,7 @@ export { default as IconFont } from "./icons/IconFont.js";
     consola.success(`icons-vue Lib 入口文件文件写入成功`);
   });
 
-  outputFile(`${process.cwd()}/packages/icons-vue-taro/dist/es/index.es.js`, entryEs + 'import "../style_iconfont.css";', 'utf8', (error) => {
+  outputFile(`${process.cwd()}/packages/icons-vue-taro/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
     consola.success(`icons-vue-taro ES 入口文件文件写入成功`);
   });
 

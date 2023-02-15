@@ -8,8 +8,10 @@
     "preview": "vite preview",
     "release": "release-it"
   },
-  "type": "module",
   "module": "dist/es/index.es.js",
+  "sideEffects": [
+    "*.css"
+  ],
   "style": "dist/style_iconfont.css",
   "typings": "dist/types/index.d.ts",
   "files": [
