@@ -1,12 +1,13 @@
 {
   "name": "@nutui/icons-vue-taro",
-  "version": "0.0.9",
+  "version": "0.0.10-beta.0",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build --config vite.config.build.es.ts && vite build --config vite.config.build.css.ts",
     "build:site": "vue-tsc && vite build",
     "preview": "vite preview",
-    "release": "release-it"
+    "release": "release-it",
+    "release:beta": "release-it --preRelease=beta"
   },
   "module": "dist/es/index.es.js",
   "sideEffects": [
