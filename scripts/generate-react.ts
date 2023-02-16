@@ -205,6 +205,7 @@ const ${compoentName} = (props: IconProps) => {
         return {
             ...style,
             backgroundImage: \`url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="\${color || 'currentColor'}" viewBox="${viewBox}">${d.map(d => {return `<path d="${d}" fill-opacity="0.9"></path>`})}</svg>')\`,
+            backgroundRepeat: 'no-repeat',
             height: pxCheck(height || ''),
             width: pxCheck(width || '')
         }

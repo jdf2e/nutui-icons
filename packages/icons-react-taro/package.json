@@ -19,6 +19,9 @@
     "LICENSE",
     "CHANGELOG.md"
   ],
+  "sideEffects": [
+    "*.css"
+  ],
   "publishConfig": {
     "access": "public",
     "registry": "https://registry.npmjs.org/"
