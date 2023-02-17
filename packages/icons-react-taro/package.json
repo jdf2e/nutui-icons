@@ -7,7 +7,6 @@
     "preview": "vite preview",
     "release": "release-it"
   },
-  "main": "dist/lib/index.umd.cjs",
   "module": "dist/es/index.es.js",
   "style": "dist/style_iconfont.css",
   "typings": "dist/types/index.d.ts",
@@ -19,7 +18,8 @@
     "CHANGELOG.md"
   ],
   "sideEffects": [
-    "*.css"
+    "*.css",
+    "**/index.es.js"
   ],
   "publishConfig": {
     "access": "public",
