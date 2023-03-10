@@ -1,6 +1,7 @@
 {
   "name": "@nutui/icons-vue",
-  "version": "0.0.26-beta.1",
+  "version": "0.0.26",
+  "description": "京东风格的轻量级移动端 Vue 组件库 NutUI 图标包",
   "scripts": {
     "dev": "vite",
     "build": "vue-tsc && vite build --config vite.config.build.umd.ts && vite build --config vite.config.build.es.ts && vite build --config vite.config.build.css.ts",
