@@ -8,7 +8,18 @@
     "preview": "vite preview",
     "release": "release-it"
   },
-  "main": "dist/lib/index.umd.cjs",
+  "sideEffects": [
+    "*.css"
+  ],
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.es.js",
+      "require": "./dist/lib/index.umd.js"
+    },
+    "./*": "./*"
+  },
+  "main": "dist/lib/index.umd.js",
   "module": "dist/es/index.es.js",
   "style": "dist/style_icon.css",
   "typings": "dist/types/index.d.ts",
@@ -23,7 +34,6 @@
     "access": "public",
     "registry": "https://registry.npmjs.org/"
   },
-  "dependencies": {},
   "author": "jdf2e",
   "license": "MIT",
   "release-it": {
@@ -35,12 +45,13 @@
     }
   },
   "devDependencies": {
-    "vue": "^3.2.41",
     "@vitejs/plugin-vue": "^4.0.0",
     "release-it": "^15.5.1",
+    "rimraf": "^4.4.0",
     "sass": "^1.56.1",
     "typescript": "^4.6.4",
     "vite": "^4.0.0",
+    "vue": "^3.2.41",
     "vue-tsc": "^1.0.10"
   }
 }

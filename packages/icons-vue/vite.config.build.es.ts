@@ -4,7 +4,7 @@ import { resolve } from 'path'
 import { iconsConfig } from './src/components/iconsConfig';
 
 let input = {
-  IconFont: `./src/IconFont.vue`,
+  IconFont: `./src/buildEntry/iconFont.ts`,
   IconFontConfig: `./src/buildEntry/iconFontConfig.ts`,
   SvgConfig: `./src/buildEntry/svgConfig.ts`,
 };

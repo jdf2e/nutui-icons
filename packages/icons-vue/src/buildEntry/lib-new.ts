@@ -1,12 +1,12 @@
 /** 此文件由 script generate 脚本生成 */
-    import { App } from 'vue';
-    import IconFont from '../IconFont.vue';
-    import config from '../../../../iconfont/config.json';
-    function install(app: App) {
-      app.component('IconFont', IconFont);
-    }
-    export { IconFont, config };
-    export default { install, config };
+import { App } from 'vue';
+import IconFont from '../IconFont.vue';
+import config from '../../../../iconfont/config.json';
+function install(app: App) {
+  app.component('IconFont', IconFont);
+}
+export { IconFont, config };
+export default { install, config };
 
 export { default as Add } from "../components/Add.vue";
 export { default as Addfollow } from "../components/Addfollow.vue";

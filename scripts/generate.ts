@@ -212,14 +212,14 @@ export { config as IconFontConfig } from "./icons/IconFontConfig.js";
 export { default as IconFont } from "./icons/IconFont.js";
 \n`;
   let entryLib = `/** 此文件由 script generate 脚本生成 */
-    import { App } from 'vue';
-    import IconFont from '../IconFont.vue';
-    import config from '../../../../iconfont/config.json';
-    function install(app: App) {
-      app.component('IconFont', IconFont);
-    }
-    export { IconFont, config };
-    export default { install, config };
+import { App } from 'vue';
+import IconFont from '../IconFont.vue';
+import config from '../../../../iconfont/config.json';
+function install(app: App) {
+  app.component('IconFont', IconFont);
+}
+export { IconFont, config };
+export default { install, config };
 \n`;
   let entryArray: string[] = [];
 
@@ -266,7 +266,7 @@ export { default as IconFont } from "./icons/IconFont.js";
 
   let entryTSC = `import { DefineComponent } from 'vue';
 export declare class IconFontConfig { static [key: string]:any }
-export declare class IconFont {}
+export declare const IconFont
 `;
   let s = entryArray.map(item => {
     return `export declare class ${item} {}`;
