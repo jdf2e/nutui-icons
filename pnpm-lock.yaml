@@ -100,7 +100,7 @@ importers:
       release-it: ^15.5.1
       sass: ^1.56.1
       typescript: ^4.6.4
-      vite: ^4.0.0
+      vite: ^4.1.4
       vue: ^3.2.41
       vue-tsc: ^1.0.10
     devDependencies:
@@ -118,15 +118,15 @@ importers:
       release-it: ^15.5.1
       sass: ^1.56.1
       typescript: ^4.6.4
-      vite: ^3.2.3
+      vite: ^4.1.4
       vue: ^3.2.41
       vue-tsc: ^1.0.10
     devDependencies:
-      '@vitejs/plugin-vue': 3.2.0_vite@3.2.5+vue@3.2.47
+      '@vitejs/plugin-vue': 3.2.0_vite@4.1.4+vue@3.2.47
       release-it: 15.6.0
       sass: 1.58.3
       typescript: 4.9.3
-      vite: 3.2.5_sass@1.58.3
+      vite: 4.1.4_sass@1.58.3
       vue: 3.2.47
       vue-tsc: 1.2.0_typescript@4.9.3
 
@@ -363,13 +363,6 @@ packages:
     resolution: {integrity: sha1-zX6P5oq9XQq3nY3Cf7QLEsj7dxU=, tarball: '@bem-react/classname/download/@bem-react/classname-1.5.12.tgz'}
     dev: true
 
-  /@esbuild/android-arm/0.15.18:
-    resolution: {integrity: sha1-Jm1AuP3Ph5Yt+K8Ft2IZvHhrT4A=, tarball: '@esbuild/android-arm/download/@esbuild/android-arm-0.15.18.tgz'}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
   /@esbuild/android-arm/0.16.17:
     resolution: {integrity: sha1-AltiRtP2i3u6qXBpFE+1+3Dy//I=, tarball: '@esbuild/android-arm/download/@esbuild/android-arm-0.16.17.tgz'}
     engines: {node: '>=12'}
@@ -435,13 +428,6 @@ packages:
 
   /@esbuild/linux-ia32/0.16.17:
     resolution: {integrity: sha1-JDM6EQJ+9GoY9XAZRQpRiJGOKlQ=, tarball: '@esbuild/linux-ia32/download/@esbuild/linux-ia32-0.16.17.tgz'}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /@esbuild/linux-loong64/0.15.18:
-    resolution: {integrity: sha1-Eot27Lm+SLYM9c/BxjpPAGkaMjk=, tarball: '@esbuild/linux-loong64/download/@esbuild/linux-loong64-0.15.18.tgz'}
     engines: {node: '>=12'}
     requiresBuild: true
     dev: true
@@ -1015,14 +1001,14 @@ packages:
       vite: 4.1.4_sass@1.58.3
     dev: true
 
-  /@vitejs/plugin-vue/3.2.0_vite@3.2.5+vue@3.2.47:
+  /@vitejs/plugin-vue/3.2.0_vite@4.1.4+vue@3.2.47:
     resolution: {integrity: sha1-oUhAid2F1lKPQ1dD+EzdDSFbu1Q=, tarball: '@vitejs/plugin-vue/download/@vitejs/plugin-vue-3.2.0.tgz'}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: ^3.0.0
       vue: ^3.2.25
     dependencies:
-      vite: 3.2.5_sass@1.58.3
+      vite: 4.1.4_sass@1.58.3
       vue: 3.2.47
     dev: true
 
@@ -1175,6 +1161,8 @@ packages:
     engines: {node: '>= 6.0.0'}
     dependencies:
       debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /ajv/6.12.6:
@@ -1314,7 +1302,7 @@ packages:
     dev: true
 
   /balanced-match/1.0.2:
-    resolution: {integrity: sha512-3oSeUO0TMV67hN1AmbXsK4yaqU7tjiHlbxRDZOpH0KW9+CeX4bRAaX0Anxt0tx2MrpRpWwQaPwIlISEJhYU5Pw==}
+    resolution: {integrity: sha1-6D46fj8wCzTLnYf2FfoMvzV2kO4=, tarball: balanced-match/download/balanced-match-1.0.2.tgz}
     dev: true
 
   /base/0.11.2:
@@ -1385,7 +1373,7 @@ packages:
     dev: true
 
   /brace-expansion/2.0.1:
-    resolution: {integrity: sha512-XnAIvQ8eM+kC6aULx6wuQiwVsnzsi9d3WxzV3FpWTGA19F621kwdbsAcFKXgKUHZWsy+mY6iL1sHTxWEFCytDA==}
+    resolution: {integrity: sha1-HtxFng8MVISG7Pn8mfIiE2S5oK4=, tarball: brace-expansion/download/brace-expansion-2.0.1.tgz}
     dependencies:
       balanced-match: 1.0.2
     dev: true
@@ -1768,6 +1756,11 @@ packages:
   /debug/4.3.4:
     resolution: {integrity: sha1-Exn2V5NX8jONMzfSzdSRS7XcyGU=, tarball: debug/download/debug-4.3.4.tgz}
     engines: {node: '>=6.0'}
+    peerDependencies:
+      supports-color: '*'
+    peerDependenciesMeta:
+      supports-color:
+        optional: true
     dependencies:
       ms: 2.1.2
     dev: true
@@ -2052,176 +2045,6 @@ packages:
       is-callable: 1.2.7
       is-date-object: 1.0.5
       is-symbol: 1.0.4
-    dev: true
-
-  /esbuild-android-64/0.15.18:
-    resolution: {integrity: sha1-IKeuFBbI6q3pF/skU8ElkwLGN6U=, tarball: esbuild-android-64/download/esbuild-android-64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-android-arm64/0.15.18:
-    resolution: {integrity: sha1-nMDsYFgdatJnVo8pz0iV/92fLwQ=, tarball: esbuild-android-arm64/download/esbuild-android-arm64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-darwin-64/0.15.18:
-    resolution: {integrity: sha1-Qo4XMOqBnVAICPIg+8UgeuptRBA=, tarball: esbuild-darwin-64/download/esbuild-darwin-64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-darwin-arm64/0.15.18:
-    resolution: {integrity: sha1-tt/HeZEVopF/NZcL+8k65QJWszc=, tarball: esbuild-darwin-arm64/download/esbuild-darwin-arm64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-freebsd-64/0.15.18:
-    resolution: {integrity: sha1-ThkNnC0eZxZGGa4wpDi+h9Xu2vI=, tarball: esbuild-freebsd-64/download/esbuild-freebsd-64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-freebsd-arm64/0.15.18:
-    resolution: {integrity: sha1-GKTANE7iO9Wm0G0Yx24v1tP5FjU=, tarball: esbuild-freebsd-arm64/download/esbuild-freebsd-arm64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-32/0.15.18:
-    resolution: {integrity: sha1-mjKXMe4HmxImK3k/uE7qdi6C4M4=, tarball: esbuild-linux-32/download/esbuild-linux-32-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-64/0.15.18:
-    resolution: {integrity: sha1-Uyc4B1OXuZRGe1FOUkrrUgwZG2w=, tarball: esbuild-linux-64/download/esbuild-linux-64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-arm/0.15.18:
-    resolution: {integrity: sha1-5zSq8lmi49EJ1IhsnoHsDy/Zqcw=, tarball: esbuild-linux-arm/download/esbuild-linux-arm-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-arm64/0.15.18:
-    resolution: {integrity: sha1-U3LnmTrC2o8GsroxNxDXIreobl0=, tarball: esbuild-linux-arm64/download/esbuild-linux-arm64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-mips64le/0.15.18:
-    resolution: {integrity: sha1-wEh8FKk3GoTrCPqw4dewRadxBes=, tarball: esbuild-linux-mips64le/download/esbuild-linux-mips64le-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-ppc64le/0.15.18:
-    resolution: {integrity: sha1-rwSK2U7tDOMvbVqHP3q+kRUBJQc=, tarball: esbuild-linux-ppc64le/download/esbuild-linux-ppc64le-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-riscv64/0.15.18:
-    resolution: {integrity: sha1-Qj7U5ZJ713+EK9VmlyF49CTUVeY=, tarball: esbuild-linux-riscv64/download/esbuild-linux-riscv64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-linux-s390x/0.15.18:
-    resolution: {integrity: sha1-IdIeqpYqGDv7djEuWgHMWuSM6Os=, tarball: esbuild-linux-s390x/download/esbuild-linux-s390x-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-netbsd-64/0.15.18:
-    resolution: {integrity: sha1-rnVoL2DQhWCx/pSCv+AXPlEQuZg=, tarball: esbuild-netbsd-64/download/esbuild-netbsd-64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-openbsd-64/0.15.18:
-    resolution: {integrity: sha1-eVkakKo7A+SGP5O+7A0rqyhT0Kg=, tarball: esbuild-openbsd-64/download/esbuild-openbsd-64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-sunos-64/0.15.18:
-    resolution: {integrity: sha1-/VKKpdpTdLfh6T0275sHw9/tKXE=, tarball: esbuild-sunos-64/download/esbuild-sunos-64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-windows-32/0.15.18:
-    resolution: {integrity: sha1-DpK2bs31Q1p2gTxLxczaBpb078M=, tarball: esbuild-windows-32/download/esbuild-windows-32-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-windows-64/0.15.18:
-    resolution: {integrity: sha1-D8dh14VBQoT8QI55FCJtM/gkINA=, tarball: esbuild-windows-64/download/esbuild-windows-64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild-windows-arm64/0.15.18:
-    resolution: {integrity: sha1-W1vcVtNB0JIu6UllyJ7hIKaobrc=, tarball: esbuild-windows-arm64/download/esbuild-windows-arm64-0.15.18.tgz}
-    engines: {node: '>=12'}
-    requiresBuild: true
-    dev: true
-    optional: true
-
-  /esbuild/0.15.18:
-    resolution: {integrity: sha1-6olK2vP7wDbTIyCgDU1uSXii820=, tarball: esbuild/download/esbuild-0.15.18.tgz}
-    engines: {node: '>=12'}
-    hasBin: true
-    requiresBuild: true
-    optionalDependencies:
-      '@esbuild/android-arm': 0.15.18
-      '@esbuild/linux-loong64': 0.15.18
-      esbuild-android-64: 0.15.18
-      esbuild-android-arm64: 0.15.18
-      esbuild-darwin-64: 0.15.18
-      esbuild-darwin-arm64: 0.15.18
-      esbuild-freebsd-64: 0.15.18
-      esbuild-freebsd-arm64: 0.15.18
-      esbuild-linux-32: 0.15.18
-      esbuild-linux-64: 0.15.18
-      esbuild-linux-arm: 0.15.18
-      esbuild-linux-arm64: 0.15.18
-      esbuild-linux-mips64le: 0.15.18
-      esbuild-linux-ppc64le: 0.15.18
-      esbuild-linux-riscv64: 0.15.18
-      esbuild-linux-s390x: 0.15.18
-      esbuild-netbsd-64: 0.15.18
-      esbuild-openbsd-64: 0.15.18
-      esbuild-sunos-64: 0.15.18
-      esbuild-windows-32: 0.15.18
-      esbuild-windows-64: 0.15.18
-      esbuild-windows-arm64: 0.15.18
     dev: true
 
   /esbuild/0.16.17:
@@ -2526,7 +2349,7 @@ packages:
     dev: true
 
   /fs.realpath/1.0.0:
-    resolution: {integrity: sha512-OO0pH2lK6a0hZnAdau5ItzHPI6pUlvI7jMVnxUQRtw4owF2wk8lOSabtGDCTP4Ggrg2MbGnWO9X8K1t4+fGMDw==}
+    resolution: {integrity: sha1-FQStJSMVjKpA20onh8sBQRmU6k8=, tarball: fs.realpath/download/fs.realpath-1.0.0.tgz}
     dev: true
 
   /fsevents/2.3.2:
@@ -2598,6 +2421,8 @@ packages:
       file-uri-to-path: 2.0.0
       fs-extra: 8.1.0
       ftp: 0.3.10
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /get-value/2.0.6:
@@ -2829,6 +2654,8 @@ packages:
       '@tootallnate/once': 1.1.2
       agent-base: 6.0.2
       debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /http2-wrapper/2.2.0:
@@ -2845,6 +2672,8 @@ packages:
     dependencies:
       agent-base: 6.0.2
       debug: 4.3.4
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /human-signals/2.1.0:
@@ -3713,6 +3542,9 @@ packages:
     engines: {node: 4.x || >=6.0.0}
     peerDependencies:
       encoding: ^0.1.0
+    peerDependenciesMeta:
+      encoding:
+        optional: true
     dependencies:
       whatwg-url: 5.0.0
     dev: true
@@ -3894,6 +3726,8 @@ packages:
       pac-resolver: 5.0.1
       raw-body: 2.5.2
       socks-proxy-agent: 5.0.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /pac-resolver/5.0.1:
@@ -3978,7 +3812,7 @@ packages:
     dev: true
 
   /picocolors/1.0.0:
-    resolution: {integrity: sha512-1fygroTLlHu66zi26VoTDv8yRgm0Fccecssto+MhsZ0D/DGW2sm8E8AjW7NU5VVTRt5GxbeZ5qBuJr+HyLYkjQ==}
+    resolution: {integrity: sha1-y1vcdP8/UYkiNur3nWi8RFZKuBw=, tarball: picocolors/download/picocolors-1.0.0.tgz}
     dev: true
 
   /picomatch/2.3.1:
@@ -4000,7 +3834,7 @@ packages:
     dev: true
 
   /postcss/5.2.18:
-    resolution: {integrity: sha512-zrUjRRe1bpXKsX1qAJNJjqZViErVuyEkMTRrwu4ud4sbTtIBRmtaYDrHmcGgmrbsW3MHfmtIf+vJumgQn+PrXg==}
+    resolution: {integrity: sha1-ut+hSX1GJE9jkPWLMZgw2RB4U8U=, tarball: postcss/download/postcss-5.2.18.tgz}
     engines: {node: '>=0.12'}
     dependencies:
       chalk: 1.1.3
@@ -4098,6 +3932,8 @@ packages:
       pac-proxy-agent: 5.0.0
       proxy-from-env: 1.1.0
       socks-proxy-agent: 5.0.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /proxy-from-env/1.1.0:
@@ -4293,6 +4129,7 @@ packages:
       yargs-parser: 21.1.1
     transitivePeerDependencies:
       - encoding
+      - supports-color
     dev: true
 
   /repeat-element/1.1.4:
@@ -4376,14 +4213,6 @@ packages:
       typescript: 4.9.3
     optionalDependencies:
       '@babel/code-frame': 7.18.6
-    dev: true
-
-  /rollup/2.79.1:
-    resolution: {integrity: sha1-vt7o+u98n5OiZHrAEIdI9Jfwgcc=, tarball: rollup/download/rollup-2.79.1.tgz}
-    engines: {node: '>=10.0.0'}
-    hasBin: true
-    optionalDependencies:
-      fsevents: 2.3.2
     dev: true
 
   /rollup/3.18.0:
@@ -4566,6 +4395,8 @@ packages:
       agent-base: 6.0.2
       debug: 4.3.4
       socks: 2.7.1
+    transitivePeerDependencies:
+      - supports-color
     dev: true
 
   /socks/2.7.1:
@@ -5090,27 +4921,6 @@ packages:
       - rollup
     dev: true
 
-  /vite/3.2.5_sass@1.58.3:
-    resolution: {integrity: sha1-3uVngXKooKs+VHrUFIw9VH+Q6Go=, tarball: vite/download/vite-3.2.5.tgz}
-    engines: {node: ^14.18.0 || >=16.0.0}
-    hasBin: true
-    peerDependencies:
-      '@types/node': '>= 14'
-      less: '*'
-      sass: '*'
-      stylus: '*'
-      sugarss: '*'
-      terser: ^5.4.0
-    dependencies:
-      esbuild: 0.15.18
-      postcss: 8.4.21
-      resolve: 1.22.1
-      rollup: 2.79.1
-      sass: 1.58.3
-    optionalDependencies:
-      fsevents: 2.3.2
-    dev: true
-
   /vite/4.1.4_sass@1.58.3:
     resolution: {integrity: sha1-Fw2TvP+X4OvAl2TAU+6+Ewv+bKA=, tarball: vite/download/vite-4.1.4.tgz}
     engines: {node: ^14.18.0 || >=16.0.0}
@@ -5122,6 +4932,19 @@ packages:
       stylus: '*'
       sugarss: '*'
       terser: ^5.4.0
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+      less:
+        optional: true
+      sass:
+        optional: true
+      stylus:
+        optional: true
+      sugarss:
+        optional: true
+      terser:
+        optional: true
     dependencies:
       esbuild: 0.16.17
       postcss: 8.4.21
