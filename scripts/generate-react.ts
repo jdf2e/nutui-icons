@@ -23,7 +23,7 @@ interface IconProps {
 const defaultProps = {
     className: '',
     style: undefined,
-    name: '',
+    name: '${compoentName}',
     width: '',
     height: '',
     onClick: () => undefined
