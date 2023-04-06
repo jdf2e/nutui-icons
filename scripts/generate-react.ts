@@ -67,7 +67,7 @@ const ${compoentName} = (props: IconProps) => {
         return `<path
         d="${d}"
         fill="currentColor"
-        fill-opacity="0.9"
+        fillOpacity="0.9"
         ></path>`
     })}
         </svg>
@@ -204,7 +204,7 @@ const ${compoentName} = (props: IconProps) => {
     const getStyle = () => {
         return {
             ...style,
-            backgroundImage: \`url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="\${color || 'currentColor'}" viewBox="${viewBox}">${d.map(d => {return `<path d="${d}" fill-opacity="0.9"></path>`})}</svg>')\`,
+            backgroundImage: \`url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="\${color || 'currentColor'}" viewBox="${viewBox}">${d.map(d => {return `<path d="${d}" fillOpacity="0.9"></path>`})}</svg>')\`,
             backgroundRepeat: 'no-repeat',
             height: pxCheck(height || ''),
             width: pxCheck(width || '')
