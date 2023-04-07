@@ -45,11 +45,19 @@ const ${compoentName} = (props: IconProps) => {
             [prefixCls + "-" + name]: name,
         })
     };
+    const props2Style:any = {}
+    const checkedWidth = pxCheck(width || '')
+    const checkedHeight = pxCheck(height || '')
+    if(checkedWidth) {
+        props2Style['width'] = checkedWidth
+    }
+    if(checkedHeight) {
+        props2Style['height'] = checkedHeight
+    }
     const getStyle = () => {
         return {
             ...style,
-            height: pxCheck(height || ''),
-            width: pxCheck(width || '')
+            ...props2Style
         }
     }
     return <>
@@ -139,6 +147,13 @@ export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
         if (isImage) return { src: name }
         return {}
     }
+    const props2Style:any = {}
+    const checkedSize = pxCheck(size)
+    if(checkedSize) {
+        props2Style['fontSize'] = checkedSize
+        props2Style['width'] = checkedSize
+        props2Style['height'] = checkedSize
+    }
     return React.createElement<any>(
         type,
         {
@@ -147,9 +162,7 @@ export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
                 : \`\${fontClassName} nut-icon \${classPrefix}-\${name} \${className || ''}\`,
             style: {
                 color,
-                fontSize: pxCheck(size),
-                width: pxCheck(size),
-                height: pxCheck(size),
+                ...props2Style,
                 ...style,
             },
             ...rest,
