@@ -35,6 +35,7 @@ const ${compoentName} = (props: IconProps) => {
         onClick && onClick(e)
     }
     const pxCheck = (value: string | number): string => {
+        if(value === '') return ''
         return isNaN(Number(value)) ? String(value) : value + "px";
     };
     const classes = () => {
@@ -115,6 +116,7 @@ const defaultProps = {
 } as IconProps
 
 function pxCheck(value: string | number): string {
+    if(value === '') return ''
     return Number.isNaN(Number(value)) ? String(value) : \`\${value}px\`
 }
 
@@ -204,6 +206,7 @@ const ${compoentName} = (props: IconProps) => {
         onClick && onClick(e)
     }
     const pxCheck = (value: string | number): string => {
+        if(value === '') return ''
         return isNaN(Number(value)) ? String(value) : value + "px";
     };
     const classes = () => {
@@ -214,13 +217,21 @@ const ${compoentName} = (props: IconProps) => {
             [prefixCls + "-" + name]: name,
         })
     };
+    const props2Style:any = {}
+    const checkedWidth = pxCheck(width || '')
+    const checkedHeight = pxCheck(height || '')
+    if(checkedWidth) {
+        props2Style['width'] = checkedWidth
+    }
+    if(checkedHeight) {
+        props2Style['height'] = checkedHeight
+    }
     const getStyle = () => {
         return {
             ...style,
             backgroundImage: \`url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="\${color || 'currentColor'}" viewBox="${viewBox}">${d.map(d => {return `<path d="${d}" fillOpacity="0.9"></path>`})}</svg>')\`,
             backgroundRepeat: 'no-repeat',
-            height: pxCheck(height || ''),
-            width: pxCheck(width || '')
+            ...props2Style
         }
     }
     return <>
