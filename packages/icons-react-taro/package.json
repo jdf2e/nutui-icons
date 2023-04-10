@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-react-taro",
-  "version": "0.0.1-beta.6",
+  "version": "0.0.1-beta.7",
   "scripts": {
     "dev": "vite",
     "build": "vite build --config vite.config.build.es.ts && vite build --config vite.config.build.umd.ts && vite build --config vite.config.build.css.ts && vite build --config vite.config.dts.ts",
@@ -8,6 +8,7 @@
     "release": "release-it",
     "release:beta": "release-it --preRelease=beta"
   },
+  "main": "dist/lib/index.umd.js",
   "module": "dist/es/index.es.js",
   "style": "dist/style_iconfont.css",
   "typings": "dist/types/index.d.ts",
