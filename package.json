@@ -1,6 +1,8 @@
 {
   "scripts": {
     "dev": "tsc --watch --incremental",
+    "gen:vue": "tsc && node dist/generate.js",
+    "gen:react": "tsc && node dist/generate-react.js",
     "generate": "tsc && node dist/generate.js && node dist/generate-react.js"
   },
   "devDependencies": {
