@@ -12,16 +12,7 @@ const props = defineProps({
   tag: { type: String, default: "i" },
 });
 
-const emit = defineEmits<{
-  (e: "click", event: Event): void;
-}>();
-
-const onClick = (event: Event) => {
-  emit("click", event);
-};
-
 const slots = useSlots();
-const attrs = useAttrs();
 
 const isImage = () => {
   return props.name ? props.name.indexOf("/") !== -1 : false;
@@ -48,7 +39,6 @@ let vnode = h(
       width: pxCheck(props.width || props.size),
       height: pxCheck(props.height || props.size),
     },
-    onClick,
     src: _isImage ? props.name : "",
   },
   slots.default?.()

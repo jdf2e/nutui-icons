@@ -9,11 +9,7 @@ export const defineSvgComponent = (name: string) => {
       width: { type: [String, Number], default: '' },
       height: { type: [String, Number], default: '' },
     },
-    emit: ['click'],
-    setup(props, { emit }) {
-      const onClick = (event: Event) => {
-        emit('click', event)
-      }
+    setup(props) {
       const pxCheck = (value: string | number): string | undefined => {
         if (value) {
           return isNaN(Number(value)) ? String(value) : value + 'px'
@@ -34,7 +30,7 @@ export const defineSvgComponent = (name: string) => {
         style.color = props.color
         return style
       })
-      return { classes, style, onClick }
+      return { classes, style }
     }
   })
 }

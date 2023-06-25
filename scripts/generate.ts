@@ -14,7 +14,6 @@ export default defineSvgComponent('${name}')
   <svg
     :class="classes"
     :style="style"
-    @click="onClick"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="${viewBox}"
     role="presentation"
