@@ -5,67 +5,26 @@ import { camelCase } from './camelCase';
 import { optimize } from 'svgo';
 import { outputFile, readFile } from 'fs-extra';
 import consola from 'consola';
-const getSvgTemplate = (viewBox: string, pathd: string[]) => {
-  return `
-<script setup lang="ts">
-import { computed, CSSProperties } from "vue";
-const props = defineProps({
-  class: { type: String, default: "" },
-  name: { type: String, default: "" },
-  color: { type: String, default: "" },
-  width: { type: [String, Number], default: "" },
-  height: { type: [String, Number], default: "" },
-});
-
-const emit = defineEmits<{
-  (e: "click", event: Event): void;
-}>();
-
-const onClick = (event: Event) => {
-  emit("click", event);
-};
-const pxCheck = (value: string | number): string | undefined => {
-  if (value) {
-    return isNaN(Number(value)) ? String(value) : value + "px";
-  } else {
-    return undefined;
-  }
-};
-const classes = computed(() => {
-  const prefixCls = "nut-icon";
-  return {
-    [props.class]: props.class,
-    [prefixCls]: true,
-    [prefixCls + "-" + props.name]: props.name,
-  };
-});
-
-const getStyle = computed(() => {
-  const style: CSSProperties = {};
-
-  style.height = pxCheck(props.height);
-  style.width = pxCheck(props.width);
-  style.color = props.color;
-  
-  return style;
-});
+const getSvgTemplate = (viewBox: string, pathd: string[], name: string) => {
+  return `<script lang="ts">
+import { defineSvgComponent } from '../svg'
+export default defineSvgComponent('${name}')
 </script>
 <template>
   <svg
     :class="classes"
-    :style="getStyle"
+    :style="style"
     @click="onClick"
     xmlns="http://www.w3.org/2000/svg"
     viewBox="${viewBox}"
-    :aria-labelledby="name"
     role="presentation"
   >
     ${pathd.map(d => {
     return `<path
-        d="${d}"
-        fill="currentColor"
-        fill-opacity="0.9"
-        ></path>`
+      d="${d}"
+      fill="currentColor"
+      fill-opacity="0.9"
+    ></path>`
   })}
 </svg>
 </template>`
@@ -212,14 +171,9 @@ export { config as IconFontConfig } from "./icons/IconFontConfig.js";
 export { default as IconFont } from "./icons/IconFont.js";
 \n`;
   let entryLib = `/** 此文件由 script generate 脚本生成 */
-import { App } from 'vue';
-import IconFont from '../IconFont.vue';
-import config from '../../../../iconfont/config.json';
-function install(app: App) {
-  app.component('IconFont', IconFont);
-}
+import IconFont from './iconFont';
+import config from '@iconfont/config.json';
 export { IconFont, config };
-export default { install, config };
 \n`;
   let entryArray: string[] = [];
 
@@ -243,7 +197,7 @@ export default { install, config };
       let viewBox = ast.properties.viewBox;
 
 
-      outputFile(`${process.cwd()}/packages/icons-vue/src/components/${filename}.vue`, getSvgTemplate(viewBox, pathds), 'utf8', (error) => {
+      outputFile(`${process.cwd()}/packages/icons-vue/src/components/${filename}.vue`, getSvgTemplate(viewBox, pathds, name), 'utf8', (error) => {
         consola.success(`${filename} 文件写入成功`);
       });
 
@@ -272,10 +226,6 @@ export declare const IconFont
     return `export declare class ${item} {}`;
   });
   entryTSC += s.join('\n');
-  consola.success(entryTSC);
-  outputFile(`${process.cwd()}/packages/icons-vue/dist/types/index.d.ts`, entryTSC, 'utf8', (error) => {
-    consola.success(`TS类型文件文件写入成功`);
-  });
   outputFile(`${process.cwd()}/packages/icons-vue-taro/dist/types/index.d.ts`, entryTSC, 'utf8', (error) => {
     consola.success(`TS类型文件文件写入成功`);
   });

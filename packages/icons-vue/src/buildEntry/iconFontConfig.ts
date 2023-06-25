@@ -1,2 +1,2 @@
-import config from '../../../../iconfont/config.json';
+import config from '@iconfont/config.json';
 export { config };

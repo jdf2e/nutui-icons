@@ -1,7 +1,7 @@
 <script setup lang="ts">
 import IconFont from "./IconFont.vue";
 import Voice from "./components/Voice.vue";
-import icons from "../../../iconfont/config.json";
+import icons from "@iconfont/config.json";
 const copyTag = (name: string) => {
   const text = `<IconFont name="${name}" />`;
   const displayText = `&lt;nut-icon name="${name}"&gt;&lt;/nut-icon&gt;`;
