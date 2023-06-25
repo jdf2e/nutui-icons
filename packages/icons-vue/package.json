@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-vue",
-  "version": "0.1.0",
+  "version": "0.1.1",
   "description": "京东风格的轻量级移动端 Vue 组件库 NutUI 图标包",
   "scripts": {
     "dev": "vite",
