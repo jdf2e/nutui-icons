@@ -1,6 +1,7 @@
 {
   "scripts": {
     "dev": "tsc --watch --incremental",
+    "tsnode": "ts-node scripts/generate-react.ts",
     "gen:vue": "tsc && node dist/generate.js",
     "gen:react": "tsc && node dist/generate-react.js",
     "generate": "tsc && node dist/generate.js && node dist/generate-react.js"
