@@ -3,11 +3,10 @@
   src: url('iconfont.woff2?t=1668762221765') format('woff2') /* chrome、firefox */,
        url('iconfont.woff?t=1668762221765') format('woff') /* chrome、firefox */,
        url('iconfont.ttf?t=1668762221765') format('truetype') /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */,
-          url('iconfont.svg#iconfont') format('svg') /* iOS 4.1- */;
 }
 
 .nutui-iconfont {
-  font-family: 'nutui-iconfont';
+  font-family: 'nutui-iconfont !important';
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
