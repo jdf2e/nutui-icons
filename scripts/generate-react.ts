@@ -288,7 +288,7 @@ new glob.Glob(pattern, {},(err, files) => {
             let viewBox = (svgAST as any).properties.viewBox;
 
             fsExtra.outputFile(`${process.cwd()}/packages/icons-react/src/components/${componentName}.tsx`, getSvg(componentName, viewBox, pathds), 'utf8', (error) => {
-                consola.success(`${componentName} 文件写入成功`);
+                consola.success(`\icons-react ${componentName} 文件写入成功`);
             });
 
             // fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getTaroSvg(componentName, viewBox, pathds), 'utf8', (error) => {
@@ -298,7 +298,7 @@ new glob.Glob(pattern, {},(err, files) => {
         })
 
         fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
-            consola.success(`${componentName} 文件写入成功`);
+            consola.success(`icons-react-taro ${componentName} 文件写入成功`);
         });
     })
     fsExtra.outputFile(`${process.cwd()}/packages/icons-react/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {

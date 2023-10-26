@@ -1,12 +1,20 @@
 @font-face {
-  font-family: "nutui-iconfont"; /* Project id 2166874 */
-  src: url('iconfont.woff2?t=1668762221765') format('woff2') /* chrome、firefox */,
-       url('iconfont.woff?t=1668762221765') format('woff') /* chrome、firefox */,
-       url('iconfont.ttf?t=1668762221765') format('truetype') /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */,
+  font-family: 'nutui-iconfont';
+  /* IE9 */
+  src: 
+    url('iconfont.woff2') format('woff2')
+    /* chrome、firefox */
+    ,
+    url('iconfont.woff') format('woff')
+    /* chrome、firefox */
+    ,
+    url('iconfont.ttf') format('truetype')
+    /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */
+  ;
 }
 
 .nutui-iconfont {
-  font-family: 'nutui-iconfont !important';
+  font-family: 'nutui-iconfont';
   font-size: 16px;
   font-style: normal;
   -webkit-font-smoothing: antialiased;
