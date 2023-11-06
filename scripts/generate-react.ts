@@ -30,94 +30,14 @@ export default Add
 }
 const getIconFont = (compoentName: string) => {
     const template = `
-import React, { ReactElement, ReactHTML } from 'react'
+import IconFont, {IconFontProps} from "../IconFont";
+import {FunctionComponent} from "react";
 
-export interface IconProps {
-    name: string
-    size: string | number
-    classPrefix: string
-    color: string
-    tag: keyof ReactHTML
-    onClick: (e: MouseEvent) => void
-    fontClassName: string
-    className: string
-    style: React.CSSProperties
-    children: React.ReactNode
+const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
+    return <IconFont {...props} name={props.name || '${compoentName}'}/>
 }
-
-const defaultProps = {
-    name: '${compoentName}',
-    size: '',
-    classPrefix: 'nut-icon',
-    fontClassName: 'nutui-iconfont',
-    color: '',
-    tag: 'i',
-    onClick: (e: MouseEvent) => {},
-    className: '',
-} as IconProps
-
-function pxCheck(value: string | number): string {
-    if(value === '') return ''
-    return Number.isNaN(Number(value)) ? String(value) : \`\${value}px\`
-}
-
-export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
-    const {
-        name,
-        size,
-        classPrefix,
-        color,
-        tag,
-        children,
-        className,
-        fontClassName,
-        style,
-        onClick,
-        ...rest
-    } = {
-        ...defaultProps,
-        ...props,
-    }
-    const isImage = name ? name.indexOf('/') !== -1 : false
-    const type = isImage ? 'img' : tag
-
-    const handleClick = (e: MouseEvent) => {
-        if (onClick) {
-            onClick(e)
-        }
-    }
-    const hasSrc = () => {
-        if (isImage) return { src: name }
-        return {}
-    }
-    const props2Style:any = {}
-    const checkedSize = pxCheck(size)
-    if(checkedSize) {
-        props2Style['fontSize'] = checkedSize
-        props2Style['width'] = checkedSize
-        props2Style['height'] = checkedSize
-    }
-    return React.createElement<any>(
-        type,
-        {
-            className: isImage
-                ? \`nut-icon__img \${className || ''} \`
-                : \`\${fontClassName} nut-icon \${classPrefix}-\${name} \${className || ''}\`,
-            style: {
-                color,
-                ...props2Style,
-                ...style,
-            },
-            ...rest,
-            onClick: handleClick,
-            ...hasSrc(),
-        },
-        children
-    )
-}
-
-Icon.defaultProps = defaultProps
 Icon.displayName = 'NutIcon${compoentName}'
+export default Icon
 `
     return template
 }
