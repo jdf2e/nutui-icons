@@ -8,82 +8,23 @@ import consola from "consola";
 
 const getSvg = (compoentName: string, viewBox: string, d: any[]) => {
     const template = `
-import classnames from 'classnames'
+import {FunctionComponent} from 'react'
+import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 
-interface IconProps {
-    className?: string
-    style?: React.CSSProperties
-    name: string
-    color?: string
-    width?: string | number
-    height?: string | number
-    onClick: (event: React.MouseEvent) => void
-}
-
-const defaultProps = {
-    className: '',
-    style: undefined,
-    name: '${compoentName}',
-    width: '',
-    height: '',
-    onClick: () => undefined
-} as IconProps
-
-const ${compoentName} = (props: IconProps) => {
-    const {className, style, name, color, width, height, onClick} = {...defaultProps, ...props}
-    const handleClick: React.MouseEventHandler = (e) => {
-        onClick && onClick(e)
-    }
-    const pxCheck = (value: string | number): string => {
-        if(value === '') return ''
-        return isNaN(Number(value)) ? String(value) : value + "px";
-    };
-    const classes = () => {
-        const prefixCls = "nut-icon";
-        return classnames({
-            [\`\${className}\`]: className,
-            [prefixCls]: true,
-            [prefixCls + "-" + name]: name,
-        })
-    };
-    const props2Style:any = {}
-    const checkedWidth = pxCheck(width || '')
-    const checkedHeight = pxCheck(height || '')
-    if(checkedWidth) {
-        props2Style['width'] = checkedWidth
-    }
-    if(checkedHeight) {
-        props2Style['height'] = checkedHeight
-    }
-    const getStyle = () => {
-        return {
-            ...style,
-            ...props2Style
-        }
-    }
-    return <>
-        <svg
-            className={classes()}
-            style={getStyle()}
-            onClick={handleClick}
-            xmlns="http://www.w3.org/2000/svg"
-            color={color}
-            viewBox="${viewBox}"
-            aria-labelledby={name}
-            role="presentation"
-        >
-            ${d.map(d => {
+const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
+    return <Icon {...props} name={props.name || '${compoentName}'}>
+        ${d.map(d => {
         return `<path
         d="${d}"
         fill="currentColor"
         fillOpacity="0.9"
         ></path>`
     })}
-        </svg>
-    </>
+    </Icon>
 }
-${compoentName}.defaultProps = defaultProps
-export default ${compoentName}
+
+Add.defaultProps = defaultProps
+export default Add
 `
     return template
 }
