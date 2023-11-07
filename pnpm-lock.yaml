@@ -1,9 +1,5 @@
 lockfileVersion: '6.0'
 
-settings:
-  autoInstallPeers: true
-  excludeLinksFromLockfile: false
-
 importers:
 
   .:
@@ -43,10 +39,6 @@ importers:
         version: 4.9.3
 
   packages/icons-react:
-    dependencies:
-      classnames:
-        specifier: ^2.3.2
-        version: 2.3.2
     devDependencies:
       '@nutui/nutui-react':
         specifier: ^1.4.2
@@ -80,16 +72,12 @@ importers:
         version: 4.9.3
       vite:
         specifier: ^4.0.0
-        version: 4.1.4(@types/node@18.11.11)(sass@1.58.3)
+        version: 4.1.4(sass@1.58.3)
       vite-plugin-dts:
         specifier: ^1.7.1
-        version: 1.7.3(@types/node@18.11.11)(vite@4.1.4)
+        version: 1.7.3(vite@4.1.4)
 
   packages/icons-react-taro:
-    dependencies:
-      classnames:
-        specifier: ^2.3.2
-        version: 2.3.2
     devDependencies:
       '@nutui/nutui-react':
         specifier: ^1.4.2
@@ -123,10 +111,10 @@ importers:
         version: 4.9.3
       vite:
         specifier: ^4.0.0
-        version: 4.1.4(@types/node@18.11.11)(sass@1.58.3)
+        version: 4.1.4(sass@1.58.3)
       vite-plugin-dts:
         specifier: ^1.7.1
-        version: 1.7.3(@types/node@18.11.11)(vite@4.1.4)
+        version: 1.7.3(vite@4.1.4)
 
   packages/icons-vue:
     devDependencies:
@@ -876,12 +864,42 @@ packages:
       '@jridgewell/sourcemap-codec': 1.4.14
     dev: true
 
+  /@microsoft/api-extractor-model@7.26.4:
+    resolution: {integrity: sha512-PDCgCzXDo+SLY5bsfl4bS7hxaeEtnXj7XtuzEE+BtALp7B5mK/NrS2kHWU69pohgsRmEALycQdaQPXoyT2i5MQ==}
+    dependencies:
+      '@microsoft/tsdoc': 0.14.2
+      '@microsoft/tsdoc-config': 0.16.2
+      '@rushstack/node-core-library': 3.55.2
+    transitivePeerDependencies:
+      - '@types/node'
+    dev: true
+
   /@microsoft/api-extractor-model@7.26.4(@types/node@18.11.11):
     resolution: {integrity: sha512-PDCgCzXDo+SLY5bsfl4bS7hxaeEtnXj7XtuzEE+BtALp7B5mK/NrS2kHWU69pohgsRmEALycQdaQPXoyT2i5MQ==}
     dependencies:
       '@microsoft/tsdoc': 0.14.2
       '@microsoft/tsdoc-config': 0.16.2
       '@rushstack/node-core-library': 3.55.2(@types/node@18.11.11)
+    transitivePeerDependencies:
+      - '@types/node'
+    dev: true
+
+  /@microsoft/api-extractor@7.34.4:
+    resolution: {integrity: sha512-HOdcci2nT40ejhwPC3Xja9G+WSJmWhCUKKryRfQYsmE9cD+pxmBaKBKCbuS9jUcl6bLLb4Gz+h7xEN5r0QiXnQ==}
+    hasBin: true
+    dependencies:
+      '@microsoft/api-extractor-model': 7.26.4
+      '@microsoft/tsdoc': 0.14.2
+      '@microsoft/tsdoc-config': 0.16.2
+      '@rushstack/node-core-library': 3.55.2
+      '@rushstack/rig-package': 0.3.18
+      '@rushstack/ts-command-line': 4.13.2
+      colors: 1.2.5
+      lodash: 4.17.21
+      resolve: 1.22.1
+      semver: 7.3.8
+      source-map: 0.6.1
+      typescript: 4.8.4
     transitivePeerDependencies:
       - '@types/node'
     dev: true
@@ -1174,6 +1192,23 @@ packages:
       picomatch: 2.3.1
     dev: true
 
+  /@rushstack/node-core-library@3.55.2:
+    resolution: {integrity: sha512-SaLe/x/Q/uBVdNFK5V1xXvsVps0y7h1sN7aSJllQyFbugyOaxhNRF25bwEDnicARNEjJw0pk0lYnJQ9Kr6ev0A==}
+    peerDependencies:
+      '@types/node': '*'
+    peerDependenciesMeta:
+      '@types/node':
+        optional: true
+    dependencies:
+      colors: 1.2.5
+      fs-extra: 7.0.1
+      import-lazy: 4.0.0
+      jju: 1.4.0
+      resolve: 1.22.1
+      semver: 7.3.8
+      z-schema: 5.0.5
+    dev: true
+
   /@rushstack/node-core-library@3.55.2(@types/node@18.11.11):
     resolution: {integrity: sha512-SaLe/x/Q/uBVdNFK5V1xXvsVps0y7h1sN7aSJllQyFbugyOaxhNRF25bwEDnicARNEjJw0pk0lYnJQ9Kr6ev0A==}
     peerDependencies:
@@ -1331,7 +1366,7 @@ packages:
       '@babel/plugin-transform-react-jsx-source': 7.19.6(@babel/core@7.21.0)
       magic-string: 0.27.0
       react-refresh: 0.14.0
-      vite: 4.1.4(@types/node@18.11.11)(sass@1.58.3)
+      vite: 4.1.4(sass@1.58.3)
     transitivePeerDependencies:
       - supports-color
     dev: true
@@ -1948,6 +1983,7 @@ packages:
 
   /classnames@2.3.2:
     resolution: {integrity: sha1-NR2BO/ATf8xqdqFriCCNJWCg2SQ=, tarball: https://registry.npmmirror.com/classnames/download/classnames-2.3.2.tgz}
+    dev: true
 
   /cli-boxes@3.0.0:
     resolution: {integrity: sha1-caEMcW/uugBeRQTzYynvCxfPMUU=, tarball: https://registry.npmmirror.com/cli-boxes/download/cli-boxes-3.0.0.tgz}
@@ -5603,21 +5639,21 @@ packages:
     engines: {node: '>= 0.10'}
     dev: true
 
-  /vite-plugin-dts@1.7.3(@types/node@18.11.11)(vite@4.1.4):
+  /vite-plugin-dts@1.7.3(vite@4.1.4):
     resolution: {integrity: sha512-u3t45p6fTbzUPMkwYe0ESwuUeiRMlwdPfD3dRyDKUwLe2WmEYcFyVp2o9/ke2EMrM51lQcmNWdV9eLcgjD1/ng==}
     engines: {node: ^14.18.0 || >=16.0.0}
     peerDependencies:
       vite: '>=2.9.0'
     dependencies:
-      '@microsoft/api-extractor': 7.34.4(@types/node@18.11.11)
+      '@microsoft/api-extractor': 7.34.4
       '@rollup/pluginutils': 5.0.2
-      '@rushstack/node-core-library': 3.55.2(@types/node@18.11.11)
+      '@rushstack/node-core-library': 3.55.2
       debug: 4.3.4
       fast-glob: 3.2.12
       fs-extra: 10.1.0
       kolorist: 1.7.0
       ts-morph: 17.0.1
-      vite: 4.1.4(@types/node@18.11.11)(sass@1.58.3)
+      vite: 4.1.4(sass@1.58.3)
     transitivePeerDependencies:
       - '@types/node'
       - rollup
@@ -5682,7 +5718,7 @@ packages:
       fsevents: 2.3.2
     dev: true
 
-  /vite@4.1.4(@types/node@18.11.11)(sass@1.58.3):
+  /vite@4.1.4(sass@1.58.3):
     resolution: {integrity: sha1-Fw2TvP+X4OvAl2TAU+6+Ewv+bKA=, tarball: https://registry.npmmirror.com/vite/download/vite-4.1.4.tgz}
     engines: {node: ^14.18.0 || >=16.0.0}
     hasBin: true
@@ -5707,7 +5743,6 @@ packages:
       terser:
         optional: true
     dependencies:
-      '@types/node': 18.11.11
       esbuild: 0.16.17
       postcss: 8.4.21
       resolve: 1.22.1
@@ -5930,3 +5965,7 @@ packages:
     optionalDependencies:
       commander: 9.5.0
     dev: true
+
+settings:
+  autoInstallPeers: true
+  excludeLinksFromLockfile: false

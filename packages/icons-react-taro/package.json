@@ -37,9 +37,6 @@
       "requireCleanWorkingDir": false
     }
   },
-  "dependencies": {
-    "classnames": "^2.3.2"
-  },
   "devDependencies": {
     "@nutui/nutui-react": "^1.4.2",
     "@types/react": "^18.0.26",

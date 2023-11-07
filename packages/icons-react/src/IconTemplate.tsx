@@ -1,5 +1,3 @@
-
-import classnames from 'classnames'
 import {FunctionComponent} from "react";
 
 export interface SVG_IconProps {
@@ -32,12 +30,7 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         return isNaN(Number(value)) ? String(value) : value + "px";
     };
     const classes = () => {
-        const prefixCls = "nut-icon";
-        return classnames({
-            [`${className}`]: className,
-            [prefixCls]: true,
-            [prefixCls + "-" + name]: name,
-        })
+        return `nut-icon nut-icon-${name} ${className}`
     };
     const props2Style:any = {}
     const checkedWidth = pxCheck(width || '')
