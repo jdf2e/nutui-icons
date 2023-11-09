@@ -3,6 +3,8 @@ import React, {FunctionComponent, ReactElement, ReactHTML} from 'react'
 export interface IconFontProps {
     name?: string
     size?: string | number
+    width?: string | number
+    height?: string | number
     classPrefix?: string
     color?: string
     tag?: keyof ReactHTML
@@ -16,6 +18,8 @@ export interface IconFontProps {
 const defaultProps = {
     name: '',
     size: '',
+    width: '',
+    height: '',
     classPrefix: 'nut-icon',
     fontClassName: 'nutui-iconfont',
     color: '',
