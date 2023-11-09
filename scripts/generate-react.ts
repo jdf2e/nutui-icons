@@ -12,7 +12,7 @@ import {FunctionComponent} from 'react'
 import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 
 const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
-    return <Icon {...props} name={props.name || '${compoentName}'}>
+    return <Icon {...props} name={props.name || '${compoentName}'} viewBox={'${viewBox}'}>
         ${d.map(d => {
         return `<path
         d="${d}"
