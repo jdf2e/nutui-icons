@@ -69,9 +69,11 @@ const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
                 }`,
             style: {
                 color,
-                fontSize: pxChecked,
-                width: pxChecked,
-                height: pxChecked,
+                ...(pxChecked ? {
+                    fontSize: pxChecked,
+                    width: pxChecked,
+                    height: pxChecked,
+                } : {}),
                 ...style,
             },
             ...rest,
