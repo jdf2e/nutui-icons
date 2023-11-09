@@ -1,5 +1,3 @@
-import classnames from 'classnames'
-
 interface IconProps {
     className?: string
     style?: React.CSSProperties
@@ -29,11 +27,7 @@ const Add = (props: IconProps) => {
     };
     const classes = () => {
         const prefixCls = "nut-icon";
-        return classnames({
-            [`${className}`]: className,
-            [prefixCls]: true,
-            [prefixCls + "-" + name]: name,
-        })
+        return `nut-icon nut-icon-${name} ${className}`
     };
     const getStyle = () => {
         return {

@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-react",
-  "version": "0.0.1",
+  "version": "0.0.2-beta.10",
   "scripts": {
     "dev": "vite",
     "build": "vite build --config vite.config.build.es.ts && vite build --config vite.config.build.umd.ts && vite build --config vite.config.build.css.ts && vite build --config vite.config.dts.ts",
@@ -36,9 +36,6 @@
       "addUntrackedFiles": true,
       "requireCleanWorkingDir": false
     }
-  },
-  "dependencies": {
-    "classnames": "^2.3.2"
   },
   "devDependencies": {
     "@nutui/nutui-react": "^1.4.2",
