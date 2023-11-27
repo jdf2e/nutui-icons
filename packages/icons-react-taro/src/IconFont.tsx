@@ -1,34 +1,39 @@
-import React, { ReactElement, ReactHTML } from 'react'
+import React, {FunctionComponent, ReactElement, ReactHTML} from 'react'
 
-export interface IconProps {
-    name: string
-    size: string | number
-    classPrefix: string
-    color: string
-    tag: keyof ReactHTML
-    onClick: (e: MouseEvent) => void
-    fontClassName: string
-    className: string
-    style: React.CSSProperties
-    children: React.ReactNode
+export interface IconFontProps {
+    name?: string
+    size?: string | number
+    width?: string | number
+    height?: string | number
+    classPrefix?: string
+    color?: string
+    tag?: keyof ReactHTML
+    onClick?: (e: MouseEvent) => void
+    fontClassName?: string
+    className?: string
+    style?: React.CSSProperties
+    children?: React.ReactNode
 }
 
 const defaultProps = {
     name: '',
     size: '',
+    width: '',
+    height: '',
     classPrefix: 'nut-icon',
     fontClassName: 'nutui-iconfont',
     color: '',
     tag: 'i',
-    onClick: (e: MouseEvent) => {},
+    onClick: (e: MouseEvent) => {
+    },
     className: '',
-} as IconProps
+} as IconFontProps
 
 function pxCheck(value: string | number): string {
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
 
-export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
+const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
     const {
         name,
         size,
@@ -46,7 +51,7 @@ export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
         ...props,
     }
     const isImage = name ? name.indexOf('/') !== -1 : false
-    const type = isImage ? 'img' : tag
+    const type = isImage ? 'img' : (tag || 'i')
 
     const handleClick = (e: MouseEvent) => {
         if (onClick) {
@@ -54,9 +59,10 @@ export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
         }
     }
     const hasSrc = () => {
-        if (isImage) return { src: name }
+        if (isImage) return {src: name}
         return {}
     }
+    const pxChecked = pxCheck(size || '')
     return React.createElement<any>(
         type,
         {
@@ -67,9 +73,11 @@ export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
                 }`,
             style: {
                 color,
-                fontSize: pxCheck(size),
-                width: pxCheck(size),
-                height: pxCheck(size),
+                ...(pxChecked ? {
+                    fontSize: pxChecked,
+                    width: pxChecked,
+                    height: pxChecked,
+                } : {}),
                 ...style,
             },
             ...rest,
@@ -82,3 +90,5 @@ export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
 
 Icon.defaultProps = defaultProps
 Icon.displayName = 'NutIcon'
+
+export default Icon

@@ -8,175 +8,36 @@ import consola from "consola";
 
 const getSvg = (compoentName: string, viewBox: string, d: any[]) => {
     const template = `
-import classnames from 'classnames'
+import {FunctionComponent} from 'react'
+import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 
-interface IconProps {
-    className?: string
-    style?: React.CSSProperties
-    name: string
-    color?: string
-    width?: string | number
-    height?: string | number
-    onClick: (event: React.MouseEvent) => void
-}
-
-const defaultProps = {
-    className: '',
-    style: undefined,
-    name: '${compoentName}',
-    width: '',
-    height: '',
-    onClick: () => undefined
-} as IconProps
-
-const ${compoentName} = (props: IconProps) => {
-    const {className, style, name, color, width, height, onClick} = {...defaultProps, ...props}
-    const handleClick: React.MouseEventHandler = (e) => {
-        onClick && onClick(e)
-    }
-    const pxCheck = (value: string | number): string => {
-        if(value === '') return ''
-        return isNaN(Number(value)) ? String(value) : value + "px";
-    };
-    const classes = () => {
-        const prefixCls = "nut-icon";
-        return classnames({
-            [\`\${className}\`]: className,
-            [prefixCls]: true,
-            [prefixCls + "-" + name]: name,
-        })
-    };
-    const props2Style:any = {}
-    const checkedWidth = pxCheck(width || '')
-    const checkedHeight = pxCheck(height || '')
-    if(checkedWidth) {
-        props2Style['width'] = checkedWidth
-    }
-    if(checkedHeight) {
-        props2Style['height'] = checkedHeight
-    }
-    const getStyle = () => {
-        return {
-            ...style,
-            ...props2Style
-        }
-    }
-    return <>
-        <svg
-            className={classes()}
-            style={getStyle()}
-            onClick={handleClick}
-            xmlns="http://www.w3.org/2000/svg"
-            color={color}
-            viewBox="${viewBox}"
-            aria-labelledby={name}
-            role="presentation"
-        >
-            ${d.map(d => {
+const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
+    return <Icon {...props} name={props.name || '${compoentName}'} viewBox={'${viewBox}'}>
+        ${d.map(d => {
         return `<path
         d="${d}"
         fill="currentColor"
         fillOpacity="0.9"
         ></path>`
     })}
-        </svg>
-    </>
+    </Icon>
 }
-${compoentName}.defaultProps = defaultProps
-export default ${compoentName}
+
+Add.defaultProps = defaultProps
+export default Add
 `
     return template
 }
 const getIconFont = (compoentName: string) => {
     const template = `
-import React, { ReactElement, ReactHTML } from 'react'
+import IconFont, {IconFontProps} from "../IconFont";
+import {FunctionComponent} from "react";
 
-export interface IconProps {
-    name: string
-    size: string | number
-    classPrefix: string
-    color: string
-    tag: keyof ReactHTML
-    onClick: (e: MouseEvent) => void
-    fontClassName: string
-    className: string
-    style: React.CSSProperties
-    children: React.ReactNode
+const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
+    return <IconFont {...props} name={props.name || '${compoentName}'}/>
 }
-
-const defaultProps = {
-    name: '${compoentName}',
-    size: '',
-    classPrefix: 'nut-icon',
-    fontClassName: 'nutui-iconfont',
-    color: '',
-    tag: 'i',
-    onClick: (e: MouseEvent) => {},
-    className: '',
-} as IconProps
-
-function pxCheck(value: string | number): string {
-    if(value === '') return ''
-    return Number.isNaN(Number(value)) ? String(value) : \`\${value}px\`
-}
-
-export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
-    const {
-        name,
-        size,
-        classPrefix,
-        color,
-        tag,
-        children,
-        className,
-        fontClassName,
-        style,
-        onClick,
-        ...rest
-    } = {
-        ...defaultProps,
-        ...props,
-    }
-    const isImage = name ? name.indexOf('/') !== -1 : false
-    const type = isImage ? 'img' : tag
-
-    const handleClick = (e: MouseEvent) => {
-        if (onClick) {
-            onClick(e)
-        }
-    }
-    const hasSrc = () => {
-        if (isImage) return { src: name }
-        return {}
-    }
-    const props2Style:any = {}
-    const checkedSize = pxCheck(size)
-    if(checkedSize) {
-        props2Style['fontSize'] = checkedSize
-        props2Style['width'] = checkedSize
-        props2Style['height'] = checkedSize
-    }
-    return React.createElement<any>(
-        type,
-        {
-            className: isImage
-                ? \`nut-icon__img \${className || ''} \`
-                : \`\${fontClassName} nut-icon \${classPrefix}-\${name} \${className || ''}\`,
-            style: {
-                color,
-                ...props2Style,
-                ...style,
-            },
-            ...rest,
-            onClick: handleClick,
-            ...hasSrc(),
-        },
-        children
-    )
-}
-
-Icon.defaultProps = defaultProps
 Icon.displayName = 'NutIcon${compoentName}'
+export default Icon
 `
     return template
 }
