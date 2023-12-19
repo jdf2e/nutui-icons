@@ -152,15 +152,15 @@ new glob.Glob(pattern, {},(err, files) => {
                 consola.success(`\icons-react ${componentName} 文件写入成功`);
             });
 
-            fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getTaroSvg(componentName, viewBox, pathds), 'utf8', (error) => {
-                consola.success(`icons-react-taro svg ${componentName} 文件写入成功`);
-            });
+            // fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getTaroSvg(componentName, viewBox, pathds), 'utf8', (error) => {
+            //     consola.success(`${componentName} 文件写入成功`);
+            // });
 
         })
 
-        // fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
-        //     consola.success(`icons-react-taro ${componentName} 文件写入成功`);
-        // });
+        fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
+            consola.success(`icons-react-taro ${componentName} 文件写入成功`);
+        });
     })
     fsExtra.outputFile(`${process.cwd()}/packages/icons-react/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
         consola.success(`icons-react 文件列表配置写入成功`);
