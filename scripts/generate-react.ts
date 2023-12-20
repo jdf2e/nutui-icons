@@ -5,6 +5,8 @@ import fsExtra from 'fs-extra';
 import {parse} from 'svg-parser'
 import {optimize} from 'svgo'
 import consola from "consola";
+import svg64 from './svg64';
+
 
 const getSvg = (compoentName: string, viewBox: string, d: any[]) => {
     const template = `
@@ -42,7 +44,11 @@ export default Icon
     return template
 }
 
-const getTaroSvg = (compoentName: string, viewBox: string, d: any[]) => {
+const getTaroSvg = (compoentName: string, svg: string) => {
+    const svg64String = svg64(svg)
+    // if(compoentName.toLocaleLowerCase() == 'loading') {
+    //     console.log('svg64 string', svg64String)
+    // }
     const template = `import classnames from 'classnames'
 export interface IconProps {
     className?: string
@@ -90,8 +96,8 @@ const ${compoentName} = (props: IconProps) => {
     const getStyle = () => {
         return {
             ...style,
-            backgroundImage: \`url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="\${color || 'currentColor'}" viewBox="${viewBox}">${d.map(d => {return `<path d="${d}" fillOpacity="0.9"></path>`})}</svg>')\`,
-            backgroundRepeat: 'no-repeat',
+            maskImage: \`url('${svg64String}')\`,
+            '-webkitMaskImage': \`url('${svg64String}')\`,
             ...props2Style
         }
     }
@@ -142,6 +148,7 @@ new glob.Glob(pattern, {},(err, files) => {
 
         fsExtra.readFile(file, {encoding: 'utf8'}).then((res) => {
             let svg = optimize(res).data;
+            // console.log('svg', svg)
             const svgAST = parse(svg).children[0];
             let pathds = (svgAST as any).children?.map((item:any) => {
                 return item.properties.d;
@@ -152,7 +159,7 @@ new glob.Glob(pattern, {},(err, files) => {
                 consola.success(`\icons-react ${componentName} 文件写入成功`);
             });
 
-            fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getTaroSvg(componentName, viewBox, pathds), 'utf8', (error) => {
+            fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getTaroSvg(componentName, svg), 'utf8', (error) => {
                 consola.success(`icons-react-taro svg ${componentName} 文件写入成功`);
             });
 
