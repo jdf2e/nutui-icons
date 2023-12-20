@@ -1,4 +1,5 @@
-// 该代码来自 svg64 包：https://github.com/scriptex/svg64
+// 移植自svg64: https://github.com/scriptex/svg64/blob/master/src/svg64.ts
+
 // prettier-ignore
 const CHARS = 'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/=';
 const PREFIX = 'data:image/svg+xml;base64,';
