@@ -46,66 +46,16 @@ export default Icon
 const getTaroSvg = (compoentName: string, svg: string) => {
     const svg64String = svg64(svg)
     const template = `
-export interface IconProps {
-    className?: string
-    style?: React.CSSProperties
-    name: string
-    color?: string
-    width?: string | number
-    height?: string | number
-    size?: string | number
-    onClick: (event: React.MouseEvent) => void
+import {FunctionComponent} from 'react'
+import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
+
+const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
+    return <Icon {...props} name={props.name || '${compoentName}'} svg64={'${svg64String}'}>
+    </Icon>
 }
-const defaultProps = {
-    className: '',
-    style: undefined,
-    name: '',
-    width: '',
-    height: '',
-    size: '',
-    onClick: () => undefined
-} as IconProps
-const ${compoentName} = (props: IconProps) => {
-    const {className, style, name, color, width, height, size, onClick} = {...defaultProps, ...props}
-    const handleClick: React.MouseEventHandler = (e) => {
-        onClick && onClick(e)
-    }
-    const pxCheck = (value: string | number): string => {
-        if(value === '') return ''
-        return isNaN(Number(value)) ? String(value) : value + "px";
-    };
-    const classes = () => {
-        return \`nut-icon nut-icon-\${name || '${compoentName}'} \${className}\`
-    };
-    const props2Style:any = {}
-    const checkedWidth = pxCheck(width || size || '')
-    const checkedHeight = pxCheck(height || size || '')
-    if(checkedWidth) {
-        props2Style['width'] = checkedWidth
-    }
-    if(checkedHeight) {
-        props2Style['height'] = checkedHeight
-    }
-    const getStyle = () => {
-        return {
-            ...style,
-            backgroundColor: color|| 'currentColor',
-            mask: \`url('${svg64String}')  0 0/100% 100% no-repeat\`,
-            '-webkitMask': \`url('${svg64String}') 0 0/100% 100% no-repeat\`,
-            ...props2Style
-        }
-    }
-    return <>
-        <span
-            className={classes()}
-            style={getStyle()}
-            onClick={handleClick}
-            color={color}
-        ></span>
-    </>
-}
-${compoentName}.defaultProps = defaultProps
-export default ${compoentName}
+
+IconSVG.defaultProps = defaultProps
+export default IconSVG
 `
     return template
 }
@@ -142,7 +92,6 @@ new glob.Glob(pattern, {},(err, files) => {
 
         fsExtra.readFile(file, {encoding: 'utf8'}).then((res) => {
             let svg = optimize(res).data;
-            // console.log('svg', svg)
             const svgAST = parse(svg).children[0];
             let pathds = (svgAST as any).children?.map((item:any) => {
                 return item.properties.d;
@@ -159,9 +108,9 @@ new glob.Glob(pattern, {},(err, files) => {
 
         })
 
-        // fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
-        //     consola.success(`icons-react-taro ${componentName} 文件写入成功`);
-        // });
+        fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
+            consola.success(`icons-react-taro ${componentName} 文件写入成功`);
+        });
     })
     fsExtra.outputFile(`${process.cwd()}/packages/icons-react/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
         consola.success(`icons-react 文件列表配置写入成功`);
