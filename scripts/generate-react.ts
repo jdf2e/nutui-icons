@@ -7,7 +7,6 @@ import {optimize} from 'svgo'
 import consola from "consola";
 import svg64 from './svg64';
 
-
 const getSvg = (compoentName: string, viewBox: string, d: any[]) => {
     const template = `
 import {FunctionComponent} from 'react'
@@ -46,10 +45,7 @@ export default Icon
 
 const getTaroSvg = (compoentName: string, svg: string) => {
     const svg64String = svg64(svg)
-    // if(compoentName.toLocaleLowerCase() == 'loading') {
-    //     console.log('svg64 string', svg64String)
-    // }
-    const template = `import classnames from 'classnames'
+    const template = `
 export interface IconProps {
     className?: string
     style?: React.CSSProperties
@@ -57,6 +53,7 @@ export interface IconProps {
     color?: string
     width?: string | number
     height?: string | number
+    size?: string | number
     onClick: (event: React.MouseEvent) => void
 }
 const defaultProps = {
@@ -65,10 +62,11 @@ const defaultProps = {
     name: '',
     width: '',
     height: '',
+    size: '',
     onClick: () => undefined
 } as IconProps
 const ${compoentName} = (props: IconProps) => {
-    const {className, style, name, color, width, height, onClick} = {...defaultProps, ...props}
+    const {className, style, name, color, width, height, size, onClick} = {...defaultProps, ...props}
     const handleClick: React.MouseEventHandler = (e) => {
         onClick && onClick(e)
     }
@@ -77,16 +75,11 @@ const ${compoentName} = (props: IconProps) => {
         return isNaN(Number(value)) ? String(value) : value + "px";
     };
     const classes = () => {
-        const prefixCls = "nut-icon";
-        return classnames({
-            [\`\${className}\`]: className,
-            [prefixCls]: true,
-            [prefixCls + "-" + name]: name,
-        })
+        return \`nut-icon nut-icon-\${name || '${compoentName}'} \${className}\`
     };
     const props2Style:any = {}
-    const checkedWidth = pxCheck(width || '')
-    const checkedHeight = pxCheck(height || '')
+    const checkedWidth = pxCheck(width || size || '')
+    const checkedHeight = pxCheck(height || size || '')
     if(checkedWidth) {
         props2Style['width'] = checkedWidth
     }
@@ -96,8 +89,9 @@ const ${compoentName} = (props: IconProps) => {
     const getStyle = () => {
         return {
             ...style,
-            maskImage: \`url('${svg64String}')\`,
-            '-webkitMaskImage': \`url('${svg64String}')\`,
+            backgroundColor: color|| 'currentColor',
+            mask: \`url('${svg64String}')  0 0/100% 100% no-repeat\`,
+            '-webkitMask': \`url('${svg64String}') 0 0/100% 100% no-repeat\`,
             ...props2Style
         }
     }
