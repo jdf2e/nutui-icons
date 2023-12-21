@@ -121,7 +121,7 @@ new glob.Glob(pattern, {},(err, files) => {
     fsExtra.outputFile(`${process.cwd()}/packages/icons-react/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`icons-react ES 入口文件文件写入成功`);
     });
-    fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/dist/es/index.es.js`, entryEs + 'import "../style_iconfont.css";', 'utf8', (error) => {
+    fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`icons-react-taro ES 入口文件文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/icons-react/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
