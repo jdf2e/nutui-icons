@@ -26,7 +26,6 @@ const Add = (props: IconProps) => {
         return isNaN(Number(value)) ? String(value) : value + "px";
     };
     const classes = () => {
-        const prefixCls = "nut-icon";
         return `nut-icon nut-icon-${name} ${className}`
     };
     const getStyle = () => {

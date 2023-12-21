@@ -1,4 +1,4 @@
-import React, {FunctionComponent, ReactElement, ReactHTML} from 'react'
+import React, {FunctionComponent, ReactHTML} from 'react'
 
 export interface IconFontProps {
     name?: string
