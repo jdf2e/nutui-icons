@@ -5,6 +5,7 @@ import fsExtra from 'fs-extra';
 import {parse} from 'svg-parser'
 import {optimize} from 'svgo'
 import consola from "consola";
+import svg64 from './svg64';
 
 const getSvg = (compoentName: string, viewBox: string, d: any[]) => {
     const template = `
@@ -42,70 +43,19 @@ export default Icon
     return template
 }
 
-const getTaroSvg = (compoentName: string, viewBox: string, d: any[]) => {
-    const template = `import classnames from 'classnames'
-export interface IconProps {
-    className?: string
-    style?: React.CSSProperties
-    name: string
-    color?: string
-    width?: string | number
-    height?: string | number
-    onClick: (event: React.MouseEvent) => void
+const getTaroSvg = (compoentName: string, svg: string) => {
+    const svg64String = svg64(svg)
+    const template = `
+import {FunctionComponent} from 'react'
+import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
+
+const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
+    return <Icon {...props} name={props.name || '${compoentName}'} svg64={'${svg64String}'}>
+    </Icon>
 }
-const defaultProps = {
-    className: '',
-    style: undefined,
-    name: '',
-    width: '',
-    height: '',
-    onClick: () => undefined
-} as IconProps
-const ${compoentName} = (props: IconProps) => {
-    const {className, style, name, color, width, height, onClick} = {...defaultProps, ...props}
-    const handleClick: React.MouseEventHandler = (e) => {
-        onClick && onClick(e)
-    }
-    const pxCheck = (value: string | number): string => {
-        if(value === '') return ''
-        return isNaN(Number(value)) ? String(value) : value + "px";
-    };
-    const classes = () => {
-        const prefixCls = "nut-icon";
-        return classnames({
-            [\`\${className}\`]: className,
-            [prefixCls]: true,
-            [prefixCls + "-" + name]: name,
-        })
-    };
-    const props2Style:any = {}
-    const checkedWidth = pxCheck(width || '')
-    const checkedHeight = pxCheck(height || '')
-    if(checkedWidth) {
-        props2Style['width'] = checkedWidth
-    }
-    if(checkedHeight) {
-        props2Style['height'] = checkedHeight
-    }
-    const getStyle = () => {
-        return {
-            ...style,
-            backgroundImage: \`url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" fill="\${color || 'currentColor'}" viewBox="${viewBox}">${d.map(d => {return `<path d="${d}" fillOpacity="0.9"></path>`})}</svg>')\`,
-            backgroundRepeat: 'no-repeat',
-            ...props2Style
-        }
-    }
-    return <>
-        <span
-            className={classes()}
-            style={getStyle()}
-            onClick={handleClick}
-            color={color}
-        ></span>
-    </>
-}
-${compoentName}.defaultProps = defaultProps
-export default ${compoentName}
+
+IconSVG.defaultProps = defaultProps
+export default IconSVG
 `
     return template
 }
@@ -152,9 +102,9 @@ new glob.Glob(pattern, {},(err, files) => {
                 consola.success(`\icons-react ${componentName} 文件写入成功`);
             });
 
-            // fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getTaroSvg(componentName, viewBox, pathds), 'utf8', (error) => {
-            //     consola.success(`${componentName} 文件写入成功`);
-            // });
+            fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/src/components/${componentName}.tsx`, getTaroSvg(componentName, svg), 'utf8', (error) => {
+                consola.success(`icons-react-taro svg ${componentName} 文件写入成功`);
+            });
 
         })
 
@@ -171,7 +121,7 @@ new glob.Glob(pattern, {},(err, files) => {
     fsExtra.outputFile(`${process.cwd()}/packages/icons-react/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`icons-react ES 入口文件文件写入成功`);
     });
-    fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/dist/es/index.es.js`, entryEs + 'import "../style_iconfont.css";', 'utf8', (error) => {
+    fsExtra.outputFile(`${process.cwd()}/packages/icons-react-taro/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`icons-react-taro ES 入口文件文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/icons-react/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
