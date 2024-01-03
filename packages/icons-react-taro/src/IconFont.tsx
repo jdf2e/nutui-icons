@@ -67,7 +67,7 @@ const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
         type,
         {
             className: isImage
-                ? `nut-icon__img ${className || ''} `
+                ? `nut-icon-img ${className || ''} `
                 : `${fontClassName} nut-icon ${classPrefix}-${name} ${
                     className || ''
                 }`,

@@ -30,13 +30,15 @@ page {
         transform: translate(-50%, -50%);
     }
 
-    &__img {
+    &-img {
         width: var(--nut-icon-width);
         height: var(--nut-icon-height);
         object-fit: contain;
     }
     &-loading,
-    &-loading1 {
+    &-loading1,
+    &-Loading,
+    &-Loading1 {
         display: inline-block;
         animation: rotation 1s infinite linear;
     }
