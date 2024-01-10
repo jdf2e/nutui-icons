@@ -16,7 +16,7 @@ iconsConfig.map((name) => {
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: false,
-  plugins: [react()],
+  plugins: [react({jsxRuntime: 'classic'})],
   build: {
     lib: {
       entry: input,
