@@ -1,4 +1,5 @@
 import React, {FunctionComponent, ReactHTML} from 'react'
+import {globalConfig} from "./internal";
 
 export interface IconFontProps {
     name?: string
@@ -20,10 +21,7 @@ const defaultProps = {
     size: '',
     width: '',
     height: '',
-    classPrefix: 'nut-icon',
-    fontClassName: 'nutui-iconfont',
     color: '',
-    tag: 'i',
     onClick: (e: MouseEvent) => {
     },
     className: '',
@@ -37,12 +35,12 @@ const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
     const {
         name,
         size,
-        classPrefix,
+        classPrefix = globalConfig.classPrefix,
         color,
-        tag,
+        tag = globalConfig.tag,
         children,
         className,
-        fontClassName,
+        fontClassName= globalConfig.fontClassName,
         style,
         onClick,
         ...rest
@@ -67,8 +65,8 @@ const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
         type,
         {
             className: isImage
-                ? `nut-icon-img ${className || ''} `
-                : `${fontClassName} nut-icon ${classPrefix}-${name} ${
+                ? `${classPrefix}-img ${className || ''} `
+                : `${fontClassName} ${classPrefix} ${classPrefix}-${name} ${
                     className || ''
                 }`,
             style: {

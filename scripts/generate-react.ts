@@ -63,16 +63,19 @@ export default IconSVG
 let entryEs = `/** 此文件由 script generate 脚本生成 */
 export { config as IconFontConfig } from "./icons/IconFontConfig.js";
 export { default as IconFont } from "./icons/IconFont.js";
+export { configure } from "./icons/configure.js";
 \n`;
 
 let entryLib = `/** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
+    import { configure } from "../configure";
     import config from '../../../../iconfont/config.json';
-    export { IconFont, config };
+    export { IconFont, config, configure };
 \n`;
 let entryLibDTS = `/** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
-    export { IconFont  };
+    import { configure } from "../configure";
+    export { IconFont, configure  };
 \n`;
 
 const pattern = `${process.cwd()}/packages/icons-svg/*.svg`;

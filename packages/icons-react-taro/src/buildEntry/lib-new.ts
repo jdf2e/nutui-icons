@@ -1,7 +1,8 @@
 /** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
+    import { configure } from "../configure";
     import config from '../../../../iconfont/config.json';
-    export { IconFont, config };
+    export { IconFont, config, configure };
 
 export { default as AddCircle }  from '../components/AddCircle'
 export { default as AddRectangle }  from '../components/AddRectangle'

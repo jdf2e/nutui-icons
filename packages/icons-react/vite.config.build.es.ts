@@ -5,6 +5,8 @@ import {iconsConfig} from './src/components/iconsConfig'
 
 let input = {
   IconFont: `./src/IconFont.tsx`,
+  configure: `./src/configure.ts`,
+  internal: `./src/internal.ts`,
   IconFontConfig: `./src/buildEntry/iconFontConfig.ts`,
   SvgConfig: `./src/buildEntry/svgConfig.ts`,
 } as any;
@@ -24,9 +26,14 @@ export default defineConfig({
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: ['react', 'react-dom', 'classnames'],
+      external: ['react', 'react-dom', 'classnames', './internal', './configure'],
       // input,
       output: {
+        paths: (id) => {
+          return /internal/.test(id)
+              ? `./internal.js`
+              : id
+        },
         entryFileNames: '[name].js',
         dir: resolve(__dirname, './dist/es/icons'),
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量

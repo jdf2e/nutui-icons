@@ -1,4 +1,5 @@
 import {FunctionComponent} from "react";
+import {globalConfig} from "./internal";
 
 export interface SVG_IconProps {
     className?: string
@@ -23,6 +24,7 @@ export const defaultProps = {
 } as SVG_IconProps
 
 const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
+    const classPrefix = globalConfig.classPrefix
     const {viewBox, className, style, name, color, width, height, onClick} = {...defaultProps, ...props}
     const handleClick: React.MouseEventHandler = (e) => {
         onClick && onClick(e)
@@ -32,7 +34,7 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         return isNaN(Number(value)) ? String(value) : value + "px";
     };
     const classes = () => {
-        return `nut-icon nut-icon-${name} ${className}`
+        return `${classPrefix} ${classPrefix}-${name} ${className}`
     };
     const props2Style:any = {}
     const checkedWidth = pxCheck(width || '')
