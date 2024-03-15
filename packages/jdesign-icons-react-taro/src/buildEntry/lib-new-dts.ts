@@ -27,6 +27,7 @@ export { default as Failure } from "../components/Failure";
 export { default as Find } from "../components/Find";
 export { default as HeartFill } from "../components/HeartFill";
 export { default as Heart } from "../components/Heart";
+export { default as Home } from "../components/Home";
 export { default as ImageError } from "../components/ImageError";
 export { default as Image } from "../components/Image";
 export { default as Jd } from "../components/Jd";

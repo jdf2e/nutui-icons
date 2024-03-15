@@ -46,6 +46,7 @@
   <string name="nut_icon_heart_fill">&#xe4a7;</string> <!--heart-fill-->
   <string name="nut_icon_tips">&#xf05e;</string> <!--tips-->
   <string name="nut_icon_double_arrow_up">&#xee74;</string> <!--double-arrow-up-->
+  <string name="nut_icon_home">&#xe9f8;</string> <!--home-->
   <string name="nut_icon_search">&#xe72b;</string> <!--search-->
   <string name="nut_icon_top">&#xe529;</string> <!--top-->
   <string name="nut_icon_download">&#xe1f8;</string> <!--download-->

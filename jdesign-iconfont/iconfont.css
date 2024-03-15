@@ -1,13 +1,13 @@
 
   @font-face {
-    font-family: 'nutui-iconfont';
+    font-family: 'nutui-icon';
     src: url('iconfont.woff2') format('woff2') /* chrome、firefox */,
 		url('iconfont.woff') format('woff') /* chrome、firefox */,
 		url('iconfont.ttf') format('truetype') /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */;
   }
 
   .nutui-iconfont{
-    font-family: 'nutui-iconfont';
+    font-family: 'nutui-icon';
     font-size: 16px;
     font-style: normal;
     -webkit-font-smoothing: antialiased;
@@ -196,6 +196,10 @@
 
   .nut-icon-double-arrow-up::before {
     content: "\ee74";
+  }
+
+  .nut-icon-home::before {
+    content: "\e9f8";
   }
 
   .nut-icon-search::before {

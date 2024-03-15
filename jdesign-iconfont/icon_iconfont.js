@@ -45,6 +45,7 @@ export default {
   'nut-icon-heart-fill': 58535,// heart-fill
   'nut-icon-tips': 61534,// tips
   'nut-icon-double-arrow-up': 61044,// double-arrow-up
+  'nut-icon-home': 59896,// home
   'nut-icon-search': 59179,// search
   'nut-icon-top': 58665,// top
   'nut-icon-download': 57848,// download
