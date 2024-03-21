@@ -7,8 +7,6 @@ import {optimize} from 'svgo'
 import consola from "consola";
 import svg64 from './svg64';
 
-console.log()
-
 const getSvg = (compoentName: string, viewBox: string, d: any[]) => {
     const template = `
 import {FunctionComponent} from 'react'
