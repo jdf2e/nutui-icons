@@ -1,4 +1,5 @@
-import {FunctionComponent} from "react";
+import React, {FunctionComponent} from "react";
+import {globalConfig} from "./internal";
 
 export interface SVG_IconProps {
     className?: string
@@ -12,6 +13,7 @@ export interface SVG_IconProps {
     svg64?: string
     onClick?: (event: React.MouseEvent) => void
     children?: React.ReactNode
+    fallback?: boolean
 }
 
 export const defaultProps = {
@@ -26,41 +28,56 @@ export const defaultProps = {
 } as SVG_IconProps
 
 const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
-    const { className, style, name, color, width, height, size, svg64, onClick} = {...defaultProps, ...props}
+    const classPrefix = globalConfig.classPrefix
+    const {
+        className,
+        style,
+        name,
+        color,
+        width,
+        height,
+        size,
+        svg64,
+        onClick,
+        fallback = globalConfig.useSvg
+    } = {...defaultProps, ...props}
     const handleClick: React.MouseEventHandler = (e) => {
         onClick && onClick(e)
     }
     const pxCheck = (value: string | number): string => {
-        if(value === '') return ''
+        if (value === '') return ''
         return isNaN(Number(value)) ? String(value) : value + "px";
     };
     const classes = () => {
-        return `nut-icon nut-icon-${name} ${className}`
+        const iconName = fallback ? name?.toLowerCase() : name
+        return `${fallback ? globalConfig.fontClassName : ''} ${classPrefix} ${classPrefix}-${iconName} ${className}`
     };
-    const props2Style:any = {}
+    const props2Style: any = {}
     const checkedWidth = pxCheck(width || size || '')
     const checkedHeight = pxCheck(height || size || '')
-    if(checkedWidth) {
+    if (checkedWidth) {
         props2Style['width'] = checkedWidth
     }
-    if(checkedHeight) {
+    if (checkedHeight) {
         props2Style['height'] = checkedHeight
     }
     const getStyle = () => {
         return {
             ...style,
-            backgroundColor: color|| 'currentColor',
-            mask: `url('${svg64}')  0 0/100% 100% no-repeat`,
-            '-webkitMask': `url('${svg64}') 0 0/100% 100% no-repeat`,
+            ...(fallback ? {} : {
+                backgroundColor: color || 'currentColor',
+                mask: `url('${svg64}')  0 0/100% 100% no-repeat`,
+                '-webkitMask': `url('${svg64}') 0 0/100% 100% no-repeat`,
+            }),
             ...props2Style
         }
     }
-    return <span
-            className={classes()}
-            style={getStyle()}
-            onClick={handleClick}
-            color={color}
-        >{props.children}</span>
+    return React.createElement<any>(globalConfig.tag, {
+        className: classes(),
+        style: getStyle(),
+        onClick: handleClick,
+        color
+    }, props.children)
 }
 Icon.defaultProps = defaultProps
 export default Icon

@@ -1,4 +1,5 @@
 import React, { ReactElement, ReactHTML } from 'react'
+import {globalConfig} from "./internal";
 
 export interface IconProps {
     name: string
@@ -16,10 +17,7 @@ export interface IconProps {
 const defaultProps = {
     name: '',
     size: '',
-    classPrefix: 'nut-icon',
-    fontClassName: 'nutui-iconfont',
     color: '',
-    tag: 'i',
     onClick: (e: MouseEvent) => {},
     className: '',
 } as IconProps
@@ -32,12 +30,12 @@ export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
     const {
         name,
         size,
-        classPrefix,
+        classPrefix = globalConfig.classPrefix,
         color,
-        tag,
+        tag= globalConfig.tag,
         children,
         className,
-        fontClassName,
+        fontClassName= globalConfig.fontClassName,
         style,
         onClick,
         ...rest
@@ -61,8 +59,8 @@ export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
         type,
         {
             className: isImage
-                ? `nut-icon__img ${className || ''} `
-                : `${fontClassName} nut-icon ${classPrefix}-${name} ${
+                ? `${classPrefix}__img ${className || ''} `
+                : `${fontClassName} ${classPrefix} ${classPrefix}-${name} ${
                     className || ''
                 }`,
             style: {
