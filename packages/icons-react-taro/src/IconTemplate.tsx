@@ -39,7 +39,7 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         size,
         svg64,
         onClick,
-        fallback = globalConfig.useSvg
+        fallback = !globalConfig.useSvg
     } = {...defaultProps, ...props}
     const handleClick: React.MouseEventHandler = (e) => {
         onClick && onClick(e)
