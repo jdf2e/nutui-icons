@@ -1,4 +1,4 @@
-
+// vue 版本
 import glob from 'glob';
 import { parse } from 'svg-parser';
 import { camelCase } from './camelCase';

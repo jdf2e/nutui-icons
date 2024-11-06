@@ -7,14 +7,14 @@ import {optimize} from 'svgo'
 import consola from "consola";
 import svg64 from './svg64';
 
-const getSvg = (compoentName: string, viewBox: string, d: any[]) => {
+const getSvg = (componentName: string, viewBox: string, d: any[]) => {
     const template = `
 import {FunctionComponent} from 'react'
 import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 
 const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
-    return <Icon {...realProps} name={realProps.name || '${compoentName}'} viewBox={'${viewBox}'}>
+    return <Icon {...realProps} name={realProps.name || '${componentName}'} viewBox={'${viewBox}'}>
         ${d.map(d => {
         return `<path
         d="${d}"
@@ -29,21 +29,21 @@ export default Add
 `
     return template
 }
-const getIconFont = (compoentName: string) => {
+const getIconFont = (componentName: string) => {
     const template = `
 import IconFont, {IconFontProps} from "../IconFont";
 import {FunctionComponent} from "react";
 
 const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
-    return <IconFont {...props} name={props.name || '${compoentName}'}/>
+    return <IconFont {...props} name={props.name || '${componentName}'}/>
 }
-Icon.displayName = 'NutIcon${compoentName}'
+Icon.displayName = 'NutIcon${componentName}'
 export default Icon
 `
     return template
 }
 
-const getTaroSvg = (compoentName: string, svg: string) => {
+const getTaroSvg = (componentName: string, svg: string) => {
     const svg64String = svg64(svg)
     const template = `
 import {FunctionComponent} from 'react'
@@ -51,7 +51,24 @@ import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 
 const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
-    return <Icon {...realProps} name={realProps.name || '${compoentName}'} svg64={'${svg64String}'}>
+    return <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={'${svg64String}'}>
+    </Icon>
+}
+
+export default IconSVG
+`
+    return template
+}
+
+const getHarmonySvg = (componentName: string, svg: string) => {
+    const svg64String = svg64(svg)
+    const template = `
+import {FunctionComponent} from 'react'
+import Icon, {defaultProps, SVG_IconProps} from '../IconHarmonyTemplate'
+
+const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
+    const realProps = { ...defaultProps, ...props }
+    return <Icon {...realProps} name={realProps.name || '${componentName}'} svgSrc={'${svg64String}'}>
     </Icon>
 }
 
@@ -82,9 +99,9 @@ const projectID = process.env.PROJECT_ID
 let pattern = `${process.cwd()}/packages/icons-svg/*.svg`;
 let iconsReactDir = `icons-react`;
 let iconsReactTaroDir = `icons-react-taro`;
+let iconsReactTaroHarmonyDir = 'icons-react-taro-harmony';
 
 if (projectID) {
-
     entryLib = `/** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
     import config from '../../../../${projectID}-iconfont/config.json';
@@ -94,6 +111,7 @@ if (projectID) {
     pattern = `${process.cwd()}/packages/${projectID}-icons-svg/*.svg`;
     iconsReactDir = `${projectID}-icons-react`;
     iconsReactTaroDir = `${projectID}-icons-react-taro`;
+    iconsReactTaroHarmonyDir = `${projectID}-icons-react-taro-harmony`;
 }
 
 new glob.Glob(pattern, {},(err, files) => {
@@ -126,8 +144,10 @@ new glob.Glob(pattern, {},(err, files) => {
                 consola.success(`${iconsReactTaroDir} svg ${componentName} 文件写入成功`);
             });
 
+            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/components/${componentName}.tsx`, getHarmonySvg(componentName, svg), 'utf8', (error) => {
+                consola.success(`${iconsReactTaroHarmonyDir} svg ${componentName} 文件写入成功`);
+            });
         })
-
         fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
             consola.success(`${iconsReactTaroDir} ${componentName} 文件写入成功`);
         });
@@ -138,11 +158,17 @@ new glob.Glob(pattern, {},(err, files) => {
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} 文件列表配置写入成功`);
     });
+    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
+        consola.success(`${iconsReactTaroHarmonyDir} 文件列表配置写入成功`);
+    });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`${iconsReactDir} ES 入口文件文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} ES 入口文件文件写入成功`);
+    });
+    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
+        consola.success(`${iconsReactTaroHarmonyDir} ES 入口文件文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
         consola.success(`${iconsReactDir} buildEntry 文件写入成功`);
@@ -150,11 +176,16 @@ new glob.Glob(pattern, {},(err, files) => {
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} buildEntry 文件写入成功`);
     });
-
+    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
+        consola.success(`${iconsReactTaroHarmonyDir} buildEntry 文件写入成功`);
+    });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/buildEntry/lib-new-dts.ts`, entryLibDTS, 'utf8', (error) => {
         consola.success(`${iconsReactDir} buildEntry dts 文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/buildEntry/lib-new-dts.ts`, entryLibDTS, 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} buildEntry dts 文件写入成功`);
+    });
+    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/buildEntry/lib-new-dts.ts`, entryLibDTS, 'utf8', (error) => {
+        consola.success(`${iconsReactTaroHarmonyDir} buildEntry dts 文件写入成功`);
     });
 })
