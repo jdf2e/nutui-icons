@@ -10,6 +10,7 @@ export interface SVG_IconProps {
     width?: string | number
     height?: string | number
     size?: string | number
+    svg64?: string
     svgSrc?: string
     onClick?: (event: React.MouseEvent) => void
     children?: React.ReactNode
@@ -23,6 +24,7 @@ export const defaultProps = {
     width: '',
     height: '',
     size: '',
+    svg64: '',
     svgSrc: '',
     onClick: () => undefined
 } as SVG_IconProps
@@ -37,6 +39,7 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         width,
         height,
         size,
+        svg64,
         svgSrc,
         children,
         onClick,
@@ -45,6 +48,7 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const handleClick: React.MouseEventHandler = (e) => {
         onClick && onClick(e)
     }
+    
     const pxCheck = (value: string | number): number => {
         if (value === '') return 0
         return parseInt(value as string);

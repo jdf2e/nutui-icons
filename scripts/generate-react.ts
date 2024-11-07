@@ -60,16 +60,25 @@ export default IconSVG
     return template
 }
 
-const getHarmonySvg = (componentName: string, svg: string) => {
+const getHarmonySvg = (componentName: string, svg: string, iconFontName: string) => {
+    const svgSrc = (svgConfig as any)[iconFontName]
     const svg64String = svg64(svg)
     const template = `
 import {FunctionComponent} from 'react'
-import Icon, {defaultProps, SVG_IconProps} from '../IconHarmonyTemplate'
+import Icon, { defaultProps, SVG_IconProps } from '../IconTemplate'
+import { default as Icon2 } from '../IconHarmonyTemplate'
 
 const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
-    return <Icon {...realProps} name={realProps.name || '${componentName}'} svgSrc={'${svg64String}'}>
-    </Icon>
+    
+    return (
+        <> {
+                process.env.TARO_ENV !== 'jdharmony_cpp' ? <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={'${svg64String}'}>
+                </Icon> :  <Icon2 {...realProps} name={realProps.name || '${componentName}'} svgSrc={'${svgSrc}'}>
+                </Icon2>
+            }
+        </>
+    )
 }
 
 export default IconSVG
@@ -114,6 +123,11 @@ if (projectID) {
     iconsReactTaroHarmonyDir = `${projectID}-icons-react-taro-harmony`;
 }
 
+let svgConfig = {}
+fsExtra.readFile(`${process.cwd()}/packages/icons-svg/config.json`).then(res=>{
+    svgConfig = JSON.parse(res.toString())
+})
+
 new glob.Glob(pattern, {},(err, files) => {
     const entryArray: any = []
     files.forEach(file => {
@@ -124,7 +138,7 @@ new glob.Glob(pattern, {},(err, files) => {
         })
 
         entryArray.push(componentName)
-        entryLib += `export { default as ${componentName} }  from '../components/${componentName}'\n`
+        entryLib += `export { default as ${componentName} } from '../components/${componentName}'\n`
         entryEs += `export { default as ${componentName} } from "./icons/${componentName}.js";\n`;
         entryLibDTS += `export { default as ${componentName} } from "../components/${componentName}";\n`;
 
@@ -144,7 +158,7 @@ new glob.Glob(pattern, {},(err, files) => {
                 consola.success(`${iconsReactTaroDir} svg ${componentName} 文件写入成功`);
             });
 
-            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/components/${componentName}.tsx`, getHarmonySvg(componentName, svg), 'utf8', (error) => {
+            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/components/${componentName}.tsx`, getHarmonySvg(componentName, svg, iconFontName), 'utf8', (error) => {
                 consola.success(`${iconsReactTaroHarmonyDir} svg ${componentName} 文件写入成功`);
             });
         })

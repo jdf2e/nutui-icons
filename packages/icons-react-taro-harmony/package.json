@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/icons-react-taro",
-  "version": "1.0.5",
+  "name": "@nutui/icons-react-taro-harmony",
+  "version": "1.0.0",
   "scripts": {
     "dev": "vite",
     "build": "vite build --config vite.config.build.es.ts && vite build --config vite.config.build.umd.ts && vite build --config vite.config.build.css.ts && vite build --config vite.config.dts.ts",
@@ -32,7 +32,7 @@
   "release-it": {
     "git": {
       "tag": false,
-      "commitMessage": "release: @nutui/icons-react-taro ${version}",
+      "commitMessage": "release: @nutui/icons-react-taro-harmony ${version}",
       "addUntrackedFiles": true,
       "requireCleanWorkingDir": false
     }
