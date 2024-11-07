@@ -1,6 +1,5 @@
 import React, {FunctionComponent} from "react";
 import {globalConfig} from "./internal";
-
 export interface SVG_IconProps {
     className?: string
     style?: React.CSSProperties
@@ -11,6 +10,7 @@ export interface SVG_IconProps {
     height?: string | number
     size?: string | number
     svg64?: string
+    svgSrc?: string
     onClick?: (event: React.MouseEvent) => void
     children?: React.ReactNode
     fallback?: boolean
@@ -24,6 +24,7 @@ export const defaultProps = {
     height: '',
     size: '',
     svg64: '',
+    svgSrc: '',
     onClick: () => undefined
 } as SVG_IconProps
 
@@ -38,6 +39,7 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         height,
         size,
         svg64,
+        svgSrc,
         children,
         onClick,
         fallback = !globalConfig.useSvg
