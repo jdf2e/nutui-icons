@@ -108,7 +108,7 @@ const projectID = process.env.PROJECT_ID
 let pattern = `${process.cwd()}/packages/icons-svg/*.svg`;
 let iconsReactDir = `icons-react`;
 let iconsReactTaroDir = `icons-react-taro`;
-let iconsReactTaroHarmonyDir = 'icons-react-taro-harmony';
+let iconsReactTaroDir = 'icons-react-taro-harmony';
 
 if (projectID) {
     entryLib = `/** 此文件由 script generate 脚本生成 */
@@ -120,7 +120,7 @@ if (projectID) {
     pattern = `${process.cwd()}/packages/${projectID}-icons-svg/*.svg`;
     iconsReactDir = `${projectID}-icons-react`;
     iconsReactTaroDir = `${projectID}-icons-react-taro`;
-    iconsReactTaroHarmonyDir = `${projectID}-icons-react-taro-harmony`;
+    iconsReactTaroDir = `${projectID}-icons-react-taro-harmony`;
 }
 
 let svgConfig = {}
@@ -149,17 +149,11 @@ new glob.Glob(pattern, {},(err, files) => {
                 return item.properties.d;
             })
             let viewBox = (svgAST as any).properties.viewBox;
-
             fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/components/${componentName}.tsx`, getSvg(componentName, viewBox, pathds), 'utf8', (error) => {
                 consola.success(`${iconsReactDir} ${componentName} 文件写入成功`);
             });
-
-            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/${componentName}.tsx`, getTaroSvg(componentName, svg), 'utf8', (error) => {
+            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/${componentName}.tsx`, getHarmonySvg(componentName, svg, iconFontName), 'utf8', (error) => {
                 consola.success(`${iconsReactTaroDir} svg ${componentName} 文件写入成功`);
-            });
-
-            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/components/${componentName}.tsx`, getHarmonySvg(componentName, svg, iconFontName), 'utf8', (error) => {
-                consola.success(`${iconsReactTaroHarmonyDir} svg ${componentName} 文件写入成功`);
             });
         })
         fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
@@ -172,17 +166,11 @@ new glob.Glob(pattern, {},(err, files) => {
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} 文件列表配置写入成功`);
     });
-    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
-        consola.success(`${iconsReactTaroHarmonyDir} 文件列表配置写入成功`);
-    });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`${iconsReactDir} ES 入口文件文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} ES 入口文件文件写入成功`);
-    });
-    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
-        consola.success(`${iconsReactTaroHarmonyDir} ES 入口文件文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
         consola.success(`${iconsReactDir} buildEntry 文件写入成功`);
@@ -190,16 +178,10 @@ new glob.Glob(pattern, {},(err, files) => {
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} buildEntry 文件写入成功`);
     });
-    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
-        consola.success(`${iconsReactTaroHarmonyDir} buildEntry 文件写入成功`);
-    });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/buildEntry/lib-new-dts.ts`, entryLibDTS, 'utf8', (error) => {
         consola.success(`${iconsReactDir} buildEntry dts 文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/buildEntry/lib-new-dts.ts`, entryLibDTS, 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} buildEntry dts 文件写入成功`);
-    });
-    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroHarmonyDir}/src/buildEntry/lib-new-dts.ts`, entryLibDTS, 'utf8', (error) => {
-        consola.success(`${iconsReactTaroHarmonyDir} buildEntry dts 文件写入成功`);
     });
 })
