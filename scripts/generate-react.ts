@@ -108,7 +108,6 @@ const projectID = process.env.PROJECT_ID
 let pattern = `${process.cwd()}/packages/icons-svg/*.svg`;
 let iconsReactDir = `icons-react`;
 let iconsReactTaroDir = `icons-react-taro`;
-let iconsReactTaroDir = 'icons-react-taro-harmony';
 
 if (projectID) {
     entryLib = `/** 此文件由 script generate 脚本生成 */
@@ -120,7 +119,6 @@ if (projectID) {
     pattern = `${process.cwd()}/packages/${projectID}-icons-svg/*.svg`;
     iconsReactDir = `${projectID}-icons-react`;
     iconsReactTaroDir = `${projectID}-icons-react-taro`;
-    iconsReactTaroDir = `${projectID}-icons-react-taro-harmony`;
 }
 
 let svgConfig = {}
