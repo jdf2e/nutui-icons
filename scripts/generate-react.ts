@@ -70,14 +70,8 @@ import { default as Icon2 } from '../IconHarmonyTemplate'
 
 const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
-    
     return (
-        <> {
-                process.env.TARO_ENV !== 'jdharmony_cpp' ? <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={'${svg64String}'}>
-                </Icon> :  <Icon2 {...realProps} name={realProps.name || '${componentName}'} svgSrc={'${svgSrc}'}>
-                </Icon2>
-            }
-        </>
+        <>{process.env.TARO_ENV !== 'jdharmony_cpp' ? <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={'${svg64String}'}></Icon> : <Icon2 {...realProps} name={realProps.name || '${componentName}'} svgSrc={'${svgSrc}'}></Icon2>}</>
     )
 }
 
