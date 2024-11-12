@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-react-taro",
-  "version": "2.0.0-beta.0",
+  "version": "2.0.0-beta.2",
   "scripts": {
     "dev": "vite",
     "build": "vite build --config vite.config.build.es.ts && vite build --config vite.config.build.umd.ts && vite build --config vite.config.build.css.ts && vite build --config vite.config.dts.ts",
