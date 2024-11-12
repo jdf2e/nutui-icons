@@ -69,16 +69,17 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const getStyle = () => {
         return {
             ...style,
-            ...props2Style
+            ...props2Style,
+            ...{color}
         }
     }
+    
     return React.createElement<any>('Image', {
         src: svgSrc,
         className: classes(),
         style: getStyle(),
         onClick: handleClick,
-        svg: true,
-        color
+        svg: true
     }, children)
 }
 export default Icon
