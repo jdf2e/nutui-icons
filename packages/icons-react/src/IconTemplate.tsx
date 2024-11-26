@@ -47,6 +47,7 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     }
     const getStyle = () => {
         return {
+            color,
             ...style,
             ...props2Style
         }
