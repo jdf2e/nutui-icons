@@ -19,7 +19,6 @@ const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         return `<path
         d="${d}"
         fill="currentColor"
-        fillOpacity="0.9"
         ></path>`
     })}
     </Icon>

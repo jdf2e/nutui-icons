@@ -12,6 +12,7 @@ export { default as ArrowDownSmall } from "../components/ArrowDownSmall";
 export { default as ArrowDown } from "../components/ArrowDown";
 export { default as ArrowLeftSmall } from "../components/ArrowLeftSmall";
 export { default as ArrowLeft } from "../components/ArrowLeft";
+export { default as ArrowRadius } from "../components/ArrowRadius";
 export { default as ArrowRightSize6 } from "../components/ArrowRightSize6";
 export { default as ArrowRightSmall } from "../components/ArrowRightSmall";
 export { default as ArrowRight } from "../components/ArrowRight";

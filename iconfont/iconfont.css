@@ -237,6 +237,10 @@
   content: "\e1cf";
 }
 
+.nut-icon-arrow-radius::before {
+  content: "\e5a9";
+}
+
 .nut-icon-play-double-forward::before {
   content: "\e3bb";
 }
