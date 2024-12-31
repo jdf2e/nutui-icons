@@ -28,6 +28,7 @@ const defaultProps = {
 } as IconFontProps
 
 function pxCheck(value: string | number): string {
+    if(!value) return ''
     return Number.isNaN(Number(value)) ? String(value) : `${value}px`
 }
 
