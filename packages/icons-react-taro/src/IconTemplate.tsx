@@ -1,5 +1,6 @@
-import React, {FunctionComponent} from "react";
+import React, {CSSProperties, FunctionComponent} from "react";
 import {globalConfig} from "./internal";
+import * as process from "process";
 export interface SVG_IconProps {
     className?: string
     style?: React.CSSProperties
@@ -64,13 +65,17 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     if (checkedHeight) {
         props2Style['height'] = checkedHeight
     }
+    const svg64Style: any = process.env.TARO_ENV === 'h5' ? {mask: `url('${svg64}')  0 0/100% 100% no-repeat`, 'WebkitMask': `url('${svg64}') 0 0/100% 100% no-repeat`,} : {
+        mask: `url('${svg64}')  0 0/100% 100% no-repeat`,
+        '-webkitMask': `url('${svg64}') 0 0/100% 100% no-repeat`,
+    }
     const getStyle = () => {
+        // const svg: CSSProperties = getSvg64()
         return {
             ...style,
             ...(fallback ? {} : {
                 backgroundColor: color || 'currentColor',
-                mask: `url('${svg64}')  0 0/100% 100% no-repeat`,
-                '-webkitMask': `url('${svg64}') 0 0/100% 100% no-repeat`,
+                ...(svg64Style)
             }),
             ...props2Style
         }
