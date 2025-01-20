@@ -1,7 +1,8 @@
 import { defineConfig } from 'vite'
-import {resolve} from 'path'
+import {dirname, resolve, join} from 'path'
 import react from '@vitejs/plugin-react'
 import {iconsConfig} from './src/components/iconsConfig'
+import * as fs from "fs";
 
 let input = {
   IconFont: `./src/IconFont.tsx`,
@@ -18,8 +19,18 @@ iconsConfig.map((name) => {
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: false,
-  plugins: [react({jsxRuntime: 'classic'})],
+  plugins: [react({jsxRuntime: 'classic'}), {
+    name: 'revert Process.env',
+    apply: 'build',
+    async closeBundle() {
+      const esFile = join(__dirname, 'dist/es/icons/IconHarmonyTemplate.js')
+      const fileContent = fs.readFileSync(esFile).toString().replace(`(void 0).TARO_ENV === "h5"`, `process.env.TARO_ENV === "h5"`)
+      fs.writeFileSync(esFile, fileContent)
+      console.log('File rewritten successfully!');
+    }
+  }],
   build: {
+    minify: false,
     lib: {
       entry: input,
       formats: ['es']
@@ -35,6 +46,7 @@ export default defineConfig({
               : id
         },
         entryFileNames: '[name].js',
+        chunkFileNames: '[name].js',
         dir: resolve(__dirname, './dist/es/icons'),
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {

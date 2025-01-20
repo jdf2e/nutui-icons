@@ -1,11 +1,21 @@
 import { defineConfig } from 'vite'
-import {resolve} from 'path'
+import {join, resolve} from 'path'
 import react from '@vitejs/plugin-react'
+import fs from "fs";
 
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: false,
-  plugins: [react()],
+  plugins: [react(), {
+    name: 'revert Process.env',
+    apply: 'build',
+    async closeBundle() {
+      const umdFile = join(__dirname, 'dist/lib/index.umd.js')
+      const umdFileContent = fs.readFileSync(umdFile).toString().replace(`(void 0).TARO_ENV==="h5"`, `process.env.TARO_ENV==="h5"`)
+      fs.writeFileSync(umdFile, umdFileContent)
+      console.log('File rewritten successfully!');
+    }
+  }],
   build: {
     lib: {
       entry: resolve(__dirname, 'src/buildEntry/lib-new.ts'),
