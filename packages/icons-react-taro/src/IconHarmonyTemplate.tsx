@@ -39,7 +39,6 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         width,
         height,
         size,
-        svg64,
         svgSrc,
         children,
         onClick,

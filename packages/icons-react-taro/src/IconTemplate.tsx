@@ -1,4 +1,4 @@
-import React, {CSSProperties, FunctionComponent} from "react";
+import React, { FunctionComponent} from "react";
 import {globalConfig} from "./internal";
 import * as process from "process";
 export interface SVG_IconProps {
@@ -70,7 +70,6 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         '-webkitMask': `url('${svg64}') 0 0/100% 100% no-repeat`,
     }
     const getStyle = () => {
-        // const svg: CSSProperties = getSvg64()
         return {
             ...style,
             ...(fallback ? {} : {
