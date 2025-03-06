@@ -1,12 +1,9 @@
 
 @font-face {
   font-family: 'nutui-iconfont';
-  src: url('iconfont.eot'); /* IE9 */
-  src: url('iconfont.eot#iefix') format('embedded-opentype') /* IE6-IE8 */,
-  url('iconfont.woff2') format('woff2') /* chrome、firefox */,
+  src: url('iconfont.woff2') format('woff2') /* chrome、firefox */,
   url('iconfont.woff') format('woff') /* chrome、firefox */,
-  url('iconfont.ttf') format('truetype') /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */,
-  url('iconfont.svg#iconfont') format('svg') /* iOS 4.1- */;
+  url('iconfont.ttf') format('truetype') /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */;
 }
 
 .nutui-iconfont{
