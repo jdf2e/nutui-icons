@@ -1,6 +1,6 @@
 {
-  "name": "@nutui/icons-react",
-  "version": "3.0.1",
+  "name": "@nutui/ling-icons-react",
+  "version": "0.0.1",
   "description": "京东风格的icon库-V15",
   "scripts": {
     "dev": "vite",
@@ -33,7 +33,7 @@
   "release-it": {
     "git": {
       "tag": false,
-      "commitMessage": "release: @nutui/icons-taro ${version}",
+      "commitMessage": "release: @nutui/ling-icons-taro ${version}",
       "addUntrackedFiles": true,
       "requireCleanWorkingDir": false
     }

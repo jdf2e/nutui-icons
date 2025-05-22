@@ -1,2 +1,2 @@
-# @nutui/icons-react
+# @nutui/ling-icons-react
 
