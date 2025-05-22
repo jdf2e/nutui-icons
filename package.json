@@ -3,9 +3,11 @@
     "dev": "tsc --watch --incremental",
     "tsnode": "ts-node scripts/generate-react.ts",
     "tsnode:jdesign": "PROJECT_ID=jdesign ts-node scripts/generate-react.ts",
+    "tsnode:ling": "PROJECT_ID=ling ts-node scripts/generate-react.ts",
     "gen:vue": "tsc && node dist/generate.js",
     "gen:react": "tsc && node dist/generate-react.js",
     "gen:react:jdesign": "PROJECT_ID=jdesign tsc && PROJECT_ID=jdesign node dist/generate-react.js",
+    "gen:react:ling": "PROJECT_ID=ling tsc && PROJECT_ID=ling node dist/generate-react.js",
     "generate": "tsc && node dist/generate.js && node dist/generate-react.js && PROJECT_ID=jdesign node dist/generate-react.js"
   },
   "devDependencies": {

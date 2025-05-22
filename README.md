@@ -9,8 +9,8 @@ NutUI Icons 是统一生产、管理 NutUI 各框架的 Icons 组件资源的仓
 - Vue: [@nutui/icons-vue](./packages/icons-vue) [![NPM version](https://img.shields.io/npm/v/@nutui/icons-vue.svg?style=flat)](https://npmjs.org/package/@nutui/icons-vue) [![NPM downloads](http://img.shields.io/npm/dm/@nutui/icons-vue.svg?style=flat)](https://npmjs.org/package/@nutui/icons-vue)
 - Vue-Taro: [@nutui/icons-vue-taro](./packages/icons-vue) [![NPM version](https://img.shields.io/npm/v/@nutui/icons-vue-taro.svg?style=flat)](https://npmjs.org/package/@nutui/icons-vue-taro) [![NPM downloads](http://img.shields.io/npm/dm/@nutui/icons-vue-taro.svg?style=flat)](https://npmjs.org/package/@nutui/icons-vue-taro)
 - React: [@nutui/icons-react](./packages/icons-react) [![NPM version](https://img.shields.io/npm/v/@nutui/icons-react.svg?style=flat)](https://npmjs.org/package/@nutui/icons-react) [![NPM downloads](http://img.shields.io/npm/dm/@nutui/icons-react.svg?style=flat)](https://npmjs.org/package/@nutui/icons-react)
-- React-Taro: `建设中`
-- React Native: `建设中`
+- React-Taro: [@nutui/icons-react-taro](./packages/icons-react-taro) [![NPM version](https://img.shields.io/npm/v/@nutui/icons-react-taro.svg?style=flat)](https://npmjs.org/package/@nutui/icons-react-taro) [![NPM downloads](http://img.shields.io/npm/dm/@nutui/icons-react-taro.svg?style=flat)](https://npmjs.org/package/@nutui/icons-react-taro)
+
 
 ## 开源协议
 

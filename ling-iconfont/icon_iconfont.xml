@@ -1,0 +1,13 @@
+<?xml version="1.0" encoding="utf-8"?>
+  <resources>
+  <string name="ling_icon_font_valign_center">&#xe084;</string> <!--font-valign-center-->
+  <string name="ling_icon_font_bold">&#xe46b;</string> <!--font-bold-->
+  <string name="ling_icon_font_delete_line">&#xe50e;</string> <!--font-delete-line-->
+  <string name="ling_icon_font_underline">&#xe44e;</string> <!--font-underline-->
+  <string name="ling_icon_font_align_center">&#xe67a;</string> <!--font-align-center-->
+  <string name="ling_icon_font_valign_top">&#xeead;</string> <!--font-valign-top-->
+  <string name="ling_icon_font_align_left">&#xe5d5;</string> <!--font-align-left-->
+  <string name="ling_icon_font_italic">&#xee40;</string> <!--font-italic-->
+  <string name="ling_icon_font_valign_bottom">&#xedd2;</string> <!--font-valign-bottom-->
+  <string name="ling_icon_font_align_right">&#xe77d;</string> <!--font-align-right-->
+  </resources>

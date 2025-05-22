@@ -91,6 +91,7 @@ let entryLib = `/** 此文件由 script generate 脚本生成 */
     import config from '../../../../iconfont/config.json';
     export { IconFont, config, configure };
 \n`;
+
 let entryLibDTS = `/** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
     import { configure } from "../configure";
@@ -127,7 +128,6 @@ new glob.Glob(pattern, {},(err, files) => {
         const componentName = camelCase(iconFontName, {
             pascalCase: true
         })
-
         entryArray.push(componentName)
         entryLib += `export { default as ${componentName} } from '../components/${componentName}'\n`
         entryEs += `export { default as ${componentName} } from "./icons/${componentName}.js";\n`;

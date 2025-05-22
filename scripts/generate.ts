@@ -187,14 +187,12 @@ export { IconFont, config };
 
     readFile(filepath, { encoding: 'utf-8' }).then(res => {
 
-
       let g = optimize(res).data;
       const ast: any = parse(g).children[0];
       let pathds: string[] = ast.children.map((item: any) => {
         return item.properties.d;
       })
       let viewBox = ast.properties.viewBox;
-
 
       outputFile(`${process.cwd()}/packages/icons-vue/src/components/${filename}.vue`, getSvgTemplate(viewBox, pathds, name), 'utf8', (error) => {
         consola.success(`${filename} 文件写入成功`);
@@ -205,14 +203,12 @@ export { IconFont, config };
       });
     })
   })
-
   outputFile(`${process.cwd()}/packages/icons-vue/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
     consola.success(`icons-vue ES 入口文件文件写入成功`);
   });
   outputFile(`${process.cwd()}/packages/icons-vue/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
     consola.success(`icons-vue Lib 入口文件文件写入成功`);
   });
-
   outputFile(`${process.cwd()}/packages/icons-vue-taro/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
     consola.success(`icons-vue-taro ES 入口文件文件写入成功`);
   });

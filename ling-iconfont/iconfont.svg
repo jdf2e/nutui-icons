@@ -1,0 +1,21 @@
+<?xml version="1.0" standalone="no"?>
+    <!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+    <svg xmlns="http://www.w3.org/2000/svg">
+      <metadata>Copyright (C) 2019 by original authors @ master Gao</metadata>
+      <defs>
+        <font id="iconfont" horiz-adv-x="1024" vert-adv-y="1024" >
+          <font-face font-family="iconfont" font-weight="500" font-stretch="normal" units-per-em="1024" ascent="896" descent="-128" />
+          <missing-glyph />
+          <glyph glyph-name="ling-icon-font-valign-center" unicode="&#xe084;" d="M512 896v-384m0 0l-128 128m128-128l128 128m-128-768v384m0 0l-128-128m128 128l128-128m-576 256h896z" horiz-adv-x="1024" vert-adv-y="1024" />
+          <glyph glyph-name="ling-icon-font-bold" unicode="&#xe46b;" d="M268.8 64a12.8 12.8 0 0 0-12.8 12.8v614.4c0 7.04 5.76 12.8 12.8 12.8h254.34c112.26 0 200.32-74.94 200.32-170.05 0-52.1-30.02-98.75-76.42-128 71.62-27.46 120.96-87.81 120.96-160 0-101.5-91.01-181.95-206.14-181.95h-293.06z m241.73 536.7h-123.84v-157.24h123.84c49.41 0 81.28 35.65 81.28 78.59 0 44.8-31.87 78.66-81.28 78.65z m29.05-433.4c57.09 0 95.81 37.5 95.81 87.8 0 49.34-38.72 88.64-95.81 88.64h-152.96v-176.44h152.96z" horiz-adv-x="1024" vert-adv-y="1024" />
+          <glyph glyph-name="ling-icon-font-delete-line" unicode="&#xe50e;" d="M128 384h768zM238.08 704a32 32 0 0 1-30.34-21.89l-17.4-52.22-60.68 20.22 17.41 52.23a96 96 0 0 0 91.01 65.66h547.71a96 96 0 0 0 91.07-65.66l17.41-52.23-60.67-20.22-17.41 52.22a32 32 0 0 1-30.33 21.89h-227.78v-352h-92.16v352h-227.84z m227.84-416v-225.28h-107.52v-62.72h307.2v62.72h-107.52v225.28h-92.16z" horiz-adv-x="1024" vert-adv-y="1024" />
+          <glyph glyph-name="ling-icon-font-underline" unicode="&#xe44e;" d="M288 768v-352a224 224 0 0 1 224-224 224 224 0 0 1 224 224v352m-512-736h576z" horiz-adv-x="1024" vert-adv-y="1024" />
+          <glyph glyph-name="ling-icon-font-align-center" unicode="&#xe67a;" d="M128 704h768m-640-192h512m-640-192h768m-640-192h512z" horiz-adv-x="1024" vert-adv-y="1024" />
+          <glyph glyph-name="ling-icon-font-valign-top" unicode="&#xeead;" d="M512-64v640m0 0l-224-224m224 224l224-224m-672 416h896z" horiz-adv-x="1024" vert-adv-y="1024" />
+          <glyph glyph-name="ling-icon-font-align-left" unicode="&#xe5d5;" d="M128 704h768m-768-192h512m-512-192h768m-768-192h512z" horiz-adv-x="1024" vert-adv-y="1024" />
+          <glyph glyph-name="ling-icon-font-italic" unicode="&#xee40;" d="M750.08 640h-116.54l-142.92-512h116.68l-17.92-64h-333.38l17.92 64h116.61l142.91 512h-116.67l17.92 64h333.31l-17.92-64z" horiz-adv-x="1024" vert-adv-y="1024" />
+          <glyph glyph-name="ling-icon-font-valign-bottom" unicode="&#xedd2;" d="M512 832v-640m0 0l-224 224m224-224l224 224m-672-416h896z" horiz-adv-x="1024" vert-adv-y="1024" />
+          <glyph glyph-name="ling-icon-font-align-right" unicode="&#xe77d;" d="M128 704h768m-512-192h512m-768-192h768m-512-192h512z" horiz-adv-x="1024" vert-adv-y="1024" />
+        </font>
+      </defs>
+    </svg>

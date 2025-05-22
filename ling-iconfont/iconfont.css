@@ -1,0 +1,58 @@
+
+  @font-face {
+    font-family: 'iconfont';
+    src: url('iconfont.eot'); /* IE9 */
+    src: url('iconfont.eot#iefix') format('embedded-opentype') /* IE6-IE8 */,
+		url('iconfont.woff2') format('woff2') /* chrome、firefox */,
+		url('iconfont.woff') format('woff') /* chrome、firefox */,
+		url('iconfont.ttf') format('truetype') /* chrome、firefox、opera、Safari, Android, iOS 4.2+ */,
+		url('iconfont.svg#iconfont') format('svg') /* iOS 4.1- */;
+  }
+
+  .ling-iconfont{
+    font-family: 'iconfont';
+    font-size: 16px;
+    font-style: normal;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+  }
+  
+  .ling-icon-font-valign-center::before {
+    content: "\e084";
+  }
+
+  .ling-icon-font-bold::before {
+    content: "\e46b";
+  }
+
+  .ling-icon-font-delete-line::before {
+    content: "\e50e";
+  }
+
+  .ling-icon-font-underline::before {
+    content: "\e44e";
+  }
+
+  .ling-icon-font-align-center::before {
+    content: "\e67a";
+  }
+
+  .ling-icon-font-valign-top::before {
+    content: "\eead";
+  }
+
+  .ling-icon-font-align-left::before {
+    content: "\e5d5";
+  }
+
+  .ling-icon-font-italic::before {
+    content: "\ee40";
+  }
+
+  .ling-icon-font-valign-bottom::before {
+    content: "\edd2";
+  }
+
+  .ling-icon-font-align-right::before {
+    content: "\e77d";
+  }
