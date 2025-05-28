@@ -1,0 +1,8 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="24" height="24.91455078125" viewBox="0 0 24 24.91455078125">
+  <defs></defs>
+  <g style="mix-blend-mode:pass-through;opacity: 1;" transform="matrix(1,0,0,1,0,0.91455078125)">
+    <g style="mix-blend-mode:pass-through;opacity: 1;" transform="matrix(0.7071067690849304,-0.7071067690849304,0.7071067690849304,0.7071067690849304,2.5858001708984375,11.999996185302734)">
+      <path d="M1 0C1.552 0 2 0.448 2 1L2 9.192L17.264 9.192C17.816 9.192 18.264 9.64 18.264 10.192C18.264 10.745 17.816 11.192 17.264 11.192L1 11.192C0.448 11.192 0 10.745 0 10.192L0 1C0 0.448 0.448 0 1 0Z" fill-rule="EVENODD" fill="currentColor" fill-opacity="1" style="mix-blend-mode:normal"/>
+    </g>
+  </g>
+</svg>

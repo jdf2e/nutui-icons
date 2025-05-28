@@ -1,12 +1,61 @@
 export default {
+  'ling-icon-default': 59217,// default
+  'ling-icon-tool-close': 59570,// tool-close
+  'ling-icon-color-reset': 59022,// color-reset
+  'ling-icon-font-align-right1': 58946,// font-align-right
   'ling-icon-font-valign-center': 57476,// font-valign-center
+  'ling-icon-rotate-right': 57370,// rotate-right
+  'ling-icon-sure-btn': 61504,// sure-btn
+  'ling-icon-font-italic1': 60647,// font-italic
   'ling-icon-font-bold': 58475,// font-bold
+  'ling-icon-crop-916': 60317,// crop-916
+  'ling-icon-font-align-left1': 62632,// font-align-left
   'ling-icon-font-delete-line': 58638,// font-delete-line
+  'ling-icon-text': 59472,// text
   'ling-icon-font-underline': 58446,// font-underline
+  'ling-icon-btn-zoom-in': 57699,// btn-zoom-in
+  'ling-icon-btn-crop': 58702,// btn-crop
   'ling-icon-font-align-center': 59002,// font-align-center
+  'ling-icon-rotate-horizontal': 61158,// rotate-horizontal
+  'ling-icon-arrow-bottom': 59943,// arrow-bottom
+  'ling-icon-btn-replace-image': 62646,// btn-replace-image
+  'ling-icon-close-btn': 62637,// close-btn
+  'ling-icon-arrow-left': 59391,// arrow-left
+  'ling-icon-font': 59392,// font
+  'ling-icon-arrow-right': 59761,// arrow-right
+  'ling-icon-keyboard': 59158,// keyboard
   'ling-icon-font-valign-top': 61101,// font-valign-top
+  'ling-icon-move': 59664,// move
+  'ling-icon-rotate-left': 58737,// rotate-left
+  'ling-icon-pileup': 57419,// pileUp
+  'ling-icon-color-checked': 57851,// color-checked
+  'ling-icon-font-valign-top1': 59144,// font-valign-top
   'ling-icon-font-align-left': 58837,// font-align-left
   'ling-icon-font-italic': 60992,// font-italic
+  'ling-icon-crop-34': 62322,// crop-34
+  'ling-icon-crop-43': 60663,// crop-43
+  'ling-icon-delete': 60769,// delete
+  'ling-icon-group': 59415,// group
+  'ling-icon-crop-default': 61615,// crop-default
+  'ling-icon-move-layer': 58665,// move-layer
+  'ling-icon-btn-cutout': 61691,// btn-cutout
+  'ling-icon-font-align-center1': 61159,// font-align-center
+  'ling-icon-font-underline1': 60692,// font-underline
   'ling-icon-font-valign-bottom': 60882,// font-valign-bottom
+  'ling-icon-crop-169': 61779,// crop-169
+  'ling-icon-style': 57881,// style
+  'ling-icon-template': 61059,// template
+  'ling-icon-material': 61353,// material
+  'ling-icon-font-valign-bottom1': 62004,// font-valign-bottom
+  'ling-icon-crop-11': 60914,// crop-11
+  'ling-icon-mine': 59915,// mine
+  'ling-icon-arrow-top': 62677,// arrow-top
+  'ling-icon-font-delete-line1': 60750,// font-delete-line
   'ling-icon-font-align-right': 59261,// font-align-right
+  'ling-icon-crop-reset': 62148,// crop-reset
+  'ling-icon-crop-free': 58904,// crop-free
+  'ling-icon-rotate-vertical': 57971,// rotate-vertical
+  'ling-icon-btn-zoom-out': 60363,// btn-zoom-out
+  'ling-icon-font-valign-center1': 61458,// font-valign-center
+  'ling-icon-font-bold1': 59108,// font-bold
 }
