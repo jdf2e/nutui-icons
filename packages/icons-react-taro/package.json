@@ -40,6 +40,7 @@
   },
   "devDependencies": {
     "@nutui/nutui-react": "^1.4.2",
+    "@tarojs/components": "4.0.12",
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",

@@ -37,7 +37,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: ['react', 'react-dom', 'classnames', './internal', './configure'],
+      external: ['react', 'react-dom', 'classnames', './internal', './configure', '@tarojs/components'],
       // input,
       output: {
         paths: (id) => {

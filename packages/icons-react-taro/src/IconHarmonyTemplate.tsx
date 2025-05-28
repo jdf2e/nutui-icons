@@ -1,5 +1,6 @@
 import React, {FunctionComponent} from "react";
 import {globalConfig} from "./internal";
+import { Image } from '@tarojs/components'
 
 export interface SVG_IconProps {
     className?: string
@@ -73,7 +74,9 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         }
     }
 
-    return React.createElement<any>('Image', {
+    const imageTag = process.env.TARO_ENV === 'dynamic' ? Image : 'Image'
+
+    return React.createElement<any>(imageTag, {
         src: svgSrc,
         className: classes(),
         style: getStyle(),
@@ -81,4 +84,5 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         svg: true
     }, children)
 }
+
 export default Icon

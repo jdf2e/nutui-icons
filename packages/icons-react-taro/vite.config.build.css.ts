@@ -15,6 +15,8 @@ export default defineConfig({
     assetsInlineLimit: 1024 * 200,
     rollupOptions: {
       input,
+      // 确保外部化处理那些你不想打包进库的依赖
+      external: ['@tarojs/components'],
       output: {
         entryFileNames: '[name].js',
         assetFileNames: `[name].[ext]`,
