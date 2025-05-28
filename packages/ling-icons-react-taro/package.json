@@ -1,6 +1,6 @@
 {
   "name": "@nutui/ling-icons-react-taro",
-  "version": "0.0.2-beta.0",
+  "version": "0.0.2-beta.1",
   "description": "ling icons",
   "scripts": {
     "dev": "vite",
