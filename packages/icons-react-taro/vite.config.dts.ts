@@ -17,7 +17,7 @@ export default defineConfig({
   build: {
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: ['react', 'react-dom', '@tarojs/components'],
+      external: ['@tarojs/components'],
     },
     outDir: 'dist/types',
     lib: {
