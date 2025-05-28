@@ -1,7 +1,7 @@
 {
   "name": "@nutui/icons-react-taro",
-  "version": "3.0.1",
-  "description": "京东风格的icon库-V15",
+  "version": "4.0.1-beta.0",
+  "description": "京东风格的icon库-V15，支持 ios/安卓",
   "scripts": {
     "dev": "vite",
     "build": "vite build --config vite.config.build.es.ts && vite build --config vite.config.build.umd.ts && vite build --config vite.config.build.css.ts && vite build --config vite.config.dts.ts",
