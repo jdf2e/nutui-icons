@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><path d="M48 24C48 37.255 37.255 48 24 48C10.745 48 0 37.255 0 24C0 10.745 10.745 0 24 0C37.255 0 48 10.745 48 24ZM16.427 23.293C16.036 23.684 16.036 24.317 16.427 24.708L27.159 35.44C27.55 35.83 28.183 35.831 28.573 35.44L29.28 34.733C29.671 34.343 29.671 33.709 29.281 33.319L19.962 24.001L29.281 14.682C29.671 14.292 29.671 13.658 29.281 13.268L28.573 12.561C28.183 12.17 27.55 12.17 27.159 12.561L16.427 23.293Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+  viewBox="0 0 48 48">
+  <defs />
+  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+      <path
+        d="M48 24C48 37.255 37.255 48 24 48C10.745 48 0 37.255 0 24C0 10.745 10.745 0 24 0C37.255 0 48 10.745 48 24ZM16.427 23.293C16.036 23.684 16.036 24.317 16.427 24.708L27.159 35.44C27.55 35.83 28.183 35.831 28.573 35.44L29.28 34.733C29.671 34.343 29.671 33.709 29.281 33.319L19.962 24.001L29.281 14.682C29.671 14.292 29.671 13.658 29.281 13.268L28.573 12.561C28.183 12.17 27.55 12.17 27.159 12.561L16.427 23.293Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+    </g>
+  </g>
+</svg>

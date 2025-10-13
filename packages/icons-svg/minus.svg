@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,12,22.5)"><path d="M1 0C0.448 0 0 0.448 0 1L0 2C0 2.552 0.448 3 1 3C19.26 3 4.74 3 23 3C23.552 3 24 2.552 24 2L24 1C24 0.448 23.552 0 23 0C4.74 0 19.26 0 1 0Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+  viewBox="0 0 48 48">
+  <defs />
+  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,12,22.5)">
+      <path
+        d="M1 0C0.448 0 0 0.448 0 1L0 2C0 2.552 0.448 3 1 3C19.26 3 4.74 3 23 3C23.552 3 24 2.552 24 2L24 1C24 0.448 23.552 0 23 0C4.74 0 19.26 0 1 0Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+    </g>
+  </g>
+</svg>

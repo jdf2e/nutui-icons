@@ -1,1 +1,14 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><path d="M34.414 18.293C34.805 18.683 34.805 19.317 34.414 19.707L21.707 32.414C21.317 32.805 20.683 32.805 20.293 32.414L12.586 24.707C12.195 24.317 12.195 23.683 12.586 23.293L13.293 22.586C13.683 22.195 14.317 22.195 14.707 22.586L21 28.879L32.293 17.586C32.683 17.195 33.317 17.195 33.707 17.586L34.414 18.293Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M48 24C48 10.745 37.255 0 24 0C10.745 0 0 10.745 0 24C0 37.255 10.745 48 24 48C37.255 48 48 37.255 48 24ZM45 24C45 35.598 35.598 45 24 45C12.402 45 3 35.598 3 24C3 12.402 12.402 3 24 3C35.598 3 45 12.402 45 24Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+  viewBox="0 0 48 48">
+  <defs />
+  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+      <path
+        d="M34.414 18.293C34.805 18.683 34.805 19.317 34.414 19.707L21.707 32.414C21.317 32.805 20.683 32.805 20.293 32.414L12.586 24.707C12.195 24.317 12.195 23.683 12.586 23.293L13.293 22.586C13.683 22.195 14.317 22.195 14.707 22.586L21 28.879L32.293 17.586C32.683 17.195 33.317 17.195 33.707 17.586L34.414 18.293Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+      <path
+        d="M48 24C48 10.745 37.255 0 24 0C10.745 0 0 10.745 0 24C0 37.255 10.745 48 24 48C37.255 48 48 37.255 48 24ZM45 24C45 35.598 35.598 45 24 45C12.402 45 3 35.598 3 24C3 12.402 12.402 3 24 3C35.598 3 45 12.402 45 24Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+    </g>
+  </g>
+</svg>

@@ -1,1 +1,16 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,1.9998779296875)"><path d="M0.279 0.629C0.761 -0.046 1.697 -0.202 2.372 0.279C4.058 1.483 5.145 3.355 5.354 5.417L5.718 9L39.211 9C42.469 9 45.012 11.815 44.683 15.055L43.222 29.459C42.73 34.309 38.646 38 33.771 38L14.23 38C9.354 38 5.27 34.309 4.778 29.459L2.37 5.72C2.248 4.517 1.613 3.424 0.629 2.721C-0.046 2.24 -0.202 1.303 0.279 0.629Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M12 43C12 44.657 10.657 46 9 46C7.343 46 6 44.657 6 43C6 41.343 7.343 40 9 40C10.657 40 12 41.343 12 43Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M39 46C40.657 46 42 44.657 42 43C42 41.343 40.657 40 39 40C37.343 40 36 41.343 36 43C36 44.657 37.343 46 39 46Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+  viewBox="0 0 48 48">
+  <defs />
+  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,1.9998779296875)">
+      <path
+        d="M0.279 0.629C0.761 -0.046 1.697 -0.202 2.372 0.279C4.058 1.483 5.145 3.355 5.354 5.417L5.718 9L39.211 9C42.469 9 45.012 11.815 44.683 15.055L43.222 29.459C42.73 34.309 38.646 38 33.771 38L14.23 38C9.354 38 5.27 34.309 4.778 29.459L2.37 5.72C2.248 4.517 1.613 3.424 0.629 2.721C-0.046 2.24 -0.202 1.303 0.279 0.629Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+      <path d="M12 43C12 44.657 10.657 46 9 46C7.343 46 6 44.657 6 43C6 41.343 7.343 40 9 40C10.657 40 12 41.343 12 43Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+      <path
+        d="M39 46C40.657 46 42 44.657 42 43C42 41.343 40.657 40 39 40C37.343 40 36 41.343 36 43C36 44.657 37.343 46 39 46Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+    </g>
+  </g>
+</svg>

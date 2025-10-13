@@ -1,1 +1,11 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,4,0)"><path d="M35 4.582C37.932 5.768 40 8.643 40 12L40 40C40 44.418 36.418 48 32 48L8 48C3.582 48 0 44.418 0 40L0 12C0 8.643 2.068 5.768 5 4.582L5 6C5 7.933 5.683 9.583 7.05 10.95C8.417 12.317 10.067 13 12 13L28 13C29.933 13 31.583 12.317 32.95 10.95C34.317 9.583 35 7.933 35 6L35 4.582ZM8 4L8 6C8 8.209 9.791 10 12 10L28 10C30.209 10 32 8.209 32 6L32 4C32 3.724 31.972 3.454 31.919 3.194C31.546 1.371 29.933 0 28 0L12 0C9.791 0 8 1.791 8 4ZM9 22C9 22.552 9.448 23 10 23L30 23C30.552 23 31 22.552 31 22L31 21C31 20.448 30.552 20 30 20L10 20C9.448 20 9 20.448 9 21L9 22ZM9 30L9 31C9 31.552 9.448 32 10 32L24 32C24.552 32 25 31.552 25 31L25 30C25 29.448 24.552 29 24 29L10 29C9.448 29 9 29.448 9 30Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+  viewBox="0 0 48 48">
+  <defs />
+  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,4,0)">
+      <path
+        d="M35 4.582C37.932 5.768 40 8.643 40 12L40 40C40 44.418 36.418 48 32 48L8 48C3.582 48 0 44.418 0 40L0 12C0 8.643 2.068 5.768 5 4.582L5 6C5 7.933 5.683 9.583 7.05 10.95C8.417 12.317 10.067 13 12 13L28 13C29.933 13 31.583 12.317 32.95 10.95C34.317 9.583 35 7.933 35 6L35 4.582ZM8 4L8 6C8 8.209 9.791 10 12 10L28 10C30.209 10 32 8.209 32 6L32 4C32 3.724 31.972 3.454 31.919 3.194C31.546 1.371 29.933 0 28 0L12 0C9.791 0 8 1.791 8 4ZM9 22C9 22.552 9.448 23 10 23L30 23C30.552 23 31 22.552 31 22L31 21C31 20.448 30.552 20 30 20L10 20C9.448 20 9 20.448 9 21L9 22ZM9 30L9 31C9 31.552 9.448 32 10 32L24 32C24.552 32 25 31.552 25 31L25 30C25 29.448 24.552 29 24 29L10 29C9.448 29 9 29.448 9 30Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+    </g>
+  </g>
+</svg>

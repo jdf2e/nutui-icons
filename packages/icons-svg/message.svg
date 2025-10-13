@@ -1,1 +1,20 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><path d="M14 22C12.895 22 12 22.895 12 24C12 25.105 12.895 26 14 26C15.105 26 16 25.105 16 24C16 22.895 15.105 22 14 22Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M24 22C22.895 22 22 22.895 22 24C22 25.105 22.895 26 24 26C25.105 26 26 25.105 26 24C26 22.895 25.105 22 24 22Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M32 24C32 22.895 32.895 22 34 22C35.105 22 36 22.895 36 24C36 25.105 35.105 26 34 26C32.895 26 32 25.105 32 24Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M24 48C37.255 48 48 37.255 48 24C48 10.745 37.255 0 24 0C10.745 0 0 10.745 0 24C0 31.108 3.09 37.494 8 41.889L8 46C8 47.105 8.895 48 10 48L24 48ZM11 41.889C11 41.036 10.637 40.223 10.001 39.653C5.7 35.804 3 30.219 3 24C3 12.402 12.402 3 24 3C35.598 3 45 12.402 45 24C45 35.598 35.598 45 24 45L11 45L11 41.889Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+  viewBox="0 0 48 48">
+  <defs />
+  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+      <path
+        d="M14 22C12.895 22 12 22.895 12 24C12 25.105 12.895 26 14 26C15.105 26 16 25.105 16 24C16 22.895 15.105 22 14 22Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+      <path
+        d="M24 22C22.895 22 22 22.895 22 24C22 25.105 22.895 26 24 26C25.105 26 26 25.105 26 24C26 22.895 25.105 22 24 22Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+      <path
+        d="M32 24C32 22.895 32.895 22 34 22C35.105 22 36 22.895 36 24C36 25.105 35.105 26 34 26C32.895 26 32 25.105 32 24Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+      <path
+        d="M24 48C37.255 48 48 37.255 48 24C48 10.745 37.255 0 24 0C10.745 0 0 10.745 0 24C0 31.108 3.09 37.494 8 41.889L8 46C8 47.105 8.895 48 10 48L24 48ZM11 41.889C11 41.036 10.637 40.223 10.001 39.653C5.7 35.804 3 30.219 3 24C3 12.402 12.402 3 24 3C35.598 3 45 12.402 45 24C45 35.598 35.598 45 24 45L11 45L11 41.889Z"
+        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+    </g>
+  </g>
+</svg>

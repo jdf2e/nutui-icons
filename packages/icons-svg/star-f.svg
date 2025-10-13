@@ -1,1 +1,17 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs><clipPath id="relay_svg_KcZGxZ"><path d="M0 0L48 0L48 48L0 48L0 0Z"/></clipPath></defs><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g clip-path="url(#relay_svg_KcZGxZ)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><path d="M20.863 1.979C22.11 -0.66 25.89 -0.66 27.137 1.979L31.781 11.802C32.272 12.84 33.252 13.568 34.394 13.741L45.055 15.358C47.843 15.781 48.981 19.157 47.011 21.162L39.082 29.231C38.314 30.013 37.965 31.11 38.142 32.188L39.984 43.398C40.449 46.232 37.419 48.352 34.887 46.963L25.676 41.907C24.633 41.335 23.367 41.335 22.324 41.907L13.113 46.963C10.581 48.352 7.551 46.232 8.016 43.398L9.858 32.188C10.035 31.11 9.686 30.013 8.918 29.231L0.989 21.162C-0.981 19.157 0.157 15.781 2.945 15.358L13.606 13.741C14.748 13.568 15.728 12.84 16.219 11.802L20.863 1.979Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></g></svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+  viewBox="0 0 48 48">
+  <defs>
+    <clipPath id="relay_svg_KcZGxZ">
+      <path d="M0 0L48 0L48 48L0 48L0 0Z" />
+    </clipPath>
+  </defs>
+  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+    <g clip-path="url(#relay_svg_KcZGxZ)">
+      <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+        <path
+          d="M20.863 1.979C22.11 -0.66 25.89 -0.66 27.137 1.979L31.781 11.802C32.272 12.84 33.252 13.568 34.394 13.741L45.055 15.358C47.843 15.781 48.981 19.157 47.011 21.162L39.082 29.231C38.314 30.013 37.965 31.11 38.142 32.188L39.984 43.398C40.449 46.232 37.419 48.352 34.887 46.963L25.676 41.907C24.633 41.335 23.367 41.335 22.324 41.907L13.113 46.963C10.581 48.352 7.551 46.232 8.016 43.398L9.858 32.188C10.035 31.11 9.686 30.013 8.918 29.231L0.989 21.162C-0.981 19.157 0.157 15.781 2.945 15.358L13.606 13.741C14.748 13.568 15.728 12.84 16.219 11.802L20.863 1.979Z"
+          fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+      </g>
+    </g>
+  </g>
+</svg>
