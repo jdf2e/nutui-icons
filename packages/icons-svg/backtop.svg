@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <defs />
-  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-      <path
-        d="M33.147 22.515C33.516 22.121 33.506 21.506 33.124 21.124L24.707 12.707C24.317 12.317 23.683 12.317 23.293 12.707L14.876 21.124C14.494 21.506 14.484 22.121 14.853 22.515L15.536 23.245C15.923 23.658 16.574 23.669 16.973 23.269L22.5 17.743L22.5 35C22.5 35.552 22.948 36 23.5 36L24.5 36C25.052 36 25.5 35.552 25.5 35L25.5 17.743L31.026 23.269C31.426 23.669 32.077 23.658 32.464 23.245L33.147 22.515Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-      <path
-        d="M48 24C48 37.255 37.255 48 24 48C10.745 48 0 37.255 0 24C0 10.745 10.745 0 24 0C37.255 0 48 10.745 48 24ZM45 24C45 12.402 35.598 3 24 3C12.402 3 3 12.402 3 24C3 35.598 12.402 45 24 45C35.598 45 45 35.598 45 24Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><path d="M33.147 22.515C33.516 22.121 33.506 21.506 33.124 21.124L24.707 12.707C24.317 12.317 23.683 12.317 23.293 12.707L14.876 21.124C14.494 21.506 14.484 22.121 14.853 22.515L15.536 23.245C15.923 23.658 16.574 23.669 16.973 23.269L22.5 17.743L22.5 35C22.5 35.552 22.948 36 23.5 36L24.5 36C25.052 36 25.5 35.552 25.5 35L25.5 17.743L31.026 23.269C31.426 23.669 32.077 23.658 32.464 23.245L33.147 22.515Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M48 24C48 37.255 37.255 48 24 48C10.745 48 0 37.255 0 24C0 10.745 10.745 0 24 0C37.255 0 48 10.745 48 24ZM45 24C45 12.402 35.598 3 24 3C12.402 3 3 12.402 3 24C3 35.598 12.402 45 24 45C35.598 45 45 35.598 45 24Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>

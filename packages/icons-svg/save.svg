@@ -1,13 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <defs />
-  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,2,2)">
-      <path
-        d="M13 24C12.448 24 12 24.448 12 25L12 26C12 26.552 12.448 27 13 27L31 27C31.552 27 32 26.552 32 26L32 25C32 24.448 31.552 24 31 24L13 24Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-      <path
-        d="M36 0C40.418 0 44 3.582 44 8L44 36C44 40.418 40.418 44 36 44L8 44C3.582 44 0 40.418 0 36L0 8C0 3.582 3.582 0 8 0L36 0ZM8 41L36 41C38.761 41 41 38.761 41 36L41 8C41 5.239 38.761 3 36 3L34 3L34 14C34 15.105 33.105 16 32 16L12 16C10.895 16 10 15.105 10 14L10 3L8 3C5.239 3 3 5.239 3 8L3 36C3 38.761 5.239 41 8 41ZM31 13L31 3L13 3L13 13L31 13Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,2,2)"><path d="M13 24C12.448 24 12 24.448 12 25L12 26C12 26.552 12.448 27 13 27L31 27C31.552 27 32 26.552 32 26L32 25C32 24.448 31.552 24 31 24L13 24Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M36 0C40.418 0 44 3.582 44 8L44 36C44 40.418 40.418 44 36 44L8 44C3.582 44 0 40.418 0 36L0 8C0 3.582 3.582 0 8 0L36 0ZM8 41L36 41C38.761 41 41 38.761 41 36L41 8C41 5.239 38.761 3 36 3L34 3L34 14C34 15.105 33.105 16 32 16L12 16C10.895 16 10 15.105 10 14L10 3L8 3C5.239 3 3 5.239 3 8L3 36C3 38.761 5.239 41 8 41ZM31 13L31 3L13 3L13 13L31 13Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>

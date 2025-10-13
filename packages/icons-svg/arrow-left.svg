@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <defs />
-  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,14.414210319519043,8.578109741210938)">
-      <path
-        d="M16.1076 0.272108C15.7141 -0.0986211 15.0971 -0.0894141 14.7148 0.292894L0.292893 14.7148C-0.0976298 15.1053 -0.0976313 15.7385 0.29289 16.129L14.7849 30.6212C15.1809 31.0171 15.8247 31.0108 16.2128 30.6072L16.9061 29.8863C17.2836 29.4937 17.2775 28.8712 16.8924 28.486L3.82835 15.422L16.8573 2.3931C17.256 1.99431 17.2464 1.34482 16.8358 0.958104L16.1076 0.272108Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,14.414210319519043,8.578109741210938)"><path d="M16.1076 0.272108C15.7141 -0.0986211 15.0971 -0.0894141 14.7148 0.292894L0.292893 14.7148C-0.0976298 15.1053 -0.0976313 15.7385 0.29289 16.129L14.7849 30.6212C15.1809 31.0171 15.8247 31.0108 16.2128 30.6072L16.9061 29.8863C17.2836 29.4937 17.2775 28.8712 16.8924 28.486L3.82835 15.422L16.8573 2.3931C17.256 1.99431 17.2464 1.34482 16.8358 0.958104L16.1076 0.272108Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>

@@ -1,10 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <defs />
-  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,12,12)">
-      <path
-        d="M13.5 1C13.5 0.447715 13.0523 0 12.5 0L11.5 0C10.9477 0 10.5 0.447716 10.5 1L10.5 10.5L1 10.5C0.447715 10.5 0 10.9477 0 11.5L0 12.5C0 13.0523 0.447716 13.5 1 13.5L10.5 13.5L10.5 23C10.5 23.5523 10.9477 24 11.5 24L12.5 24C13.0523 24 13.5 23.5523 13.5 23L13.5 13.5L23 13.5C23.5523 13.5 24 13.0523 24 12.5L24 11.5C24 10.9477 23.5523 10.5 23 10.5L13.5 10.5L13.5 1Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,12,12)"><path d="M13.5 1C13.5 0.447715 13.0523 0 12.5 0L11.5 0C10.9477 0 10.5 0.447716 10.5 1L10.5 10.5L1 10.5C0.447715 10.5 0 10.9477 0 11.5L0 12.5C0 13.0523 0.447716 13.5 1 13.5L10.5 13.5L10.5 23C10.5 23.5523 10.9477 24 11.5 24L12.5 24C13.0523 24 13.5 23.5523 13.5 23L13.5 13.5L23 13.5C23.5523 13.5 24 13.0523 24 12.5L24 11.5C24 10.9477 23.5523 10.5 23 10.5L13.5 10.5L13.5 1Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>

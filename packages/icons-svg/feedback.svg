@@ -1,16 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" width="48" height="48" viewBox="0 0 48 48">
-  <defs />
-  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,4,0)">
-      <path
-        d="M9 21C9 20.448 9.448 20 10 20L30 20C30.552 20 31 20.448 31 21L31 22C31 22.552 30.552 23 30 23L10 23C9.448 23 9 22.552 9 22L9 21Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-      <path
-        d="M10 29C9.448 29 9 29.448 9 30L9 31C9 31.552 9.448 32 10 32L24 32C24.552 32 25 31.552 25 31L25 30C25 29.448 24.552 29 24 29L10 29Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-      <path
-        d="M8 4C8 1.791 9.791 0 12 0L28 0C30.209 0 32 1.791 32 4C36.418 4 40 7.582 40 12L40 40C40 44.418 36.418 48 32 48L8 48C3.582 48 0 44.418 0 40L0 12C0 7.582 3.582 4 8 4ZM12 3C11.448 3 11 3.448 11 4L11 7C11 7.552 11.448 8 12 8L28 8C28.552 8 29 7.552 29 7L29 4C29 3.448 28.552 3 28 3L12 3ZM8 7C5.239 7 3 9.239 3 12L3 40C3 42.761 5.239 45 8 45L32 45C34.761 45 37 42.761 37 40L37 12C37 9.239 34.761 7 32 7C32 9.209 30.209 11 28 11L12 11C9.791 11 8 9.209 8 7Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1" width="48" height="48" viewBox="0 0 48 48"><defs/><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)"><g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,4,0)"><path d="M9 21C9 20.448 9.448 20 10 20L30 20C30.552 20 31 20.448 31 21L31 22C31 22.552 30.552 23 30 23L10 23C9.448 23 9 22.552 9 22L9 21Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M10 29C9.448 29 9 29.448 9 30L9 31C9 31.552 9.448 32 10 32L24 32C24.552 32 25 31.552 25 31L25 30C25 29.448 24.552 29 24 29L10 29Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/><path d="M8 4C8 1.791 9.791 0 12 0L28 0C30.209 0 32 1.791 32 4C36.418 4 40 7.582 40 12L40 40C40 44.418 36.418 48 32 48L8 48C3.582 48 0 44.418 0 40L0 12C0 7.582 3.582 4 8 4ZM12 3C11.448 3 11 3.448 11 4L11 7C11 7.552 11.448 8 12 8L28 8C28.552 8 29 7.552 29 7L29 4C29 3.448 28.552 3 28 3L12 3ZM8 7C5.239 7 3 9.239 3 12L3 40C3 42.761 5.239 45 8 45L32 45C34.761 45 37 42.761 37 40L37 12C37 9.239 34.761 7 32 7C32 9.209 30.209 11 28 11L12 11C9.791 11 8 9.209 8 7Z" fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal"/></g></g></svg>
