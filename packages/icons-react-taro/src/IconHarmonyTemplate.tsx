@@ -13,6 +13,12 @@ export interface SVG_IconProps {
   size?: string | number;
   svg64?: string;
   svgSrc?: string;
+  ariaRole?: string;
+  ariaLabel?: string;
+  ariaRoledescription?: string;
+  ariaHidden?: boolean;
+  ariaChecked?: boolean;
+  ariaSelected?: boolean;
   onClick?: (event: React.MouseEvent) => void;
   children?: React.ReactNode;
   fallback?: boolean;
@@ -43,6 +49,12 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     svgSrc,
     children,
     onClick,
+    ariaRole,
+    ariaLabel,
+    ariaRoledescription,
+    ariaHidden,
+    ariaChecked,
+    ariaSelected,
     fallback = !globalConfig.useSvg,
   } = { ...defaultProps, ...props };
   const handleClick: React.MouseEventHandler = (e) => {
@@ -84,6 +96,12 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
       style: getStyle(),
       onClick: handleClick,
       svg: true,
+      ariaRole,
+      ariaLabel,
+      ariaRoledescription,
+      ariaHidden,
+      ariaChecked,
+      ariaSelected,
     },
     children
   );
