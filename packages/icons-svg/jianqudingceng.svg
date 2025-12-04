@@ -1,9 +1,5 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
-  viewBox="0 0 8.14404296875 2.57952880859375">
-  <defs />
-  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <path
-      d="M0 0C1.11 0.399 2.129 1.041 2.976 1.895L3.362 2.284C3.753 2.678 4.391 2.678 4.782 2.284L5.168 1.895C6.015 1.041 7.034 0.399 8.144 0L0 0L0 0L0 0Z"
-      fill-rule="EVENODD" fill="#ffffff" fill-opacity="1" style="mix-blend-mode:normal" />
-  </g>
+<svg viewBox="0 0 48 48" xmlns="http://www.w3.org/2000/svg">
+  <path
+    d="M0 0a47.09 47.09 0 0 1 17.56 11.20l2.24 2.24c2.30 2.30 6.07 2.30 8.37 0l2.30-2.24a48.11 48.11 0 0 1 17.52-11.20h-47.99z"
+    fill="#FFF" p-id="0"></path>
 </svg>

@@ -1,14 +1,14 @@
 <svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
-  viewBox="0 0 30 30">
+  viewBox="0 0 48 48">
   <defs>
     <clipPath id="relay_svg_t5Osjl">
-      <path d="M0 0L30 0L30 30L0 30L0 0Z" />
+      <path d="M0 0L48 0L48 48L0 48L0 0Z" />
     </clipPath>
   </defs>
   <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
     <g clip-path="url(#relay_svg_t5Osjl)">
-      <g style="mix-blend-mode:normal;opacity:1" transform="matrix(1,0,0,1,1,12.485)">
-        <path d="M24.5 0L28 5.03L0 5.03L0 3.03L22.5 3.03L24.5 0L24.5 0L24.5 0Z" fill-rule="NONZERO" fill="#000000"
+      <g style="mix-blend-mode:normal;opacity:1" transform="matrix(1,0,0,1,1.6,19.976)">
+        <path d="M39.2 0L44.8 8.048L0 8.048L0 4.848L36 4.848L39.2 0L39.2 0L39.2 0Z" fill-rule="NONZERO" fill="#000000"
           fill-opacity="1" style="mix-blend-mode:normal" />
       </g>
     </g>
