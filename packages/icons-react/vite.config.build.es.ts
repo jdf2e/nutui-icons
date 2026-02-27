@@ -1,7 +1,7 @@
-import { defineConfig } from 'vite'
-import {resolve} from 'path'
-import react from '@vitejs/plugin-react'
-import {iconsConfig} from './src/components/iconsConfig'
+import { defineConfig } from "vite";
+import { resolve } from "path";
+import react from "@vitejs/plugin-react";
+import { iconsConfig } from "./src/components/iconsConfig";
 
 let input = {
   IconFont: `./src/IconFont.tsx`,
@@ -22,26 +22,31 @@ export default defineConfig({
   build: {
     lib: {
       entry: input,
-      formats: ['es']
+      formats: ["es"],
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: ['react', 'react-dom', 'classnames', './internal', './configure'],
+      external: [
+        "react",
+        "react-dom",
+        "react/jsx-runtime",
+        "classnames",
+        "./internal",
+        "./configure",
+      ],
       // input,
       output: {
         paths: (id) => {
-          return /internal/.test(id)
-              ? `./internal.js`
-              : id
+          return /internal/.test(id) ? `./internal.js` : id;
         },
-        entryFileNames: '[name].js',
-        dir: resolve(__dirname, './dist/es/icons'),
+        entryFileNames: "[name].js",
+        dir: resolve(__dirname, "./dist/es/icons"),
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
-          react: 'React',
-          'react-dom': 'ReactDOM'
-        }
-      }
-    }
-  }
-})
+          react: "React",
+          "react-dom": "ReactDOM",
+        },
+      },
+    },
+  },
+});

@@ -20,7 +20,7 @@ iconsConfig.map((name) => {
 export default defineConfig({
   publicDir: false,
   plugins: [
-    react({ jsxRuntime: "classic" }),
+    react(),
     {
       name: "revert Process.env",
       apply: "build",
@@ -31,7 +31,7 @@ export default defineConfig({
           .toString()
           .replace(
             `(void 0).TARO_ENV === "h5"`,
-            `process.env.TARO_ENV === "h5"`
+            `process.env.TARO_ENV === "h5"`,
           );
         fs.writeFileSync(esFile, fileContent);
         console.log("File rewritten successfully!");
@@ -49,6 +49,7 @@ export default defineConfig({
       external: [
         "react",
         "react-dom",
+        "react/jsx-runtime",
         "classnames",
         "./internal",
         "./configure",
