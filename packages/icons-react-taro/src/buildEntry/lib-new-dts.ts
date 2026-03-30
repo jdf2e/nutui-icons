@@ -79,6 +79,7 @@ export { default as FollowAddedF } from "../components/FollowAddedF";
 export { default as FollowAdded } from "../components/FollowAdded";
 export { default as Footprint } from "../components/Footprint";
 export { default as Gardener } from "../components/Gardener";
+export { default as GiftOrder } from "../components/GiftOrder";
 export { default as Gift } from "../components/Gift";
 export { default as Health } from "../components/Health";
 export { default as HeartF } from "../components/HeartF";

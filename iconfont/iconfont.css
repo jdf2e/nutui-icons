@@ -478,7 +478,7 @@
   content: "\f15b";
 }
 
-.nut-icon-always-buy::before {
+.nut-icon-always-buy-f::before {
   content: "\ed73";
 }
 
@@ -712,6 +712,10 @@
 
 .nut-icon-filter-f::before {
   content: "\f037";
+}
+
+.nut-icon-gift-order::before {
+  content: "\f13d";
 }
 
 .nut-icon-heart-f::before {
