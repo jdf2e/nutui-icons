@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-react-taro",
-  "version": "3.0.1",
+  "version": "3.0.2-beta.6",
   "description": "京东风格的icon库-V15",
   "scripts": {
     "dev": "vite",
@@ -43,6 +43,7 @@
     "@types/react": "^18.0.26",
     "@types/react-dom": "^18.0.9",
     "@vitejs/plugin-react": "^3.0.0",
+    "@tarojs/components": "4.1.7-beta.3",
     "camelcase": "^7.0.1",
     "react": "^18.2.0",
     "react-dom": "^18.2.0",
