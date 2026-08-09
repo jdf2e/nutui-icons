@@ -1,0 +1,23 @@
+scripts/verify-with-nutui-react.sh
+  s_05468628a8b613::t_eee4ad7852aa97 1-78
+package.json
+  s_05468628a8b613::t_d94bda7884f872 9-11
+README.md
+  s_05468628a8b613::t_481ea5bce92e71 15-48
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "a5b8f5d75ff441398671c446c1d61882382de46c",
+  "prompts": {},
+  "sessions": {
+    "s_05468628a8b613": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ba2c6144-793f-43c0-ad5c-c1e933a654d0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}
