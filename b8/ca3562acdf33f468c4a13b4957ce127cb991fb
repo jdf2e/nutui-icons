@@ -1,0 +1,23 @@
+docs/how-to-add-svg-icons.md
+  s_6013493981faed::t_b3e16fdc1ff780 1-6,17-139
+  s_6013493981faed::t_12fc12ecac1b76 7-16
+scripts/generate-iconfont.py
+  s_6013493981faed::t_6ff3c2e84b4a1b 198-199
+  s_6013493981faed::t_029145a399b15b 1-197,200-417
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "b8ca3562acdf33f468c4a13b4957ce127cb991fb",
+  "prompts": {},
+  "sessions": {
+    "s_6013493981faed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "190e43be-b611-4414-94e4-08acb77c7700",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}
