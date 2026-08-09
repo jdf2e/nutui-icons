@@ -1,0 +1,43 @@
+packages/icons-svg/share.svg
+  s_6013493981faed::t_ab42b599aef64d 5
+  s_6013493981faed::t_083031566d06d8 7
+packages/icons-svg/arrow-left.svg
+  s_6013493981faed::t_083031566d06d8 7
+  s_6013493981faed::t_ab42b599aef64d 5
+iconfont/iconfont.svg
+  s_6013493981faed::t_b80f16b9c2a8e2 172
+  s_6013493981faed::t_6b2e1dd0af2392 169
+  s_6013493981faed::t_62762f12f36eeb 154
+  s_6013493981faed::t_f65fce5d97a730 92
+packages/icons-react-taro/package.json
+  s_6013493981faed::t_b2dff32d65e658 3
+iconfont/iconfont.js
+  s_6013493981faed::t_6040cb181080a1 3
+packages/icons-svg/config.json
+  s_6013493981faed::t_ec241495074780 78
+  s_6013493981faed::t_347a14b618949d 13
+  s_6013493981faed::t_4a78cedd0723eb 117
+  s_6013493981faed::t_ec804823b2a158 158
+packages/icons-svg/more.svg
+  s_6013493981faed::t_083031566d06d8 7
+  s_6013493981faed::t_ab42b599aef64d 5
+packages/icons-svg/gift.svg
+  s_6013493981faed::t_ab42b599aef64d 1-6,8-9
+  s_6013493981faed::t_083031566d06d8 7
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "e86cbeb5543120c50544392fecd2cc656f92c705",
+  "prompts": {},
+  "sessions": {
+    "s_6013493981faed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "190e43be-b611-4414-94e4-08acb77c7700",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}
