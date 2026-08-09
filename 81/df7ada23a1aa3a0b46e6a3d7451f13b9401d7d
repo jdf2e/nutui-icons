@@ -8,7 +8,7 @@ packages/icons-vue/src/buildEntry/lib-new.ts
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.5.7",
-  "base_commit_sha": "067639c2abf384ae6b92c97ccd0adb2d60f9bcf0",
+  "base_commit_sha": "81df7ada23a1aa3a0b46e6a3d7451f13b9401d7d",
   "prompts": {},
   "sessions": {
     "s_37e17c3895f474": {
