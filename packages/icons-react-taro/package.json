@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-react-taro",
-  "version": "3.0.2-cpp.3.beta.9",
+  "version": "3.0.2-cpp.3.beta.10",
   "description": "京东风格的icon库-V15",
   "scripts": {
     "dev": "vite",
