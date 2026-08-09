@@ -2,14 +2,9 @@
   viewBox="0 0 48 48">
   <defs />
   <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,4,21)">
-      <path d="M3 6C4.65686 6 6 4.65685 6 3C6 1.34315 4.65686 0 3 0C1.34314 0 0 1.34315 0 3C0 4.65685 1.34314 6 3 6Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
       <path
-        d="M23 3C23 4.65685 21.6569 6 20 6C18.3431 6 17 4.65685 17 3C17 1.34315 18.3431 0 20 0C21.6569 0 23 1.34315 23 3Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-      <path
-        d="M40 3C40 4.65685 38.6569 6 37 6C35.3431 6 34 4.65685 34 3C34 1.34315 35.3431 0 37 0C38.6569 0 40 1.34315 40 3Z"
+        d="M4.5 24a2.4998 2.4998 0 0 1 5.0002 0 2.4998 2.4998 0 0 1-5.0002 0zm17.0002 0a2.4998 2.4998 0 0 1 4.9997 0 2.4998 2.4998 0 0 1-4.9997 0zm16.9997 0a2.4998 2.4998 0 0 1 5.0002 0 2.4998 2.4998 0 0 1-5.0002 0z"
         fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
     </g>
   </g>
