@@ -4,7 +4,7 @@ packages/icons-react-taro/package.json
 {
   "schema_version": "authorship/3.0.0",
   "git_ai_version": "1.5.7",
-  "base_commit_sha": "40005fcb4ad16ecafba7f1c5be30a6e75a05c26e",
+  "base_commit_sha": "a12f64f6db26504c2150609982e88376e491c269",
   "prompts": {},
   "sessions": {
     "s_30675b401c5fa9": {
