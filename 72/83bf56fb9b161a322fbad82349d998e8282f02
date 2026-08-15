@@ -1,0 +1,34 @@
+packages/icons-react/package.json
+  s_a6d709b1e9fb9d::t_85e9e7970bafd9 3
+packages/icons-svg/config.json
+  s_a6d709b1e9fb9d::t_a11e6c8ce8b679 198-200
+packages/icons-react-taro/CHANGELOG.md
+  s_a6d709b1e9fb9d::t_0341293bb99449 3
+  s_a6d709b1e9fb9d::t_e8bfaffd7cb494 4-12
+packages/icons-react/src/buildEntry/lib-new.ts
+  s_a6d709b1e9fb9d::t_060893859ba82a 12-13,123
+packages/icons-react-taro/src/buildEntry/lib-new-dts.ts
+  s_a6d709b1e9fb9d::t_060893859ba82a 11
+packages/icons-react-taro/src/buildEntry/lib-new.ts
+  s_a6d709b1e9fb9d::t_060893859ba82a 12
+packages/icons-react/src/buildEntry/lib-new-dts.ts
+  s_a6d709b1e9fb9d::t_060893859ba82a 11-12,122
+packages/icons-react-taro/package.json
+  s_a6d709b1e9fb9d::t_85e9e7970bafd9 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "7283bf56fb9b161a322fbad82349d998e8282f02",
+  "prompts": {},
+  "sessions": {
+    "s_a6d709b1e9fb9d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd677166-18a6-46b7-8609-a3d4b4155cc8",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}
