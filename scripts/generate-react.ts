@@ -136,9 +136,17 @@ new glob.Glob(pattern, {},(err, files) => {
         fsExtra.readFile(file, {encoding: 'utf8'}).then((res) => {
             let svg = optimize(res).data;
             const svgAST = parse(svg).children[0];
-            let pathds = (svgAST as any).children?.map((item:any) => {
-                return item.properties.d;
-            })
+            const findPaths = (node: any): string[] => {
+                const results: string[] = [];
+                if (node.properties?.d) results.push(node.properties.d);
+                if (node.children) {
+                    for (const child of node.children) {
+                        results.push(...findPaths(child));
+                    }
+                }
+                return results;
+            };
+            let pathds = findPaths(svgAST);
             let viewBox = (svgAST as any).properties.viewBox;
             fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/components/${componentName}.tsx`, getSvg(componentName, viewBox, pathds), 'utf8', (error) => {
                 consola.success(`${iconsReactDir} ${componentName} 文件写入成功`);
