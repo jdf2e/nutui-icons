@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
-  viewBox="0 0 48 48">
-  <defs />
-  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-      <path
-        d="M4.5 24a2.4998 2.4998 0 0 1 5.0002 0 2.4998 2.4998 0 0 1-5.0002 0zm17.0002 0a2.4998 2.4998 0 0 1 4.9997 0 2.4998 2.4998 0 0 1-4.9997 0zm16.9997 0a2.4998 2.4998 0 0 1 5.0002 0 2.4998 2.4998 0 0 1-5.0002 0z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="#11141a" d="M96 512a53.33 53.33 0 0 1 106.67 0 53.33 53.33 0 0 1-106.67 0z m362.67 0a53.33 53.33 0 0 1 106.66 0 53.33 53.33 0 0 1-106.66 0z m362.66 0a53.33 53.33 0 0 1 106.67 0 53.33 53.33 0 0 1-106.67 0z"/></svg>
