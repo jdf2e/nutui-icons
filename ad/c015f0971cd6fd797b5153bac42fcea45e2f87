@@ -1,0 +1,21 @@
+scripts/generate-react.ts
+  s_6013493981faed::t_bf215c19ea79e8 139-149
+ipps-cdn-urls.json
+  s_6013493981faed::t_c235c97317b8f0 1-90
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "adc015f0971cd6fd797b5153bac42fcea45e2f87",
+  "prompts": {},
+  "sessions": {
+    "s_6013493981faed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "190e43be-b611-4414-94e4-08acb77c7700",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}
