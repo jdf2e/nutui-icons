@@ -8,6 +8,7 @@ export { default as AddToCart } from "../components/AddToCart";
 export { default as AddToHome } from "../components/AddToHome";
 export { default as Add } from "../components/Add";
 export { default as AlwaysBuyF } from "../components/AlwaysBuyF";
+export { default as AlwaysBuyOrder } from "../components/AlwaysBuyOrder";
 export { default as AlwaysBuy } from "../components/AlwaysBuy";
 export { default as ArrowDecline } from "../components/ArrowDecline";
 export { default as ArrowDotLeft } from "../components/ArrowDotLeft";

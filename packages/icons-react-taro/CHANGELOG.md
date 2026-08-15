@@ -1,5 +1,15 @@
 # @nutui/icons-react-taro Changelog
 
+## 4.0.0-cpp.beta.2
+
+### New Icons
+
+- 新增 `AlwaysBuyOrder` 图标
+
+### Changes
+
+- 更新 config.json 新增 always-buy-order CDN 地址
+
 ## 4.0.0-cpp.beta.0
 
 ### Breaking Changes

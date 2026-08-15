@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-react",
-  "version": "3.0.3-cpp.beta.0",
+  "version": "4.0.0-cpp.beta.2",
   "description": "京东风格的icon库-V15",
   "scripts": {
     "dev": "vite",
