@@ -1,0 +1,29 @@
+packages/icons-react-taro/package.json
+  s_b215cd04d2266f::t_c68ee380ecaa3b 3
+packages/icons-react-taro/CHANGELOG.md
+  s_b215cd04d2266f::t_940c293b11327c 3-11
+packages/icons-react/src/buildEntry/lib-new-dts.ts
+  s_b215cd04d2266f::t_5f6387872182e2 20,85,126,170
+packages/icons-react-taro/src/buildEntry/lib-new.ts
+  s_b215cd04d2266f::t_5f6387872182e2 21,86,127,171
+packages/icons-react/src/buildEntry/lib-new.ts
+  s_b215cd04d2266f::t_5f6387872182e2 21,86,127,171
+packages/icons-react-taro/src/buildEntry/lib-new-dts.ts
+  s_b215cd04d2266f::t_5f6387872182e2 20,85,126,170
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "ee35e2d54f133d651969447c6a487a4f7c9d640d",
+  "prompts": {},
+  "sessions": {
+    "s_b215cd04d2266f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "10be227e-22ae-483a-93b7-9891f90180a9",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}
