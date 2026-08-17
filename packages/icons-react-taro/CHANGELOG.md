@@ -1,5 +1,16 @@
 # @nutui/icons-react-taro Changelog
 
+## 4.0.0-beta.0
+
+### Changes
+
+- 将所有 SVG 图标从 1024x1024 缩放到 48x48 viewBox
+- 从新分类 `b68009b0-98ab-11f1-b569-79190d19cebf` 更新全量 443 个图标的 CDN URL
+- 文件名规范化：`Config-i.svg` → `config-i.svg`，`Config.svg` → `config.svg`，`PK-f.svg` → `pk-f.svg`
+- 删除 `qrcode.svg` 以解决 macOS 大小写冲突（保留 `qr-code.svg` → `QrCode` 和 `qrcode-i.svg` → `QrcodeI`）
+- `config.json` 按字母排序（不区分大小写）
+- 新增测试页面 `demo.html`，支持 Base64 SVG 和 CDN URL 两种渲染模式
+
 ## 4.0.0-cpp.beta.3
 
 ### New Icons

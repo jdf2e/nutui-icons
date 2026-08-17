@@ -14,18 +14,6 @@
   -moz-osx-font-smoothing: grayscale;
 }
 
-.nut-icon-Config::before {
-  content: "\f506";
-}
-
-.nut-icon-Config-i::before {
-  content: "\f505";
-}
-
-.nut-icon-PK-f::before {
-  content: "\f507";
-}
-
 .nut-icon-add::before {
   content: "\f33d";
 }
@@ -464,6 +452,10 @@
 
 .nut-icon-complaint::before {
   content: "\e073";
+}
+
+.nut-icon-config-i::before {
+  content: "\f5fa";
 }
 
 .nut-icon-copy::before {
@@ -1228,6 +1220,10 @@
 
 .nut-icon-pin::before {
   content: "\ee8f";
+}
+
+.nut-icon-pk-f::before {
+  content: "\f5fb";
 }
 
 .nut-icon-play::before {

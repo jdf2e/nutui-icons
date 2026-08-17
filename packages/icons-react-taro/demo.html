@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="zh">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>NutUI Icons React Taro - Demo</title>
+  <style>
+    * { margin: 0; padding: 0; box-sizing: border-box; }
+    body { font-family: -apple-system, BlinkMacSystemFont, sans-serif; padding: 20px; background: #f5f5f5; }
+    h1 { margin-bottom: 10px; font-size: 24px; }
+    .info { color: #666; margin-bottom: 20px; font-size: 14px; }
+    .tabs { display: flex; gap: 8px; margin-bottom: 20px; }
+    .tab { padding: 8px 16px; border: 1px solid #ddd; border-radius: 6px; cursor: pointer; background: white; font-size: 14px; }
+    .tab.active { background: #1677ff; color: white; border-color: #1677ff; }
+    .search { width: 100%; padding: 10px; margin-bottom: 20px; border: 1px solid #ddd; border-radius: 6px; font-size: 16px; }
+    .grid { display: grid; grid-template-columns: repeat(auto-fill, minmax(100px, 1fr)); gap: 12px; }
+    .icon-item { display: flex; flex-direction: column; align-items: center; padding: 16px 8px; background: white; border-radius: 8px; cursor: pointer; transition: box-shadow 0.2s; }
+    .icon-item:hover { box-shadow: 0 2px 8px rgba(0,0,0,0.1); }
+    .icon-item svg, .icon-item img { width: 32px; height: 32px; }
+    .icon-item .name { margin-top: 8px; font-size: 11px; color: #666; text-align: center; word-break: break-all; }
+    .icon-item .status { margin-top: 4px; font-size: 10px; }
+    .icon-item .status.ok { color: #52c41a; }
+    .icon-item .status.fail { color: #ff4d4f; }
+    .stats { margin-bottom: 20px; padding: 12px; background: white; border-radius: 8px; font-size: 14px; }
+    .stats span { margin-right: 20px; }
+    .stats .ok { color: #52c41a; }
+    .stats .fail { color: #ff4d4f; }
+    .panel { display: none; }
+    .panel.active { display: block; }
+  </style>
+</head>
+<body>
+  <h1>NutUI Icons Demo</h1>
+  <div class="info">测试图标组件的两种渲染模式：Base64 内联 SVG 和 CDN URL 远程加载</div>
+  <div class="tabs">
+    <div class="tab active" data-panel="base64">Base64 SVG（小程序端）</div>
+    <div class="tab" data-panel="cdn">CDN URL（鸿蒙端）</div>
+  </div>
+
+  <div class="panel active" id="panel-base64">
+    <div class="stats" id="stats-base64"></div>
+    <input type="text" class="search" id="search-base64" placeholder="搜索图标名称...">
+    <div class="grid" id="grid-base64"></div>
+  </div>
+
+  <div class="panel" id="panel-cdn">
+    <div class="stats" id="stats-cdn"></div>
+    <input type="text" class="search" id="search-cdn" placeholder="搜索图标名称...">
+    <div class="grid" id="grid-cdn"></div>
+  </div>
+
+  <script type="module">
+    // Tab switching
+    document.querySelectorAll('.tab').forEach(tab => {
+      tab.addEventListener('click', () => {
+        document.querySelectorAll('.tab').forEach(t => t.classList.remove('active'));
+        document.querySelectorAll('.panel').forEach(p => p.classList.remove('active'));
+        tab.classList.add('active');
+        document.getElementById('panel-' + tab.dataset.panel).classList.add('active');
+      });
+    });
+
+    // Fetch index to get icon names
+    const indexResp = await fetch('./dist/es/index.es.js');
+    const indexText = await indexResp.text();
+    const importRegex = /from\s+"\.\/icons\/(\w+)\.js"/g;
+    const iconNames = [];
+    let match;
+    while ((match = importRegex.exec(indexText)) !== null) {
+      iconNames.push(match[1]);
+    }
+
+    // === Panel 1: Base64 SVG ===
+    const gridB64 = document.getElementById('grid-base64');
+    const statsB64 = document.getElementById('stats-base64');
+    const searchB64 = document.getElementById('search-base64');
+    let allIconsB64 = [];
+    let loadedB64 = 0, failedB64 = 0;
+
+    statsB64.innerHTML = `<span>总计: ${iconNames.length} 个图标</span><span>加载中...</span>`;
+
+    for (const name of iconNames) {
+      const item = document.createElement('div');
+      item.className = 'icon-item';
+      item.dataset.name = name.toLowerCase();
+
+      try {
+        const resp = await fetch(`./dist/es/icons/${name}.js`);
+        const text = await resp.text();
+        const svgMatch = text.match(/data:image\/svg\+xml;base64,([A-Za-z0-9+/=]+)/);
+
+        if (svgMatch) {
+          const svgData = atob(svgMatch[1]);
+          item.innerHTML = `<div>${svgData}</div><div class="name">${name}</div><div class="status ok">✓</div>`;
+          loadedB64++;
+        } else {
+          item.innerHTML = `<div style="width:32px;height:32px;background:#f0f0f0;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#ccc;">?</div><div class="name">${name}</div><div class="status fail">no svg</div>`;
+          failedB64++;
+        }
+      } catch (e) {
+        item.innerHTML = `<div style="width:32px;height:32px;background:#fff0f0;border-radius:4px;"></div><div class="name">${name}</div><div class="status fail">err</div>`;
+        failedB64++;
+      }
+
+      gridB64.appendChild(item);
+      allIconsB64.push(item);
+    }
+
+    statsB64.innerHTML = `<span>总计: ${iconNames.length} 个图标</span><span class="ok">成功: ${loadedB64}</span><span class="fail">失败: ${failedB64}</span>`;
+
+    searchB64.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      allIconsB64.forEach(item => {
+        item.style.display = item.dataset.name.includes(query) ? '' : 'none';
+      });
+    });
+
+    // === Panel 2: CDN URL ===
+    const gridCdn = document.getElementById('grid-cdn');
+    const statsCdn = document.getElementById('stats-cdn');
+    const searchCdn = document.getElementById('search-cdn');
+    let allIconsCdn = [];
+    let loadedCdn = 0, failedCdn = 0;
+
+    statsCdn.innerHTML = `<span>总计: ${iconNames.length} 个图标</span><span>加载中...</span>`;
+
+    for (const name of iconNames) {
+      const item = document.createElement('div');
+      item.className = 'icon-item';
+      item.dataset.name = name.toLowerCase();
+
+      try {
+        const resp = await fetch(`./dist/es/icons/${name}.js`);
+        const text = await resp.text();
+        // Extract CDN URL (svgSrc prop)
+        const urlMatch = text.match(/svgSrc:\s*["'](https:\/\/storage\.360buyimg\.com\/[^"']+)["']/);
+
+        if (urlMatch) {
+          const cdnUrl = urlMatch[1];
+          const img = document.createElement('img');
+          img.src = cdnUrl;
+          img.width = 32;
+          img.height = 32;
+          img.onerror = () => {
+            img.style.background = '#fff0f0';
+            img.alt = '✗';
+            item.querySelector('.status').className = 'status fail';
+            item.querySelector('.status').textContent = '加载失败';
+          };
+          img.onload = () => {
+            loadedCdn++;
+            updateCdnStats();
+          };
+          item.innerHTML = `<div class="name">${name}</div><div class="status ok">✓</div>`;
+          item.prepend(img);
+        } else {
+          item.innerHTML = `<div style="width:32px;height:32px;background:#f0f0f0;border-radius:4px;display:flex;align-items:center;justify-content:center;color:#ccc;">?</div><div class="name">${name}</div><div class="status fail">no url</div>`;
+          failedCdn++;
+        }
+      } catch (e) {
+        item.innerHTML = `<div style="width:32px;height:32px;background:#fff0f0;border-radius:4px;"></div><div class="name">${name}</div><div class="status fail">err</div>`;
+        failedCdn++;
+      }
+
+      gridCdn.appendChild(item);
+      allIconsCdn.push(item);
+    }
+
+    function updateCdnStats() {
+      statsCdn.innerHTML = `<span>总计: ${iconNames.length} 个图标</span><span class="ok">成功: ${loadedCdn}</span><span class="fail">无URL: ${failedCdn}</span>`;
+    }
+    updateCdnStats();
+
+    searchCdn.addEventListener('input', (e) => {
+      const query = e.target.value.toLowerCase();
+      allIconsCdn.forEach(item => {
+        item.style.display = item.dataset.name.includes(query) ? '' : 'none';
+      });
+    });
+  </script>
+</body>
+</html>
