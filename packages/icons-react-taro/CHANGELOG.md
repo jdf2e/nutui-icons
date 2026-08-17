@@ -1,5 +1,14 @@
 # @nutui/icons-react-taro Changelog
 
+## 4.0.0-cpp.beta.3
+
+### New Icons
+
+- 新增 `ArrowLeftI` 图标（arrow-left-i）
+- 新增 `GiftI` 图标（gift-i）
+- 新增 `MoreI` 图标（more-i）
+- 新增 `ShareI` 图标（share-i）
+
 ## 4.0.0-cpp.beta.2
 
 ### New Icons
