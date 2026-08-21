@@ -1,14 +1,14 @@
 import { defineConfig } from 'vite'
 import dts from 'vite-plugin-dts'
-import fsExtra from 'fs-extra'
+import fsExtra, {appendFile} from 'fs-extra'
 import react from '@vitejs/plugin-react'
 
+// https://vitejs.dev/config/
 export default defineConfig({
   publicDir: false,
   plugins: [react(), dts({
-    rollupTypes: false,
-    copyDtsFiles: true,
-    outputDir: 'dist/types',
+    rollupTypes: true,
+    copyDtsFiles: false,
     afterBuild: () => {
       fsExtra.removeSync('./dist/types/icons-react.js')
       fsExtra.appendFile('./dist/types/index.d.ts', 'export declare class IconFontConfig { [key: string]:any }')

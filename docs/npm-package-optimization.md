@@ -12,9 +12,9 @@
 | P0 | 补充 `exports` 字段 | tree-shaking、子路径导入 | ✅ 3.1.0-beta.0 |
 | P0 | 补充 `peerDependencies` | 版本冲突告警 | ✅ 3.1.0-beta.0 |
 | P1 | 修正 `sideEffects` | tree-shaking 正确性 | ✅ 3.1.0-beta.1 |
-| P2 | 类型文件按图标拆分 | IDE 性能 | ✅ 3.1.0-beta.2 |
+| P2 | 类型文件按图标拆分 | IDE 性能 | 🔲 待处理 |
 | P2 | ESM 文件扩展名规范 | Node 原生 ESM 兼容 | 🔲 待处理 |
-| P3 | UMD 文档说明 | 用户认知 | ✅ 3.1.0-beta.2 |
+| P3 | UMD 文档说明 | 用户认知 | ✅ README |
 
 ---
 
