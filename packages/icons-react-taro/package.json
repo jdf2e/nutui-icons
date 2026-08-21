@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-react-taro",
-  "version": "3.1.0-beta.0",
+  "version": "3.1.0-beta.1",
   "description": "京东风格的icon库-V15",
   "scripts": {
     "dev": "vite",
@@ -29,8 +29,7 @@
     "CHANGELOG.md"
   ],
   "sideEffects": [
-    "*.css",
-    "**/index.es.js"
+    "*.css"
   ],
   "publishConfig": {
     "access": "public",

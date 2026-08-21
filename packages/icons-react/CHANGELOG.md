@@ -1,5 +1,11 @@
 # Changelog
 
+## [3.1.0-beta.1] - 2026-08-21
+
+### Fixed
+
+- 修正 `sideEffects` 配置，移除错误的 `**/index.es.js` 标记，仅保留 `*.css`，确保 Webpack/Rollup 能正确 tree-shaking re-export 入口
+
 ## [3.1.0-beta.0] - 2026-08-21
 
 ### Added
