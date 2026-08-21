@@ -1,0 +1,35 @@
+packages/icons-react/README.md
+  s_edfcaad1259de1::t_c342550bdd5919 3-84
+packages/icons-react/vite.config.dts.ts
+  s_edfcaad1259de1::t_7f50f05d4c3403 3,9-11
+packages/icons-react-taro/README.md
+  s_edfcaad1259de1::t_c077b7f27e8af5 1-73
+packages/icons-react-taro/CHANGELOG.md
+  s_edfcaad1259de1::t_04c67f4c2c26a7 19-28
+packages/icons-react/package.json
+  s_edfcaad1259de1::t_1d0cf571247954 3
+packages/icons-react-taro/package.json
+  s_edfcaad1259de1::t_1d0cf571247954 3
+packages/icons-react-taro/vite.config.dts.ts
+  s_edfcaad1259de1::t_e4a2aee4a1f386 3,9-11,13
+docs/npm-package-optimization.md
+  s_edfcaad1259de1::t_0a2e36abc70332 15,17
+packages/icons-react/CHANGELOG.md
+  s_edfcaad1259de1::t_04c67f4c2c26a7 19-28
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "05e612fd3a15322f2e8fd09b2915456a835a87f3",
+  "prompts": {},
+  "sessions": {
+    "s_edfcaad1259de1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "abd608bb-b3d5-46b6-8914-7d985024d6f8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}
