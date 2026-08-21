@@ -1,6 +1,6 @@
 {
   "name": "@nutui/icons-react",
-  "version": "3.0.2",
+  "version": "3.1.0-beta.0",
   "description": "京东风格的icon库-V15",
   "scripts": {
     "dev": "vite",
@@ -8,6 +8,14 @@
     "preview": "vite preview",
     "release": "release-it",
     "release:beta": "release-it --preRelease=beta"
+  },
+  "exports": {
+    ".": {
+      "types": "./dist/types/index.d.ts",
+      "import": "./dist/es/index.es.js",
+      "require": "./dist/lib/index.umd.js"
+    },
+    "./*": "./*"
   },
   "main": "dist/lib/index.umd.js",
   "module": "dist/es/index.es.js",
@@ -37,6 +45,10 @@
       "addUntrackedFiles": true,
       "requireCleanWorkingDir": false
     }
+  },
+  "peerDependencies": {
+    "react": ">=17.0.0",
+    "react-dom": ">=17.0.0"
   },
   "devDependencies": {
     "@nutui/nutui-react": "^1.4.2",
