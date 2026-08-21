@@ -1,0 +1,21 @@
+packages/icons-svg/config.json
+  s_db92409f69befe::t_3c8f565054751a 199-204
+packages/icons-react-taro/package.json
+  s_db92409f69befe::t_11a79feaef0450 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "476d68dedb7e1087012810619ed1c5434246c1ec",
+  "prompts": {},
+  "sessions": {
+    "s_db92409f69befe": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "fd3c7cb5-a123-4da8-b124-80d7660c1b54",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}
