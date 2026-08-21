@@ -16,3 +16,13 @@
 ## [3.0.2] - (previous release)
 
 - 初始发布
+
+## [3.1.0-beta.2] - 2026-08-21
+
+### Added
+
+- README 补充安装说明、属性文档、全局配置和 tree-shaking 使用指引
+
+### Improved
+
+- 类型声明由单一 `index.d.ts` 改为每个图标独立 `.d.ts`（`dist/types/components/*.d.ts`），提升 IDE 自动补全响应速度
