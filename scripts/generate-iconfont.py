@@ -351,8 +351,6 @@ def main():
 
     for svg_file in svg_files:
         name = svg_file.stem
-        if name == "config":
-            continue
 
         content = svg_file.read_text(encoding='utf-8')
         paths_48 = parse_svg_paths(content)
