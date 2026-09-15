@@ -1,17 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
-  viewBox="0 0 48 48">
-  <defs />
-  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,4,4)">
-      <path
-        d="M0 1C0 0.448 0.448 0 1 0L39 0C39.552 0 40 0.448 40 1L40 2C40 2.552 39.552 3 39 3L1 3C0.448 3 0 2.552 0 2L0 1Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-      <path
-        d="M0 19.5C0 18.948 0.448 18.5 1 18.5L39 18.5C39.552 18.5 40 18.948 40 19.5L40 20.5C40 21.052 39.552 21.5 39 21.5L1 21.5C0.448 21.5 0 21.052 0 20.5L0 19.5Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-      <path
-        d="M40 38C40 37.448 39.552 37 39 37L1 37C0.448 37 0 37.448 0 38L0 39C0 39.552 0.448 40 1 40L39 40C39.552 40 40 39.552 40 39L40 38Z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="#11141a" d="M938.67 117.33h-853.34c-11.73 0-21.33 9.6-21.33 21.34v21.33c0 11.73 9.6 21.33 21.33 21.33h853.34c11.73 0 21.33-9.6 21.33-21.33v-21.33c0-11.73-9.6-21.33-21.33-21.34z m0 362.67h-853.34c-11.73 0-21.33 9.6-21.33 21.33v21.34c0 11.73 9.6 21.33 21.33 21.33h853.34c11.73 0 21.33-9.6 21.33-21.33v-21.34c0-11.73-9.6-21.33-21.33-21.33z m0 362.67h-853.34c-11.73 0-21.33 9.6-21.33 21.33v21.33c0 11.73 9.6 21.33 21.33 21.34h853.34c11.73 0 21.33-9.6 21.33-21.34v-21.33c0-11.73-9.6-21.33-21.33-21.33z"/></svg>

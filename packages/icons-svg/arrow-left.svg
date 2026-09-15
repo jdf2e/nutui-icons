@@ -1,11 +1,1 @@
-<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
-  viewBox="0 0 48 48">
-  <defs />
-  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-    <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
-      <path
-        d="M18.2695 23.3634l13.087-12.8133a0.9698 0.9698 0 0 0 0-1.3908l-0.7148-0.6858c-0.3919-0.382-1.0186-0.382-1.4105 0l-14.6353 14.3409c-0.3919 0.382-0.3919 0.9994 0 1.3814l14.6353 14.3414c0.3919 0.382 1.0186 0.382 1.4105 0l0.7148-0.6956c0.3919-0.382 0.3919-0.9994 0-1.3814l-13.087-12.8227a0.1889 0.1889 0 0 1 0-0.2742z"
-        fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
-    </g>
-  </g>
-</svg>
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 1024 1024"><path fill="#11141a" d="M389.75 498.42l279.19-273.35a20.69 20.69 0 0 0 0-29.67l-15.25-14.63c-8.36-8.15-21.73-8.15-30.09 0l-312.22 305.94c-8.36 8.15-8.36 21.32 0 29.47l312.22 305.95c8.36 8.15 21.73 8.15 30.09 0l15.25-14.84c8.36-8.15 8.36-21.32 0-29.47l-279.19-273.55a4.03 4.03 0 0 1 0-5.85z"/></svg>
