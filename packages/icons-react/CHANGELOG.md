@@ -1,5 +1,12 @@
 # @nutui/icons-react Changelog
 
+## 4.1.0-beta.2
+
+### Fixes
+
+- 移除 `config.json` 中已废弃但残留的无效图标（`instocks`、`always-buy`、`share-2`、`share-f`、`star-2`、`star-3`），修复展示为空白的问题
+- 修正 `config.json` 中 `qr-code` 为 `qrcode`
+
 ## 4.1.0-beta.1
 
 ### Features
