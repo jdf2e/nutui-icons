@@ -390,6 +390,10 @@
   content: "\efa2";
 }
 
+.nut-icon-checked::before {
+  content: "\f53b";
+}
+
 .nut-icon-checked-f::before {
   content: "\f53b";
 }
@@ -798,6 +802,10 @@
   content: "\e7bb";
 }
 
+.nut-icon-heart-fill::before {
+  content: "\e7bb";
+}
+
 .nut-icon-heart-i::before {
   content: "\f579";
 }
@@ -852,6 +860,10 @@
 
 .nut-icon-image::before {
   content: "\e8af";
+}
+
+.nut-icon-image-error::before {
+  content: "\f581";
 }
 
 .nut-icon-image-error-f::before {
@@ -1510,6 +1522,10 @@
   content: "\e35d";
 }
 
+.nut-icon-star-fill::before {
+  content: "\e35d";
+}
+
 .nut-icon-star-i::before {
   content: "\f5de";
 }
@@ -1610,8 +1626,16 @@
   content: "\f5ea";
 }
 
+.nut-icon-triangle-down::before {
+  content: "\f5eb";
+}
+
 .nut-icon-triangle-down-f::before {
   content: "\f5eb";
+}
+
+.nut-icon-triangle-up::before {
+  content: "\f5ec";
 }
 
 .nut-icon-triangle-up-f::before {

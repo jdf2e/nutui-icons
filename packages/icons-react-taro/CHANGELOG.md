@@ -1,5 +1,16 @@
 # @nutui/icons-react-taro Changelog
 
+## 4.1.0-beta.1
+
+### New Icons
+
+- 补充 6 个兼容图标：`Checked` (checked)、`HeartFill` (heart-fill)、`ImageError` (image-error)、`StarFill` (star-fill)、`TriangleDown` (triangle-down)、`TriangleUp` (triangle-up)
+
+### Changes
+
+- 更新 `config.json` CDN 地址映射
+- 重新生成 iconfont 字体文件（.svg/.js/.css/.ttf/.woff/.woff2/.eot）及 Taro 组件
+
 ## 4.1.0-beta.0
 
 ### Breaking Changes
