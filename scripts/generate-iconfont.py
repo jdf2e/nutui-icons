@@ -343,19 +343,21 @@ def main():
     print(f"icons-svg 目录: {len(svg_files)} 个 SVG 文件")
 
     # 3. 解析每个 SVG, 生成 1024 坐标和字体坐标
-    unicode_map = dict(existing_map)
+    # 大小写不敏感查找：macOS 上 SVG 文件名大小写可能与历史 glyph-name 不一致
+    existing_lower = {k.lower(): (k, v) for k, v in existing_map.items()}
+    unicode_map = {}
     next_code = get_next_unicode(existing_map)
     icons = {}
     new_count = 0
     replace_count = 0
 
     for svg_file in svg_files:
-        name = svg_file.stem
+        stem = svg_file.stem
 
         content = svg_file.read_text(encoding='utf-8')
         paths_48 = parse_svg_paths(content)
         if not paths_48:
-            print(f"  [跳过] {name}: 未找到 path")
+            print(f"  [跳过] {stem}: 未找到 path")
             continue
 
         # 缩放 48 -> 1024 (SVG 坐标系, Y-down)
@@ -365,13 +367,16 @@ def main():
         font_paths = [flip_y_path(p, ASCENT) for p in paths_1024]
         font_path_combined = ' '.join(font_paths)
 
-        # 分配 unicode
-        if name not in unicode_map:
+        # 分配 unicode：优先复用已有码位与历史命名（避免大小写导致码位漂移）
+        if stem.lower() in existing_lower:
+            name, code = existing_lower[stem.lower()]
+            unicode_map[name] = code
+            replace_count += 1
+        else:
+            name = stem
             unicode_map[name] = f"{next_code:04x}"
             next_code += 1
             new_count += 1
-        else:
-            replace_count += 1
 
         icons[name] = {
             'svg_paths_1024': paths_1024,

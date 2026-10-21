@@ -1,5 +1,12 @@
 # @nutui/icons-react-taro Changelog
 
+## 4.1.0-beta.3
+
+### Fixes
+
+- 更新 `arrow-radius` 图标 path 与 CDN 地址
+- 重新生成 iconfont 字体文件及 Taro 组件
+
 ## 4.1.0-beta.1
 
 ### New Icons

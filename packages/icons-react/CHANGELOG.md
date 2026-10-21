@@ -1,5 +1,11 @@
 # @nutui/icons-react Changelog
 
+## 4.1.0-beta.3
+
+### Fixes
+
+- 更新 `arrow-radius` 图标 path 与 CDN 地址
+
 ## 4.1.0-beta.2
 
 ### Fixes
