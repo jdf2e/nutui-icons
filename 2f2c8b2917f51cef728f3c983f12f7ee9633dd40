@@ -1,0 +1,19 @@
+packages/icons-react-taro/CHANGELOG.md
+  s_6013493981faed::t_44581ced60f8f3 1-13
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "2f2c8b2917f51cef728f3c983f12f7ee9633dd40",
+  "prompts": {},
+  "sessions": {
+    "s_6013493981faed": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "190e43be-b611-4414-94e4-08acb77c7700",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}

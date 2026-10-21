@@ -1,0 +1,22 @@
+packages/icons-react/package.json
+  s_edfcaad1259de1::t_510675cd8f4d2c 12-19,49-51
+  s_edfcaad1259de1::t_0c0cffcc6b501a 3
+packages/icons-react/CHANGELOG.md
+  s_edfcaad1259de1::t_31ee73fb910661 1-12
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "76e2a1e71da16eba7162c8b547cf6047cda0c557",
+  "prompts": {},
+  "sessions": {
+    "s_edfcaad1259de1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "abd608bb-b3d5-46b6-8914-7d985024d6f8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}

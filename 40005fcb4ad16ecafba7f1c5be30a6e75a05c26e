@@ -1,0 +1,19 @@
+packages/icons-react-taro/package.json
+  s_30675b401c5fa9::t_a08c3adea351ff 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "40005fcb4ad16ecafba7f1c5be30a6e75a05c26e",
+  "prompts": {},
+  "sessions": {
+    "s_30675b401c5fa9": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "62d1b442-c5b2-4f1e-a9b0-3aa60eed656a",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}

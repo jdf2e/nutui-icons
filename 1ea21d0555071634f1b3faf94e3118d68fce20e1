@@ -1,0 +1,27 @@
+packages/icons-react/vite.config.dts.ts
+  s_edfcaad1259de1::t_c0d322b0d3094e 3,6,10-11
+docs/npm-package-optimization.md
+  s_edfcaad1259de1::t_147e08b7d83ac4 15,17
+packages/icons-react-taro/package.json
+  s_edfcaad1259de1::t_e7481cd47bcaa4 3
+packages/icons-react-taro/vite.config.dts.ts
+  s_edfcaad1259de1::t_c0d322b0d3094e 3,6,10-11,13
+packages/icons-react/package.json
+  s_edfcaad1259de1::t_e7481cd47bcaa4 3
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "1ea21d0555071634f1b3faf94e3118d68fce20e1",
+  "prompts": {},
+  "sessions": {
+    "s_edfcaad1259de1": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "abd608bb-b3d5-46b6-8914-7d985024d6f8",
+        "model": "claude-sonnet-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}

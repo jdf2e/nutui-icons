@@ -1,0 +1,21 @@
+packages/icons-svg/voucher-f.svg
+  s_830e50b77dcc0f::t_73c6dfe71c6007 1
+packages/icons-svg/voucher-i.svg
+  s_830e50b77dcc0f::t_73c6dfe71c6007 1
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "05af19a0b641387236e8104d53d3a732e5265e84",
+  "prompts": {},
+  "sessions": {
+    "s_830e50b77dcc0f": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "4a7e1352-f106-4952-84a4-a3e2c95f6eb3",
+        "model": "claude-opus-4-8"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}

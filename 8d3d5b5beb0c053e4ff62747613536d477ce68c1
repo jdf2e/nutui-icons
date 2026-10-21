@@ -1,0 +1,19 @@
+docs/upgrade-icons.md
+  s_a6d709b1e9fb9d::t_fa811ab60f3eb3 1-188
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "8d3d5b5beb0c053e4ff62747613536d477ce68c1",
+  "prompts": {},
+  "sessions": {
+    "s_a6d709b1e9fb9d": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "bd677166-18a6-46b7-8609-a3d4b4155cc8",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}

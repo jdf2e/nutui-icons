@@ -1,0 +1,21 @@
+packages/icons-react/vite.config.dts.ts
+  s_05468628a8b613::t_c5bbbf9e0f7ed9 18
+packages/icons-react-taro/vite.config.dts.ts
+  s_05468628a8b613::t_c5bbbf9e0f7ed9 18
+---
+{
+  "schema_version": "authorship/3.0.0",
+  "git_ai_version": "1.5.7",
+  "base_commit_sha": "ad7e4839748947bf5f54e577d80d95ad3f4c851a",
+  "prompts": {},
+  "sessions": {
+    "s_05468628a8b613": {
+      "agent_id": {
+        "tool": "claude",
+        "id": "ba2c6144-793f-43c0-ad5c-c1e933a654d0",
+        "model": "claude-opus-4-6"
+      },
+      "human_author": "tongen <tongen@jd.com>"
+    }
+  }
+}
