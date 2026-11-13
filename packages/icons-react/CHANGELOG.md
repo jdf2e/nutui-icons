@@ -1,5 +1,13 @@
 # @nutui/icons-react Changelog
 
+## 4.1.0
+
+### Features
+
+- 全量升级至 V16 图标规范（451 个图标，包含 3dp 线性、4dp 线性加粗、面性及品牌 Logo）
+- 修正 `IconTemplate` 默认视口与 V16 48x48 规范对齐
+- 规范化 `config.json` 图标分类配置与 3dp 对标老版粗细标注
+
 ## 4.1.0-beta.3
 
 ### Fixes

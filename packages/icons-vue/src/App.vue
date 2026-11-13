@@ -31,7 +31,7 @@ const onClick = () => {
 
   <h2>基本用法</h2>
   <IconFont name="dongdong" />
-  <IconFont name="JD" />
+  <IconFont name="jd" />
   <h2>图片链接</h2>
   <IconFont
     size="40"
@@ -41,7 +41,7 @@ const onClick = () => {
   <h2>图标颜色</h2>
   <IconFont name="dongdong" color="#fa2c19" />
   <IconFont name="dongdong" color="#64b578" />
-  <IconFont name="JD" color="#fa2c19" />
+  <IconFont name="jd" color="#fa2c19" />
 
   <h2>图标大小</h2>
   <IconFont name="dongdong" />

@@ -64,7 +64,7 @@ function App() {
                 <h2>基础用法</h2>
                 <Cell>
                     <Icon name="dongdong"/>
-                    <Icon name="JD"/>
+                    <Icon name="jd"/>
                 </Cell>
                 <h2>图片链接</h2>
                 <Cell>
@@ -77,7 +77,7 @@ function App() {
                 <Cell>
                     <Icon name="dongdong" color="#fa2c19"/>
                     <Icon name="dongdong" color="#64b578"/>
-                    <Icon name="JD" color="#fa2c19"/>
+                    <Icon name="jd" color="#fa2c19"/>
                 </Cell>
                 <h2>图标大小</h2>
                 <Cell style={{alignItems: 'center'}}>

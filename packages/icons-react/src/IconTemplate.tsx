@@ -16,7 +16,7 @@ export interface SVG_IconProps {
 export const defaultProps = {
     className: '',
     style: undefined,
-    viewBox: ' 0 0 1024 1024',
+    viewBox: '0 0 48 48',
     name: '',
     width: '',
     height: '',
