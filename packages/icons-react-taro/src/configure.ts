@@ -9,5 +9,10 @@ export function configure(config: Configure) {
                 globalConfig[key] = config[key]
             }
         }
+        if (config.isSkyline !== undefined) {
+            globalConfig.skyline = config.isSkyline
+        } else if (config.skyline !== undefined) {
+            globalConfig.isSkyline = config.skyline
+        }
     }
 }

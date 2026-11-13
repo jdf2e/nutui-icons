@@ -42,9 +42,10 @@ export default Icon
     return template
 }
 
-const getTaroSvg = (componentName: string, svg: string) => {
+const getTaroSvg = (componentName: string, svg: string, iconFontName: string, isJdesign: boolean = false) => {
     const svg64String = svg64(svg)
-    const template = `
+    if (isJdesign) {
+        return `
 import {FunctionComponent} from 'react'
 import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 
@@ -56,21 +57,24 @@ const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
 
 export default IconSVG
 `
-    return template
-}
-
-const getHarmonySvg = (componentName: string, svg: string, iconFontName: string) => {
-    const svgSrc = (svgConfig as any)[iconFontName]
-    const svg64String = svg64(svg)
+    }
+    const svgSrc = (svgConfig as any)[iconFontName] || ''
     const template = `
 import {FunctionComponent} from 'react'
 import Icon, { defaultProps, SVG_IconProps } from '../IconTemplate'
 import { default as Icon2 } from '../IconHarmonyTemplate'
+import { default as Icon3 } from '../IconSkylineTemplate'
 
 const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
     return (
-        <>{process.env.TARO_ENV !== 'jdharmony_cpp' && process.env.TARO_ENV !== 'dynamic' ? <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={'${svg64String}'}></Icon> : <Icon2 {...realProps} name={realProps.name || '${componentName}'} svgSrc={'${svgSrc}'}></Icon2>}</>
+        <>{process.env.TARO_ENV === 'skyline' ? (
+            <Icon3 {...realProps} name={realProps.name || '${componentName}'} svg64={'${svg64String}'} svgSrc={'${svgSrc}'}></Icon3>
+        ) : process.env.TARO_ENV !== 'jdharmony_cpp' && process.env.TARO_ENV !== 'dynamic' ? (
+            <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={'${svg64String}'} svgSrc={'${svgSrc}'}></Icon>
+        ) : (
+            <Icon2 {...realProps} name={realProps.name || '${componentName}'} svgSrc={'${svgSrc}'} svg64={'${svg64String}'}></Icon2>
+        )}</>
     )
 }
 
@@ -85,6 +89,13 @@ export { default as IconFont } from "./icons/IconFont.js";
 export { configure } from "./icons/configure.js";
 \n`;
 
+let entryEsTaro = `/** 此文件由 script generate 脚本生成 */
+export { config as IconFontConfig } from "./icons/IconFontConfig.js";
+export { default as IconFont } from "./icons/IconFont.js";
+export { configure } from "./icons/configure.js";
+export { isSkyline } from "./icons/internal.js";
+\n`;
+
 let entryLib = `/** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
     import { configure } from "../configure";
@@ -95,6 +106,20 @@ let entryLibDTS = `/** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
     import { configure } from "../configure";
     export { IconFont, configure  };
+\n`;
+
+let entryLibTaro = `/** 此文件由 script generate 脚本生成 */
+    import IconFont from '../IconFont';
+    import { configure } from "../configure";
+    import { isSkyline } from "../internal";
+    import config from '../../../../iconfont/config.json';
+    export { IconFont, config, configure, isSkyline };
+\n`;
+let entryLibDTSTaro = `/** 此文件由 script generate 脚本生成 */
+    import IconFont from '../IconFont';
+    import { configure } from "../configure";
+    import { isSkyline } from "../internal";
+    export { IconFont, configure, isSkyline };
 \n`;
 
 const projectID = process.env.PROJECT_ID
@@ -114,10 +139,15 @@ if (projectID) {
     iconsReactTaroDir = `${projectID}-icons-react-taro`;
 }
 
-let svgConfig = {}
-fsExtra.readFile(`${process.cwd()}/packages/icons-svg/config.json`).then(res=>{
-    svgConfig = JSON.parse(res.toString())
-})
+let svgConfig: Record<string, string> = {}
+const svgConfigFile = `${process.cwd()}/packages/icons-svg/config.json`
+if (fsExtra.existsSync(svgConfigFile)) {
+    try {
+        svgConfig = JSON.parse(fsExtra.readFileSync(svgConfigFile, 'utf8'))
+    } catch (e) {
+        // ignore
+    }
+}
 
 new glob.Glob(pattern, {},(err, files) => {
     const entryArray: any = []
@@ -130,8 +160,11 @@ new glob.Glob(pattern, {},(err, files) => {
 
         entryArray.push(componentName)
         entryLib += `export { default as ${componentName} } from '../components/${componentName}'\n`
+        entryLibTaro += `export { default as ${componentName} } from '../components/${componentName}'\n`
         entryEs += `export { default as ${componentName} } from "./icons/${componentName}.js";\n`;
+        entryEsTaro += `export { default as ${componentName} } from "./icons/${componentName}.js";\n`;
         entryLibDTS += `export { default as ${componentName} } from "../components/${componentName}";\n`;
+        entryLibDTSTaro += `export { default as ${componentName} } from "../components/${componentName}";\n`;
 
         fsExtra.readFile(file, {encoding: 'utf8'}).then((res) => {
             let svg = optimize(res).data;
@@ -143,13 +176,10 @@ new glob.Glob(pattern, {},(err, files) => {
             fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/components/${componentName}.tsx`, getSvg(componentName, viewBox, pathds), 'utf8', (error) => {
                 consola.success(`${iconsReactDir} ${componentName} 文件写入成功`);
             });
-            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/${componentName}.tsx`, getHarmonySvg(componentName, svg, iconFontName), 'utf8', (error) => {
+            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/${componentName}.tsx`, getTaroSvg(componentName, svg, iconFontName, Boolean(projectID)), 'utf8', (error) => {
                 consola.success(`${iconsReactTaroDir} svg ${componentName} 文件写入成功`);
             });
         })
-        fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/${componentName}.tsx`, getIconFont(iconFontName), 'utf8', (error) => {
-            consola.success(`${iconsReactTaroDir} ${componentName} 文件写入成功`);
-        });
     })
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
         consola.success(`${iconsReactDir} 文件列表配置写入成功`);
@@ -160,19 +190,19 @@ new glob.Glob(pattern, {},(err, files) => {
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`${iconsReactDir} ES 入口文件文件写入成功`);
     });
-    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
+    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/dist/es/index.es.js`, entryEsTaro + 'import "../style_icon.css";', 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} ES 入口文件文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
         consola.success(`${iconsReactDir} buildEntry 文件写入成功`);
     });
-    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {
+    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/buildEntry/lib-new.ts`, entryLibTaro, 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} buildEntry 文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/buildEntry/lib-new-dts.ts`, entryLibDTS, 'utf8', (error) => {
         consola.success(`${iconsReactDir} buildEntry dts 文件写入成功`);
     });
-    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/buildEntry/lib-new-dts.ts`, entryLibDTS, 'utf8', (error) => {
+    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/buildEntry/lib-new-dts.ts`, entryLibDTSTaro, 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} buildEntry dts 文件写入成功`);
     });
 })

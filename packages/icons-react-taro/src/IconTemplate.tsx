@@ -1,6 +1,10 @@
-import React, { FunctionComponent} from "react";
-import {globalConfig} from "./internal";
-import * as process from "process";
+import React, { FunctionComponent } from "react";
+import { globalConfig, isSkyline } from "./internal";
+import IconSkyline from "./IconSkylineTemplate";
+
+export { isSkyline };
+
+
 export interface SVG_IconProps {
     className?: string
     style?: React.CSSProperties
@@ -15,6 +19,12 @@ export interface SVG_IconProps {
     onClick?: (event: React.MouseEvent) => void
     children?: React.ReactNode
     fallback?: boolean
+    ariaRole?: string
+    ariaLabel?: string
+    ariaRoledescription?: string
+    ariaHidden?: boolean | "true" | "false"
+    ariaChecked?: boolean | "true" | "false"
+    ariaSelected?: boolean | "true" | "false"
 }
 
 export const defaultProps = {
@@ -29,7 +39,11 @@ export const defaultProps = {
     onClick: () => undefined
 } as SVG_IconProps
 
+
 const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
+    if (isSkyline()) {
+        return React.createElement(IconSkyline, props);
+    }
     const classPrefix = globalConfig.classPrefix
     const {
         className,
@@ -43,6 +57,12 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         svgSrc,
         children,
         onClick,
+        ariaRole,
+        ariaLabel,
+        ariaRoledescription,
+        ariaHidden,
+        ariaChecked,
+        ariaSelected,
         fallback = !globalConfig.useSvg
     } = {...defaultProps, ...props}
     const handleClick: React.MouseEventHandler = (e) => {
@@ -54,7 +74,7 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     };
     const classes = () => {
         const iconName = fallback ? name?.toLowerCase() : name
-        return `${fallback ? globalConfig.fontClassName : ''} ${classPrefix} ${classPrefix}-${iconName} ${className}`
+        return `${fallback ? globalConfig.fontClassName : ''} ${classPrefix} ${classPrefix}-${iconName} ${className || ''}`.trim()
     };
     const props2Style: any = {}
     const checkedWidth = pxCheck(width || size || '')
@@ -83,7 +103,13 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
         className: classes(),
         style: getStyle(),
         onClick: handleClick,
-        color
+        color,
+        role: ariaRole,
+        "aria-label": ariaLabel,
+        "aria-roledescription": ariaRoledescription,
+        "aria-hidden": ariaHidden,
+        "aria-checked": ariaChecked,
+        "aria-selected": ariaSelected
     }, children)
 }
 export default Icon

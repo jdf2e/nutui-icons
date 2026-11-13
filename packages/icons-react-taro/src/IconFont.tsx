@@ -1,5 +1,6 @@
 import React, {FunctionComponent, ReactHTML} from 'react'
-import {globalConfig} from "./internal";
+import {globalConfig, isSkyline} from "./internal";
+import { Image } from "@tarojs/components";
 
 export interface IconFontProps {
     name?: string
@@ -8,7 +9,7 @@ export interface IconFontProps {
     height?: string | number
     classPrefix?: string
     color?: string
-    tag?: keyof ReactHTML
+    tag?: keyof ReactHTML | string
     onClick?: (e: MouseEvent) => void
     fontClassName?: string
     className?: string
@@ -49,7 +50,9 @@ const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
         ...props,
     }
     const isImage = name ? name.indexOf('/') !== -1 : false
-    const type = isImage ? 'img' : (tag || 'i')
+    const isSkylineMode = isSkyline()
+    const defaultTag = isSkylineMode ? 'text' : (tag || 'i')
+    const type = isImage ? Image : defaultTag
 
     const handleClick = (e: MouseEvent) => {
         if (onClick) {
@@ -57,7 +60,7 @@ const Icon: FunctionComponent<IconFontProps> = (props: IconFontProps) => {
         }
     }
     const hasSrc = () => {
-        if (isImage) return {src: name}
+        if (isImage) return {src: name, mode: 'aspectFit'}
         return {}
     }
     const pxChecked = pxCheck(size || '')

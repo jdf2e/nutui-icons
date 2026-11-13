@@ -18,6 +18,11 @@ page {
 
 .nut-icon {
     display: inline-block;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    vertical-align: middle;
+    box-sizing: border-box;
     position: relative;
     width: var(--nut-icon-width, 16px);
     height: var(--nut-icon-height, 16px);

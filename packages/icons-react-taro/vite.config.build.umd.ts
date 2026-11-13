@@ -11,8 +11,10 @@ export default defineConfig({
     apply: 'build',
     async closeBundle() {
       const umdFile = join(__dirname, 'dist/lib/index.umd.js')
-      const umdFileContent = fs.readFileSync(umdFile).toString().replace(`(void 0).TARO_ENV==="h5"`, `process.env.TARO_ENV==="h5"`)
-      fs.writeFileSync(umdFile, umdFileContent)
+      if (fs.existsSync(umdFile)) {
+        const umdFileContent = fs.readFileSync(umdFile).toString().replace(/\(void 0\)\.TARO_ENV/g, 'process.env.TARO_ENV')
+        fs.writeFileSync(umdFile, umdFileContent)
+      }
       console.log('File rewritten successfully!');
     }
   }],
