@@ -8,7 +8,8 @@
     "gen:react:jdesign": "PROJECT_ID=jdesign tsc && PROJECT_ID=jdesign node dist/generate-react.js",
     "generate": "tsc && node dist/generate.js && node dist/generate-react.js && PROJECT_ID=jdesign node dist/generate-react.js",
     "verify": "bash scripts/verify-with-nutui-react.sh",
-    "generate:verify": "npm run generate && npm run verify"
+    "generate:verify": "npm run generate && npm run verify",
+    "check-changes": "python3 scripts/check_icon_changes.py"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",

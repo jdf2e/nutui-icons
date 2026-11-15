@@ -79,11 +79,15 @@ for f in sorted(os.listdir(svg_dir)):
     open(p,'w').write(c)
 ```
 
-源 SVG 里的 `fill="#xxx"` 硬编码颜色不用改——组件模板生成时会注入 `fill="currentColor"`。
+源 SVG 里的 `fill="#xxx"` 硬编码颜色不用改：
+- Web 端：组件模板生成时会自动注入 `fill="currentColor"`；
+- Taro 默认端：采用 `<i>` 单标签配合 CSS `mask: url(svg64)`，图形颜色由标签自身的 `backgroundColor: color || "currentColor"` 决定；
+- Taro 动态化 CDN Image 模式（`<Image src={svgSrc} svg={true} />`）：由客户端直接渲染远端 CDN SVG，不支持外部 CSS `color` 穿透变色，渲染为规范原色。
 
 ## Step 2：全量重建 config.json（拉 URL）
 
-`packages/icons-svg/config.json`：key 为**不带 `.svg`** 的文件名，value 为 CDN URL（鸿蒙端 svgSrc 用）。**完全用 API 数据重建并排序，不要 merge 旧条目**（避免残留已删图标）：
+`packages/icons-svg/config.json`：key 为**不带 `.svg`** 的文件名，value 为 CDN URL。
+⚠️ **重要范围说明**：此映射表不仅为 HarmonyOS 鸿蒙原生提供静态资源，更核心的是为 **Taro 动态化（涵盖 iOS / Android / HarmonyOS 原生 App 动态容器）** 提供远端热更拉取能力，同时支持小程序与 H5 在主包受限时复用 CDN 模式瘦身。**完全用 API 数据重建并排序，不要 merge 旧条目**（避免残留已删图标）：
 
 ```python
 import json, os
@@ -226,7 +230,7 @@ Y翻转公式（ascent=896）：
 | 文件 | 作用 | git 跟踪 |
 |------|------|------|
 | `packages/icons-svg/*.svg` | 图标源文件（48x48） | ✅ |
-| `packages/icons-svg/config.json` | 图标 CDN URL 映射（鸿蒙端） | ✅ |
+| `packages/icons-svg/config.json` | 图标 CDN URL 映射（Taro 动态化三端及鸿蒙原生用） | ✅ |
 | `scripts/generate-iconfont.py` | 生成 iconfont 全套 | ✅ |
 | `scripts/generate-react.ts` | 生成组件（`npm run tsnode`），glob 全部 SVG | ✅ |
 | `iconfont/*` | 字体产物（svg/js/css/ttf/woff/woff2/eot） | ✅ |
@@ -239,7 +243,8 @@ Y翻转公式（ascent=896）：
 - 替换图标名称不变时，iconfont 脚本自动保留原 unicode 码位；新增自动分配下一码位。
 - 多 path 的 SVG 会合并为单个 glyph。
 - `npm run tsnode` 会同时生成 icons-react 和 icons-react-taro，按需 `git checkout --` 撤销。
-- 升级后如需评估对下游项目的影响，用 `/check-icon-changes` skill 检测使用方项目的图标变更。
+- **Taro 长列表降级**：Taro 小程序海量长列表中，可通过 `configure({ useSvg: false })` 一键回退至 IconFont 字体渲染，移除内联 Base64 mask，彻底消除小程序 `setData` 通信带宽拥堵。
+- 升级后如需评估对下游项目的影响，用 `/check-icon-changes` skill（或直接运行 `python3 scripts/check_icon_changes.py <下游项目路径>`）检测使用方项目的图标变更。
 - **发布主线**：改尺寸 → 拉 URL → iconfont → 组件 → 撤销非目标包 → 构建 → 版本/changelog → 提交/push/tag → npm publish。
 
 ## 已知问题
