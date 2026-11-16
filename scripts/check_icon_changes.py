@@ -105,9 +105,9 @@ def scan_project(proj_dir, pkg):
 
 def main():
     ap = argparse.ArgumentParser()
-    ap.add_argument('project_dir')
-    ap.add_argument('--old', help='旧版本号（默认取项目 node_modules 已装版本或让用户指定）')
-    ap.add_argument('--new', help='新版本号（默认 npm 最新）')
+    ap.add_argument('project_dir', nargs='?', default='.', help='项目目录（默认当前工作目录）')
+    ap.add_argument('--old', help='旧版本号（默认自动读取 node_modules 或 package.json）')
+    ap.add_argument('--new', help='新版本号（默认 npm 最新版本）')
     ap.add_argument('--pkg', default=PKG_DEFAULT)
     ap.add_argument('--json', action='store_true', help='输出 JSON')
     args = ap.parse_args()
@@ -118,12 +118,27 @@ def main():
     new_ver = args.new or latest_version(args.pkg)
     old_ver = args.old
     if not old_ver:
-        # 尝试从项目 node_modules 读已装版本
+        # 1. 尝试从项目 node_modules 读已装版本
         pj = os.path.join(args.project_dir, 'node_modules', args.pkg, 'package.json')
         if os.path.isfile(pj):
-            old_ver = json.load(open(pj)).get('version')
+            try:
+                old_ver = json.load(open(pj)).get('version')
+            except Exception:
+                pass
     if not old_ver:
-        sys.exit('未指定 --old 且项目未安装该包，无法确定旧版本。请传 --old <ver>。')
+        # 2. 尝试从项目根目录 package.json 读声明版本
+        pj_root = os.path.join(args.project_dir, 'package.json')
+        if os.path.isfile(pj_root):
+            try:
+                pdata = json.load(open(pj_root))
+                deps = {**pdata.get('dependencies', {}), **pdata.get('devDependencies', {})}
+                raw_ver = deps.get(args.pkg)
+                if raw_ver:
+                    old_ver = re.sub(r'^[^\d]*', '', raw_ver)
+            except Exception:
+                pass
+    if not old_ver:
+        sys.exit(f'未指定 --old 且项目 {args.project_dir} 未找到 {args.pkg} 的版本信息。请指定 --old <版本号>。')
 
     print(f'对比 {args.pkg}:  旧 {old_ver}  →  新 {new_ver}\n扫描项目: {args.project_dir}\n')
 
