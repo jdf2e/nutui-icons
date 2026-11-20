@@ -1,5 +1,12 @@
 # @nutui/icons-react Changelog
 
+## 4.1.1
+
+### Features & Optimizations
+
+- 样式按需拆分：将 `style_icon.css` 拆分为 `style_base.css`、`style_loading.css` 与 `style_animation.css`，ES 入口默认仅引入基础与 Loading 样式，大幅降低默认 CSS 体积
+- 优化 `package.json` 的 `exports` 与 `sideEffects` 配置，提升构建工具 Tree-shaking 效果
+
 ## 4.1.0
 
 ### Features

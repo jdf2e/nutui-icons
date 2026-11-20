@@ -55,7 +55,7 @@ else
 fi
 
 log_step "6/6 运行单元测试"
-if pnpm test -- --run; then
+if CI=true pnpm test run; then
     log_ok "单元测试通过"
 else
     log_error "单元测试失败"

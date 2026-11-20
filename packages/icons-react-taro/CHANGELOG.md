@@ -1,5 +1,14 @@
 # @nutui/icons-react-taro Changelog
 
+## 4.1.1
+
+### Features & Optimizations
+
+- 构建产物去重与按需抽离：将 `IconTemplate` 与 `IconHarmonyTemplate` 抽离为外部共享模块，消除单图标组件内的模板代码重复并支持多端构建期 Tree-shaking
+- 样式按需拆分：将 `style_icon.css` 拆分为 `style_base.css`、`style_loading.css` 与 `style_animation.css`，ES 入口默认仅引入基础与 Loading 样式
+- 移除 `IconTemplate` 顶层 `import * as process from "process"`，避免 Webpack 5 / Vite 无 Node polyfill 环境下报错
+- 优化 `package.json` 的 `exports` 与 `sideEffects` 配置，提升构建工具 Tree-shaking 效果
+
 ## 4.1.0
 
 ### Features

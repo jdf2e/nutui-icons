@@ -1,6 +1,6 @@
 import React, { FunctionComponent } from "react";
 import { globalConfig } from "./internal";
-import * as process from "process";
+
 export interface SVG_IconProps {
   className?: string;
   style?: React.CSSProperties;

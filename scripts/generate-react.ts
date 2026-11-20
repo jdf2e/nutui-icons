@@ -165,10 +165,10 @@ new glob.Glob(pattern, {},(err, files) => {
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/iconsConfig.ts`, `export const iconsConfig = ${JSON.stringify(entryArray)}`, 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} 文件列表配置写入成功`);
     });
-    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
+    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/dist/es/index.es.js`, entryEs + 'import "../style_base.css";\nimport "../style_loading.css";\n', 'utf8', (error) => {
         consola.success(`${iconsReactDir} ES 入口文件文件写入成功`);
     });
-    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/dist/es/index.es.js`, entryEs + 'import "../style_icon.css";', 'utf8', (error) => {
+    fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/dist/es/index.es.js`, entryEs + 'import "../style_base.css";\nimport "../style_loading.css";\n', 'utf8', (error) => {
         consola.success(`${iconsReactTaroDir} ES 入口文件文件写入成功`);
     });
     fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/buildEntry/lib-new.ts`, entryLib, 'utf8', (error) => {

@@ -1,0 +1,27 @@
+:root {
+    --nut-icon-height: 16px;
+    --nut-icon-width: 16px;
+    --nut-icon-line-height: 16px;
+}
+
+page {
+    --nut-icon-height: 16px;
+    --nut-icon-width: 16px;
+    --nut-icon-line-height: 16px;
+}
+
+.nut-icon {
+    display: inline-block;
+    position: relative;
+    width: var(--nut-icon-width, 16px);
+    height: var(--nut-icon-height, 16px);
+    font-size: var(--nut-icon-width, 16px);
+    line-height: var(--nut-icon-line-height, 16px);
+    text-align: right;
+
+    &-img {
+        width: var(--nut-icon-width);
+        height: var(--nut-icon-height);
+        object-fit: contain;
+    }
+}

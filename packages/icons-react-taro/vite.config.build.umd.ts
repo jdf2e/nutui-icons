@@ -13,12 +13,14 @@ export default defineConfig({
       apply: "build",
       async closeBundle() {
         const umdFile = join(__dirname, "dist/lib/index.umd.js");
-        const umdFileContent = fs
-          .readFileSync(umdFile)
-          .toString()
-          .replace(`(void 0).TARO_ENV==="h5"`, `process.env.TARO_ENV==="h5"`);
-        fs.writeFileSync(umdFile, umdFileContent);
-        console.log("File rewritten successfully!");
+        if (fs.existsSync(umdFile)) {
+          const umdFileContent = fs
+            .readFileSync(umdFile)
+            .toString()
+            .replace(/\(void 0\)\.TARO_ENV/g, `process.env.TARO_ENV`);
+          fs.writeFileSync(umdFile, umdFileContent);
+          console.log("File rewritten successfully!");
+        }
       },
     },
   ],
@@ -31,7 +33,7 @@ export default defineConfig({
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: ["react", "react-dom", "react/jsx-runtime"],
+      external: ["react", "react-dom", "react/jsx-runtime", "@tarojs/components"],
       output: {
         dir: resolve(__dirname, "./dist/lib/"),
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
@@ -39,6 +41,7 @@ export default defineConfig({
           react: "React",
           "react-dom": "ReactDOM",
           "react/jsx-runtime": "jsxRuntime",
+          "@tarojs/components": "taroComponents",
         },
       },
     },

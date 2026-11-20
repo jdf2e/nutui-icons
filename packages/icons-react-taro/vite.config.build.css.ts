@@ -2,10 +2,12 @@ import { resolve } from 'path';
 import { defineConfig } from 'vite';
 
 let input = {
+  style_base: `./src/style_base.scss`,
+  style_loading: `./src/style_loading.scss`,
+  style_animation: `./src/style_animation.scss`,
   style_icon: `./src/style_icon.scss`,
   style_iconfont: `./src/style_iconfont.scss`,
 };
-
 
 export default defineConfig({
   publicDir: false,

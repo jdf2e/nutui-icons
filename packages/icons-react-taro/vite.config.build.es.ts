@@ -6,6 +6,8 @@ import * as fs from "fs";
 
 let input = {
   IconFont: `./src/IconFont.tsx`,
+  IconTemplate: `./src/IconTemplate.tsx`,
+  IconHarmonyTemplate: `./src/IconHarmonyTemplate.tsx`,
   configure: `./src/configure.ts`,
   internal: `./src/internal.ts`,
   IconFontConfig: `./src/buildEntry/iconFontConfig.ts`,
@@ -25,16 +27,21 @@ export default defineConfig({
       name: "revert Process.env",
       apply: "build",
       async closeBundle() {
-        const esFile = join(__dirname, "dist/es/icons/IconHarmonyTemplate.js");
-        const fileContent = fs
-          .readFileSync(esFile)
-          .toString()
-          .replace(
-            `(void 0).TARO_ENV === "h5"`,
-            `process.env.TARO_ENV === "h5"`,
-          );
-        fs.writeFileSync(esFile, fileContent);
-        console.log("File rewritten successfully!");
+        const iconsDir = join(__dirname, "dist/es/icons");
+        if (fs.existsSync(iconsDir)) {
+          for (const file of fs.readdirSync(iconsDir)) {
+            if (!file.endsWith(".js")) continue;
+            const esFile = join(iconsDir, file);
+            const fileContent = fs.readFileSync(esFile, "utf8");
+            if (fileContent.includes("(void 0).TARO_ENV")) {
+              fs.writeFileSync(
+                esFile,
+                fileContent.replace(/\(void 0\)\.TARO_ENV/g, "process.env.TARO_ENV"),
+              );
+            }
+          }
+          console.log("File rewritten successfully!");
+        }
       },
     },
   ],
@@ -52,18 +59,23 @@ export default defineConfig({
         "react/jsx-runtime",
         "classnames",
         "./internal",
+        "./IconTemplate",
+        "../IconTemplate",
+        "./IconHarmonyTemplate",
+        "../IconHarmonyTemplate",
         "./configure",
         "@tarojs/components",
       ],
-      // input,
       output: {
         paths: (id) => {
-          return /internal/.test(id) ? `./internal.js` : id;
+          if (/internal/.test(id)) return `./internal.js`;
+          if (/IconHarmonyTemplate/.test(id)) return `./IconHarmonyTemplate.js`;
+          if (/IconTemplate/.test(id)) return `./IconTemplate.js`;
+          return id;
         },
         entryFileNames: "[name].js",
         chunkFileNames: "[name].js",
         dir: resolve(__dirname, "./dist/es/icons"),
-        // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
           react: "React",
           "react-dom": "ReactDOM",
