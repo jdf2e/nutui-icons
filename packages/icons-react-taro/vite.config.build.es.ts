@@ -22,6 +22,9 @@ iconsConfig.map((name) => {
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: false,
+  define: {
+    "process.env.TARO_ENV": "process.env.TARO_ENV",
+  },
   plugins: [
     react(),
     {

@@ -3,6 +3,7 @@ import { globalConfig } from "./internal";
 
 const B64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 const B64_PREFIX = "data:image/svg+xml;base64,";
+const MAX_TINT_CACHE_SIZE = 500;
 const tintCache = new Map<string, string>();
 
 const decodeBase64Ascii = (input: string): string => {
@@ -52,6 +53,9 @@ const tintSvg64 = (svg64: string, color?: string): string => {
       tinted = raw.replace(/<svg\b/i, `<svg fill="${color}"`);
     }
     const result = B64_PREFIX + encodeBase64Ascii(tinted);
+    if (tintCache.size >= MAX_TINT_CACHE_SIZE) {
+      tintCache.clear();
+    }
     tintCache.set(cacheKey, result);
     return result;
   } catch (e) {

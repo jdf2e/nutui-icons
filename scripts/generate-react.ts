@@ -10,7 +10,17 @@ import svg64 from './svg64';
 // 48 网格图标会把 path 包在多层 <g>（带 transform）里，需要递归收集并保留祖先 transform
 // <defs>/<clipPath> 等内的 path 不是可见图形（如裁剪框），递归时跳过
 const SKIP_TAGS = new Set(['defs', 'clipPath', 'mask', 'symbol', 'style', 'title', 'desc'])
-type PathInfo = { d: string; transform: string; fillRule?: string; clipRule?: string }
+type PathInfo = {
+    d: string
+    transform: string
+    fillRule?: string
+    clipRule?: string
+    fillOpacity?: string
+    stroke?: string
+    strokeWidth?: string
+    strokeOpacity?: string
+    noFill?: boolean
+}
 const collectPaths = (node: any, transform: string = '', paths: PathInfo[] = []) => {
     if (!node) return paths
     const currentTransform = [transform, node.properties?.transform].filter(Boolean).join(' ')
@@ -19,7 +29,13 @@ const collectPaths = (node: any, transform: string = '', paths: PathInfo[] = [])
         const rawClipRule = node.properties['clip-rule']
         const fillRule = typeof rawFillRule === 'string' && rawFillRule.toLowerCase() === 'evenodd' ? 'evenodd' : undefined
         const clipRule = typeof rawClipRule === 'string' && rawClipRule.toLowerCase() === 'evenodd' ? 'evenodd' : undefined
-        paths.push({ d: node.properties.d, transform: currentTransform, fillRule, clipRule })
+        const fillOpacity = node.properties['fill-opacity'] !== undefined ? String(node.properties['fill-opacity']) : undefined
+        const hasStroke = node.properties.stroke !== undefined && node.properties.stroke !== 'none'
+        const stroke = hasStroke ? 'currentColor' : undefined
+        const strokeWidth = hasStroke && node.properties['stroke-width'] !== undefined ? String(node.properties['stroke-width']) : undefined
+        const strokeOpacity = hasStroke && node.properties['stroke-opacity'] !== undefined ? String(node.properties['stroke-opacity']) : undefined
+        const noFill = hasStroke && (node.properties.fill === undefined || node.properties.fill === 'none')
+        paths.push({ d: node.properties.d, transform: currentTransform, fillRule, clipRule, fillOpacity, stroke, strokeWidth, strokeOpacity, noFill })
     }
     ;(node.children || []).forEach((child: any) => {
         if (!SKIP_TAGS.has(child.tagName)) collectPaths(child, currentTransform, paths)
@@ -35,13 +51,17 @@ import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
     return <Icon {...realProps} name={realProps.name || '${componentName}'} viewBox={'${viewBox}'}>
-        ${paths.map(({ d, transform, fillRule, clipRule }) => {
+        ${paths.map(({ d, transform, fillRule, clipRule, fillOpacity, stroke, strokeWidth, strokeOpacity, noFill }) => {
         return `<path
         d="${d}"${transform ? `
         transform="${transform}"` : ''}${fillRule ? `
         fillRule="${fillRule}"` : ''}${clipRule ? `
-        clipRule="${clipRule}"` : ''}
-        fill="currentColor"
+        clipRule="${clipRule}"` : ''}${fillOpacity ? `
+        fillOpacity="${fillOpacity}"` : ''}${stroke ? `
+        stroke="${stroke}"` : ''}${strokeWidth ? `
+        strokeWidth="${strokeWidth}"` : ''}${strokeOpacity ? `
+        strokeOpacity="${strokeOpacity}"` : ''}
+        fill="${noFill ? 'none' : 'currentColor'}"
         ></path>`
     }).join('\n        ')}
     </Icon>
