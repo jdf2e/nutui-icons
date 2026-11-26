@@ -8,17 +8,26 @@ import consola from "consola";
 import svg64 from './svg64';
 
 // 48 网格图标会把 path 包在多层 <g>（带 transform）里，需要递归收集并保留祖先 transform
-const collectPaths = (node: any, transform: string = '', paths: Array<{ d: string; transform: string }> = []) => {
+// <defs>/<clipPath> 等内的 path 不是可见图形（如裁剪框），递归时跳过
+const SKIP_TAGS = new Set(['defs', 'clipPath', 'mask', 'symbol', 'style', 'title', 'desc'])
+type PathInfo = { d: string; transform: string; fillRule?: string; clipRule?: string }
+const collectPaths = (node: any, transform: string = '', paths: PathInfo[] = []) => {
     if (!node) return paths
     const currentTransform = [transform, node.properties?.transform].filter(Boolean).join(' ')
     if (node.tagName === 'path' && node.properties?.d) {
-        paths.push({ d: node.properties.d, transform: currentTransform })
+        const rawFillRule = node.properties['fill-rule']
+        const rawClipRule = node.properties['clip-rule']
+        const fillRule = typeof rawFillRule === 'string' && rawFillRule.toLowerCase() === 'evenodd' ? 'evenodd' : undefined
+        const clipRule = typeof rawClipRule === 'string' && rawClipRule.toLowerCase() === 'evenodd' ? 'evenodd' : undefined
+        paths.push({ d: node.properties.d, transform: currentTransform, fillRule, clipRule })
     }
-    ;(node.children || []).forEach((child: any) => collectPaths(child, currentTransform, paths))
+    ;(node.children || []).forEach((child: any) => {
+        if (!SKIP_TAGS.has(child.tagName)) collectPaths(child, currentTransform, paths)
+    })
     return paths
 }
 
-const getSvg = (componentName: string, viewBox: string, paths: Array<{ d: string; transform: string }>) => {
+const getSvg = (componentName: string, viewBox: string, paths: PathInfo[]) => {
     const template = `
 import {FunctionComponent} from 'react'
 import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
@@ -26,10 +35,12 @@ import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
     return <Icon {...realProps} name={realProps.name || '${componentName}'} viewBox={'${viewBox}'}>
-        ${paths.map(({ d, transform }) => {
+        ${paths.map(({ d, transform, fillRule, clipRule }) => {
         return `<path
         d="${d}"${transform ? `
-        transform="${transform}"` : ''}
+        transform="${transform}"` : ''}${fillRule ? `
+        fillRule="${fillRule}"` : ''}${clipRule ? `
+        clipRule="${clipRule}"` : ''}
         fill="currentColor"
         ></path>`
     }).join('\n        ')}
@@ -77,15 +88,18 @@ import Icon, { defaultProps, SVG_IconProps } from '../IconTemplate'
 import { default as Icon2 } from '../IconHarmonyTemplate'
 import { default as Icon3 } from '../IconSkylineTemplate'
 
+const svg64 = '${svg64String}'
+const svgSrc = '${svgSrc}'
+
 const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
     return (
         <>{process.env.TARO_ENV === 'skyline' ? (
-            <Icon3 {...realProps} name={realProps.name || '${componentName}'} svg64={'${svg64String}'} svgSrc={'${svgSrc}'}></Icon3>
+            <Icon3 {...realProps} name={realProps.name || '${componentName}'} svg64={svg64}></Icon3>
         ) : process.env.TARO_ENV !== 'jdharmony_cpp' && process.env.TARO_ENV !== 'dynamic' ? (
-            <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={'${svg64String}'} svgSrc={'${svgSrc}'}></Icon>
+            <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={svg64}></Icon>
         ) : (
-            <Icon2 {...realProps} name={realProps.name || '${componentName}'} svgSrc={'${svgSrc}'} svg64={'${svg64String}'}></Icon2>
+            <Icon2 {...realProps} name={realProps.name || '${componentName}'} svgSrc={svgSrc} svg64={svg64}></Icon2>
         )}</>
     )
 }

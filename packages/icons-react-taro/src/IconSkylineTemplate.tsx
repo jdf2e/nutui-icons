@@ -1,6 +1,71 @@
 import React, { FunctionComponent } from "react";
 import { globalConfig } from "./internal";
-import { Image } from "@tarojs/components";
+
+const B64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
+const B64_PREFIX = "data:image/svg+xml;base64,";
+const tintCache = new Map<string, string>();
+
+const decodeBase64Ascii = (input: string): string => {
+  const str = input.replace(/=+$/, "");
+  let out = "";
+  for (let i = 0; i < str.length; i += 4) {
+    const a = B64_CHARS.indexOf(str[i]);
+    const b = B64_CHARS.indexOf(str[i + 1]);
+    const c = i + 2 < str.length ? B64_CHARS.indexOf(str[i + 2]) : -1;
+    const d = i + 3 < str.length ? B64_CHARS.indexOf(str[i + 3]) : -1;
+    out += String.fromCharCode((a << 2) | (b >> 4));
+    if (c !== -1) out += String.fromCharCode(((b & 15) << 4) | (c >> 2));
+    if (d !== -1) out += String.fromCharCode(((c & 3) << 6) | d);
+  }
+  return out;
+};
+
+const encodeBase64Ascii = (str: string): string => {
+  let out = "";
+  for (let i = 0; i < str.length; i += 3) {
+    const a = str.charCodeAt(i);
+    const hasB = i + 1 < str.length;
+    const hasC = i + 2 < str.length;
+    const b = hasB ? str.charCodeAt(i + 1) : 0;
+    const c = hasC ? str.charCodeAt(i + 2) : 0;
+    const n = (a << 16) | (b << 8) | c;
+    out +=
+      B64_CHARS[(n >> 18) & 63] +
+      B64_CHARS[(n >> 12) & 63] +
+      (hasB ? B64_CHARS[(n >> 6) & 63] : "=") +
+      (hasC ? B64_CHARS[n & 63] : "=");
+  }
+  return out;
+};
+
+const tintSvg64 = (svg64: string, color?: string): string => {
+  if (!color || !svg64.startsWith(B64_PREFIX) || color === "currentColor" || color.includes("var(")) {
+    return svg64;
+  }
+  const cacheKey = `${color}\0${svg64}`;
+  const cached = tintCache.get(cacheKey);
+  if (cached) return cached;
+  try {
+    const raw = decodeBase64Ascii(svg64.slice(B64_PREFIX.length));
+    let tinted = raw.replace(/fill="(?!none")[^"]*"/gi, `fill="${color}"`);
+    if (tinted === raw) {
+      tinted = raw.replace(/<svg\b/i, `<svg fill="${color}"`);
+    }
+    const result = B64_PREFIX + encodeBase64Ascii(tinted);
+    tintCache.set(cacheKey, result);
+    return result;
+  } catch (e) {
+    return svg64;
+  }
+};
+
+const toKebabCase = (str?: string): string => {
+  if (!str) return "";
+  return str
+    .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+    .replace(/([A-Za-z])(\d)/g, "$1-$2")
+    .toLowerCase();
+};
 
 export interface SVG_IconProps {
   className?: string;
@@ -69,7 +134,7 @@ const IconSkyline: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => 
   };
 
   const classes = () => {
-    const iconName = fallback ? name?.toLowerCase() : name;
+    const iconName = fallback ? toKebabCase(name) : name;
     return `${
       fallback ? globalConfig.fontClassName : ""
     } ${classPrefix} ${classPrefix}-${iconName} ${className || ""}`.trim();
@@ -80,18 +145,13 @@ const IconSkyline: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => 
   const checkedHeight = pxCheck(height || size || "");
   if (checkedWidth) {
     props2Style["width"] = checkedWidth;
+    if (fallback) {
+      props2Style["fontSize"] = checkedWidth;
+    }
   }
   if (checkedHeight) {
     props2Style["height"] = checkedHeight;
   }
-
-  const getStyle = () => {
-    return {
-      ...style,
-      ...props2Style,
-      ...(color ? { color } : {}),
-    };
-  };
 
   const ariaProps = {
     role: ariaRole,
@@ -103,12 +163,16 @@ const IconSkyline: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => 
   };
 
   if (fallback) {
-    const tag = globalConfig.tag === "i" ? "view" : (globalConfig.tag || "view");
+    const tag = globalConfig.tag === "i" ? "text" : (globalConfig.tag || "text");
     return React.createElement<any>(
       tag,
       {
         className: classes(),
-        style: getStyle(),
+        style: {
+          ...style,
+          ...props2Style,
+          ...(color ? { color } : {}),
+        },
         onClick: handleClick,
         ...ariaProps,
       },
@@ -116,15 +180,27 @@ const IconSkyline: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => 
     );
   }
 
+  const targetColor =
+    color || (typeof style?.color === "string" ? style.color : "") || "#171A26";
+  const iconUrl = svg64 ? tintSvg64(svg64, targetColor) : svgSrc;
+  const bgStyle: any = {
+    backgroundImage: `url('${iconUrl}')`,
+    backgroundSize: "100% 100%",
+    backgroundRepeat: "no-repeat",
+    backgroundPosition: "center",
+  };
+
+  const tag = globalConfig.tag === "i" ? "view" : (globalConfig.tag || "view");
   return React.createElement<any>(
-    Image,
+    tag,
     {
-      src: svgSrc || svg64,
       className: classes(),
-      style: getStyle(),
+      style: {
+        ...style,
+        ...bgStyle,
+        ...props2Style,
+      },
       onClick: handleClick,
-      mode: "aspectFit",
-      svg: true,
       ...ariaProps,
     },
     children

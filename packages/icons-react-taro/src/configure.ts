@@ -10,10 +10,9 @@ export function configure(config: Configure) {
             }
         }
         if (config.isSkyline !== undefined) {
-            globalConfig.isSkyline = config.isSkyline
-        }
-        if (config.skyline !== undefined) {
-            globalConfig.skyline = config.skyline
+            globalConfig.skyline = config.isSkyline
+        } else if (config.skyline !== undefined) {
+            globalConfig.isSkyline = config.skyline
         }
     }
 }

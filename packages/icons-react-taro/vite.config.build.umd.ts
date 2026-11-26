@@ -18,6 +18,12 @@ export default defineConfig({
       console.log('File rewritten successfully!');
     }
   }],
+  resolve: {
+    alias: [
+      // 把 react/jsx-runtime 指向垫片并打包进库，避免 React 19 下加载报错
+      { find: /^react\/jsx(-dev)?-runtime$/, replacement: resolve(__dirname, './jsx-runtime.shim.ts') },
+    ],
+  },
   build: {
     lib: {
       entry: resolve(__dirname, 'src/buildEntry/lib-new.ts'),
@@ -27,13 +33,14 @@ export default defineConfig({
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: ['react', 'react-dom'],
+      external: ['react', 'react-dom', '@tarojs/components'],
       output: {
         dir: resolve(__dirname, './dist/lib/'),
         // 在 UMD 构建模式下为这些外部化的依赖提供一个全局变量
         globals: {
           react: 'React',
-          'react-dom': 'ReactDOM'
+          'react-dom': 'ReactDOM',
+          '@tarojs/components': 'TaroComponents'
         }
       }
     }

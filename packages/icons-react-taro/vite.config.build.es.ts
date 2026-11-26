@@ -67,6 +67,7 @@ export default defineConfig({
       ],
       // input,
       output: {
+        hoistTransitiveImports: false,
         paths: (id) => {
           return /internal/.test(id) ? `./internal.js` : id;
         },
