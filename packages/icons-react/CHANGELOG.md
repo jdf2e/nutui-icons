@@ -1,6 +1,6 @@
 # Changelog
 
-## [3.1.0-beta.2] - 2026-11-26
+## [3.2.0-beta.0] - 2026-11-27
 
 ### Added
 
@@ -8,7 +8,8 @@
 
 ### Fixed
 
-- 修复 React 19 兼容问题：构建切换为 automatic JSX runtime，external `react/jsx-runtime`
+- 修复 React 19 兼容问题：ES 构建切换为 automatic JSX runtime（external `react/jsx-runtime`），UMD 构建接入 `jsx-runtime.shim.ts` 垫片（仅依赖 React 全局变量）
+- 修复 48×48 网格 SVG 生成逻辑：递归提取 `<g transform>` 内的 `<path>`，跳过 `<defs>/<clipPath>` 裁剪框，保留 `fillRule`/`clipRule="evenodd"` 及 `fillOpacity`/`stroke`/`strokeWidth`/`strokeOpacity` 属性
 - `IconFont` 的 props 改为可选，避免使用方必须传入全部属性
 - 类型声明 `IconFontConfig` 改为精确的 const 结构类型
 
