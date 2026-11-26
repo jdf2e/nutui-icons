@@ -1,5 +1,38 @@
 import React, { FunctionComponent } from "react";
-import { globalConfig } from "./internal";
+import { globalConfig, defaultProps, SVG_IconProps } from "./internal";
+
+export { defaultProps };
+export type { SVG_IconProps };
+
+declare const getCurrentPages: any;
+
+// 检查当前是否运行在微信小程序 Skyline 引擎下
+export const isSkyline = (): boolean => {
+  if (typeof globalConfig.isSkyline === "boolean") {
+    return globalConfig.isSkyline;
+  }
+  if (typeof globalConfig.skyline === "boolean") {
+    return globalConfig.skyline;
+  }
+  if (typeof process !== "undefined" && process.env.TARO_ENV === "skyline") {
+    return true;
+  }
+  if (typeof process !== "undefined" && process.env.TARO_ENV && process.env.TARO_ENV !== "weapp") {
+    return false;
+  }
+  try {
+    if (typeof getCurrentPages === "function") {
+      const pages = getCurrentPages();
+      const currentPage = pages[pages.length - 1];
+      if (currentPage && (currentPage as any).renderer === "skyline") {
+        return true;
+      }
+    }
+  } catch (e) {
+    // ignore
+  }
+  return false;
+};
 
 const B64_CHARS = "ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz0123456789+/";
 const B64_PREFIX = "data:image/svg+xml;base64,";
@@ -70,40 +103,6 @@ const toKebabCase = (str?: string): string => {
     .replace(/([A-Za-z])(\d)/g, "$1-$2")
     .toLowerCase();
 };
-
-export interface SVG_IconProps {
-  className?: string;
-  style?: React.CSSProperties;
-  viewBox?: string;
-  name?: string;
-  color?: string;
-  width?: string | number;
-  height?: string | number;
-  size?: string | number;
-  svg64?: string;
-  svgSrc?: string;
-  onClick?: (event: React.MouseEvent) => void;
-  children?: React.ReactNode;
-  fallback?: boolean;
-  ariaRole?: string;
-  ariaLabel?: string;
-  ariaRoledescription?: string;
-  ariaHidden?: boolean | "true" | "false";
-  ariaChecked?: boolean | "true" | "false";
-  ariaSelected?: boolean | "true" | "false";
-}
-
-export const defaultProps = {
-  className: "",
-  style: undefined,
-  name: "",
-  width: "",
-  height: "",
-  size: "",
-  svg64: "",
-  svgSrc: "",
-  onClick: () => undefined,
-} as SVG_IconProps;
 
 const IconSkyline: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
   const classPrefix = globalConfig.classPrefix;

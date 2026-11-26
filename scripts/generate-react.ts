@@ -107,7 +107,7 @@ import {FunctionComponent} from 'react'
 import { defaultProps, SVG_IconProps } from '../internal'
 import Icon from '../IconTemplate'
 import { default as Icon2 } from '../IconHarmonyTemplate'
-import { default as Icon3 } from '../IconSkylineTemplate'
+import { default as Icon3, isSkyline } from '../IconSkylineTemplate'
 
 const svg64 = '${svg64String}'
 const svgSrc = '${svgSrc}'
@@ -115,12 +115,12 @@ const svgSrc = '${svgSrc}'
 const ${componentName}:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
     return (
-        <>{process.env.TARO_ENV === 'skyline' ? (
-            <Icon3 {...realProps} name={realProps.name || '${componentName}'} svg64={svg64}></Icon3>
-        ) : process.env.TARO_ENV !== 'jdharmony_cpp' && process.env.TARO_ENV !== 'dynamic' ? (
-            <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={svg64}></Icon>
-        ) : (
+        <>{process.env.TARO_ENV === 'jdharmony_cpp' || process.env.TARO_ENV === 'dynamic' ? (
             <Icon2 {...realProps} name={realProps.name || '${componentName}'} svgSrc={svgSrc} svg64={svg64}></Icon2>
+        ) : process.env.TARO_ENV === 'skyline' || ((!process.env.TARO_ENV || process.env.TARO_ENV === 'weapp') && isSkyline()) ? (
+            <Icon3 {...realProps} name={realProps.name || '${componentName}'} svg64={svg64}></Icon3>
+        ) : (
+            <Icon {...realProps} name={realProps.name || '${componentName}'} svg64={svg64}></Icon>
         )}</>
     )
 }
@@ -140,7 +140,7 @@ let entryEsTaro = `/** 此文件由 script generate 脚本生成 */
 export { config as IconFontConfig } from "./icons/IconFontConfig.js";
 export { default as IconFont } from "./icons/IconFont.js";
 export { configure } from "./icons/configure.js";
-export { isSkyline } from "./icons/internal.js";
+export { isSkyline } from "./icons/IconSkylineTemplate.js";
 \n`;
 
 let entryLib = `/** 此文件由 script generate 脚本生成 */
@@ -158,14 +158,14 @@ let entryLibDTS = `/** 此文件由 script generate 脚本生成 */
 let entryLibTaro = `/** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
     import { configure } from "../configure";
-    import { isSkyline } from "../internal";
+    import { isSkyline } from "../IconSkylineTemplate";
     import config from '../../../../iconfont/config.json';
     export { IconFont, config, configure, isSkyline };
 \n`;
 let entryLibDTSTaro = `/** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
     import { configure } from "../configure";
-    import { isSkyline } from "../internal";
+    import { isSkyline } from "../IconSkylineTemplate";
     export { IconFont, configure, isSkyline };
 \n`;
 

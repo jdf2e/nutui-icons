@@ -1,7 +1,7 @@
 /** 此文件由 script generate 脚本生成 */
     import IconFont from '../IconFont';
     import { configure } from "../configure";
-    import { isSkyline } from "../internal";
+    import { isSkyline } from "../IconSkylineTemplate";
     export { IconFont, configure, isSkyline };
 
 export { default as AddToCartF } from "../components/AddToCartF";
