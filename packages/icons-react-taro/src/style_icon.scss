@@ -18,17 +18,12 @@ page {
 
 .nut-icon {
     display: inline-block;
-    display: inline-flex;
-    align-items: center;
-    justify-content: center;
-    vertical-align: middle;
-    box-sizing: border-box;
     position: relative;
     width: var(--nut-icon-width, 16px);
     height: var(--nut-icon-height, 16px);
     font-size: var(--nut-icon-width, 16px);
     line-height: var(--nut-icon-line-height, 16px);
-    text-align: center;
+    text-align: right;
     // color: var(--nut-icon-color, #171A26);
 
     // &::before {
