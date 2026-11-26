@@ -1,5 +1,20 @@
 # Changelog
 
+## [3.1.0-beta.2] - 2026-11-26
+
+### Added
+
+- 图标资源升级为 48×48 网格（199 个图标），新增 `AlwaysBuyF`、`GiftOrder`
+- 新增微信小程序 Skyline 渲染引擎适配：新增 `IconSkylineTemplate`，导出 `isSkyline()`，支持 `configure({ isSkyline: true })` 与 `process.env.TARO_ENV === 'skyline'` 条件编译
+- 图标组件新增无障碍属性：`ariaRole`、`ariaLabel`、`ariaRoledescription`、`ariaHidden`、`ariaChecked`、`ariaSelected`
+
+### Fixed
+
+- 修复 React 19 兼容问题：构建切换为 automatic JSX runtime，ES 产物 external `react/jsx-runtime`，UMD 产物内联 jsx-runtime（仅依赖 React 全局变量）
+- 修复 Next.js SSR 兼容、iOS 下 SVG 无法展示（`svg64` 回退）、Harmony `pxCheck` 单位处理
+- 修复 `iconfont.css` 缺失 `.nut-icon-always-buy` 字形
+- 类型声明 `IconFontConfig` 改为精确的 const 结构类型
+
 ## [3.1.0-beta.1] - 2026-08-21
 
 ### Fixed

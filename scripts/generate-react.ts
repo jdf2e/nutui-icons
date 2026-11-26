@@ -7,7 +7,18 @@ import {optimize} from 'svgo'
 import consola from "consola";
 import svg64 from './svg64';
 
-const getSvg = (componentName: string, viewBox: string, d: any[]) => {
+// 48 网格图标会把 path 包在多层 <g>（带 transform）里，需要递归收集并保留祖先 transform
+const collectPaths = (node: any, transform: string = '', paths: Array<{ d: string; transform: string }> = []) => {
+    if (!node) return paths
+    const currentTransform = [transform, node.properties?.transform].filter(Boolean).join(' ')
+    if (node.tagName === 'path' && node.properties?.d) {
+        paths.push({ d: node.properties.d, transform: currentTransform })
+    }
+    ;(node.children || []).forEach((child: any) => collectPaths(child, currentTransform, paths))
+    return paths
+}
+
+const getSvg = (componentName: string, viewBox: string, paths: Array<{ d: string; transform: string }>) => {
     const template = `
 import {FunctionComponent} from 'react'
 import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
@@ -15,12 +26,13 @@ import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
     return <Icon {...realProps} name={realProps.name || '${componentName}'} viewBox={'${viewBox}'}>
-        ${d.map(d => {
+        ${paths.map(({ d, transform }) => {
         return `<path
-        d="${d}"
+        d="${d}"${transform ? `
+        transform="${transform}"` : ''}
         fill="currentColor"
         ></path>`
-    })}
+    }).join('\n        ')}
     </Icon>
 }
 
@@ -169,11 +181,9 @@ new glob.Glob(pattern, {},(err, files) => {
         fsExtra.readFile(file, {encoding: 'utf8'}).then((res) => {
             let svg = optimize(res).data;
             const svgAST = parse(svg).children[0];
-            let pathds = (svgAST as any).children?.map((item:any) => {
-                return item.properties.d;
-            })
+            let paths = collectPaths(svgAST)
             let viewBox = (svgAST as any).properties.viewBox;
-            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/components/${componentName}.tsx`, getSvg(componentName, viewBox, pathds), 'utf8', (error) => {
+            fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactDir}/src/components/${componentName}.tsx`, getSvg(componentName, viewBox, paths), 'utf8', (error) => {
                 consola.success(`${iconsReactDir} ${componentName} 文件写入成功`);
             });
             fsExtra.outputFile(`${process.cwd()}/packages/${iconsReactTaroDir}/src/components/${componentName}.tsx`, getTaroSvg(componentName, svg, iconFontName, Boolean(projectID)), 'utf8', (error) => {

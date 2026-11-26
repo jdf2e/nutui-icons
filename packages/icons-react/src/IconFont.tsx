@@ -2,16 +2,16 @@ import React, { ReactElement, ReactHTML } from 'react'
 import {globalConfig} from "./internal";
 
 export interface IconProps {
-    name: string
-    size: string | number
-    classPrefix: string
-    color: string
-    tag: keyof ReactHTML
-    onClick: (e: MouseEvent) => void
-    fontClassName: string
-    className: string
-    style: React.CSSProperties
-    children: React.ReactNode
+    name?: string
+    size?: string | number
+    classPrefix?: string
+    color?: string
+    tag?: keyof ReactHTML
+    onClick?: (e: MouseEvent) => void
+    fontClassName?: string
+    className?: string
+    style?: React.CSSProperties
+    children?: React.ReactNode
 }
 
 const defaultProps = {
@@ -65,9 +65,9 @@ export default function Icon<T>(props: Partial<IconProps> & T): ReactElement {
                 }`,
             style: {
                 color,
-                fontSize: pxCheck(size),
-                width: pxCheck(size),
-                height: pxCheck(size),
+                fontSize: pxCheck(size || ''),
+                width: pxCheck(size || ''),
+                height: pxCheck(size || ''),
                 ...style,
             },
             ...rest,

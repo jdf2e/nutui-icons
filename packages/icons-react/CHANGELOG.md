@@ -1,5 +1,17 @@
 # Changelog
 
+## [3.1.0-beta.2] - 2026-11-26
+
+### Added
+
+- 图标资源升级为 48×48 网格（199 个图标），新增 `AlwaysBuyF`、`GiftOrder`，恢复 `AlwaysBuy`、`MinusF` 导出
+
+### Fixed
+
+- 修复 React 19 兼容问题：构建切换为 automatic JSX runtime，external `react/jsx-runtime`
+- `IconFont` 的 props 改为可选，避免使用方必须传入全部属性
+- 类型声明 `IconFontConfig` 改为精确的 const 结构类型
+
 ## [3.1.0-beta.1] - 2026-08-21
 
 ### Fixed
