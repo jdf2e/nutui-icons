@@ -1,3 +1,39 @@
+import React from 'react'
+
+export interface SVG_IconProps {
+    className?: string
+    style?: React.CSSProperties
+    viewBox?: string
+    name?: string
+    color?: string
+    width?: string | number
+    height?: string | number
+    size?: string | number
+    svg64?: string
+    svgSrc?: string
+    onClick?: (event: React.MouseEvent) => void
+    children?: React.ReactNode
+    fallback?: boolean
+    ariaRole?: string
+    ariaLabel?: string
+    ariaRoledescription?: string
+    ariaHidden?: boolean | "true" | "false"
+    ariaChecked?: boolean | "true" | "false"
+    ariaSelected?: boolean | "true" | "false"
+}
+
+export const defaultProps = {
+    className: '',
+    style: undefined,
+    name: '',
+    width: '',
+    height: '',
+    size: '',
+    svg64: '',
+    svgSrc: '',
+    onClick: () => undefined
+} as SVG_IconProps
+
 export type Configure = {
     useSvg?: boolean
     classPrefix?: string
@@ -35,6 +71,9 @@ export const isSkyline = (): boolean => {
     }
     if (typeof process !== 'undefined' && process.env.TARO_ENV === 'skyline') {
         return true;
+    }
+    if (typeof process !== 'undefined' && process.env.TARO_ENV && process.env.TARO_ENV !== 'weapp') {
+        return false;
     }
     try {
         if (typeof getCurrentPages === 'function') {

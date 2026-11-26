@@ -48,7 +48,7 @@ const getSvg = (componentName: string, viewBox: string, paths: PathInfo[]) => {
 import {FunctionComponent} from 'react'
 import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
 
-const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
+const ${componentName}:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
     return <Icon {...realProps} name={realProps.name || '${componentName}'} viewBox={'${viewBox}'}>
         ${paths.map(({ d, transform, fillRule, clipRule, fillOpacity, stroke, strokeWidth, strokeOpacity, noFill }) => {
@@ -67,7 +67,7 @@ const Add:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     </Icon>
 }
 
-export default Add
+export default ${componentName}
 `
     return template
 }
@@ -104,14 +104,15 @@ export default IconSVG
     const svgSrc = (svgConfig as any)[iconFontName] || ''
     const template = `
 import {FunctionComponent} from 'react'
-import Icon, { defaultProps, SVG_IconProps } from '../IconTemplate'
+import { defaultProps, SVG_IconProps } from '../internal'
+import Icon from '../IconTemplate'
 import { default as Icon2 } from '../IconHarmonyTemplate'
 import { default as Icon3 } from '../IconSkylineTemplate'
 
 const svg64 = '${svg64String}'
 const svgSrc = '${svgSrc}'
 
-const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
+const ${componentName}:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
     return (
         <>{process.env.TARO_ENV === 'skyline' ? (
@@ -124,7 +125,7 @@ const IconSVG:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     )
 }
 
-export default IconSVG
+export default ${componentName}
 `
     return template
 }

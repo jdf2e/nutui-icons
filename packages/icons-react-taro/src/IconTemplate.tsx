@@ -1,47 +1,13 @@
 import React, { FunctionComponent } from "react";
-import { globalConfig, isSkyline } from "./internal";
+import { globalConfig, isSkyline, defaultProps, SVG_IconProps } from "./internal";
 import IconSkyline from "./IconSkylineTemplate";
 
-export { isSkyline };
-
-
-export interface SVG_IconProps {
-    className?: string
-    style?: React.CSSProperties
-    viewBox?: string
-    name?: string
-    color?: string
-    width?: string | number
-    height?: string | number
-    size?: string | number
-    svg64?: string
-    svgSrc?: string
-    onClick?: (event: React.MouseEvent) => void
-    children?: React.ReactNode
-    fallback?: boolean
-    ariaRole?: string
-    ariaLabel?: string
-    ariaRoledescription?: string
-    ariaHidden?: boolean | "true" | "false"
-    ariaChecked?: boolean | "true" | "false"
-    ariaSelected?: boolean | "true" | "false"
-}
-
-export const defaultProps = {
-    className: '',
-    style: undefined,
-    name: '',
-    width: '',
-    height: '',
-    size: '',
-    svg64: '',
-    svgSrc: '',
-    onClick: () => undefined
-} as SVG_IconProps
+export { isSkyline, defaultProps };
+export type { SVG_IconProps };
 
 
 const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
-    if (isSkyline()) {
+    if ((!process.env.TARO_ENV || process.env.TARO_ENV === 'weapp' || process.env.TARO_ENV === 'skyline') && isSkyline()) {
         return React.createElement(IconSkyline, props);
     }
     const classPrefix = globalConfig.classPrefix
