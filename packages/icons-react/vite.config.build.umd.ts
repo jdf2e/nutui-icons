@@ -5,7 +5,21 @@ import react from '@vitejs/plugin-react'
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: false,
-  plugins: [react()],
+  plugins: [
+    react(),
+    {
+      name: 'ignore-css',
+      enforce: 'pre',
+      resolveId(source) {
+        if (/\.css(\?.*)?$/.test(source)) return `\0ignore-css:${source}`;
+        return null;
+      },
+      load(id) {
+        if (id.startsWith('\0ignore-css:')) return '';
+        return null;
+      },
+    },
+  ],
   resolve: {
     alias: [
       // 把 react/jsx-runtime 指向垫片并打包进库，UMD 产物因此只依赖 react

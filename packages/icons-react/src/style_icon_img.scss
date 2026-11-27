@@ -1,0 +1,6 @@
+.nut-icon__img,
+.nut-icon-img {
+    width: var(--nut-icon-width, 16px);
+    height: var(--nut-icon-height, 16px);
+    object-fit: contain;
+}

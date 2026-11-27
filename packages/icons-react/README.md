@@ -42,8 +42,18 @@ export default function App() {
 
 ### 引入样式
 
+ESM 按需引入组件时，基础尺寸样式（`style_icon.css`）、`IconFont` 图片样式（`style_icon_img.css`）及 `Loading`/`Loading1` 旋转样式（`style_icon_loading.css`）已随组件自动按需引入，常规场景无需手动导入。
+
+如需使用内置动画类名（`nut-icon-am-*`，如 `nut-icon-am-rotate`、`nut-icon-am-jump`、`nut-icon-am-blink` 等），请按需引入动画样式：
+
 ```tsx
-import '@nutui/icons-react/dist/style_icon.css'
+import '@nutui/icons-react/dist/style_icon_animate.css'
+```
+
+如需全量图标字体及全部样式（包含动画、Loading、图片样式）：
+
+```tsx
+import '@nutui/icons-react/dist/style_iconfont.css'
 ```
 
 ### 图标属性
@@ -74,6 +84,7 @@ configure({
 UMD 产物为全量 bundle，**不支持 tree-shaking**，仅适用于 `<script>` 标签直接引入的场景。
 
 ```html
+<!-- 基础图标样式；如需 Loading / IconFont 图片 / 内置动画，可按需追加 style_icon_loading.css、style_icon_img.css、style_icon_animate.css，或直接引入 style_iconfont.css -->
 <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/@nutui/icons-react/dist/style_icon.css">
 <script src="https://cdn.jsdelivr.net/npm/react/umd/react.production.min.js"></script>
 <script src="https://cdn.jsdelivr.net/npm/@nutui/icons-react/dist/lib/index.umd.js"></script>

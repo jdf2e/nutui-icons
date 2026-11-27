@@ -26,13 +26,14 @@ export default defineConfig({
     },
     rollupOptions: {
       // 确保外部化处理那些你不想打包进库的依赖
-      external: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime', 'react-dom/client', 'classnames', './internal', './configure'],
+      external: ['react', 'react-dom', 'react/jsx-runtime', 'react/jsx-dev-runtime', 'react-dom/client', 'classnames', './internal', './configure', /\.css$/],
       // input,
       output: {
+        hoistTransitiveImports: false,
         paths: (id) => {
-          return /internal/.test(id)
-              ? `./internal.js`
-              : id
+          if (/internal/.test(id)) return `./internal.js`
+          if (/\.css$/.test(id)) return `../../${id.split('/').pop()}`
+          return id
         },
         entryFileNames: '[name].js',
         dir: resolve(__dirname, './dist/es/icons'),

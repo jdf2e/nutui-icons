@@ -9,18 +9,33 @@ export default defineConfig({
   define: {
     'process.env.TARO_ENV': 'process.env.TARO_ENV',
   },
-  plugins: [react(), {
-    name: 'revert Process.env',
-    apply: 'build',
-    async closeBundle() {
-      const umdFile = join(__dirname, 'dist/lib/index.umd.js')
-      if (fs.existsSync(umdFile)) {
-        const umdFileContent = fs.readFileSync(umdFile).toString().replace(/\(void 0\)\.TARO_ENV/g, 'process.env.TARO_ENV')
-        fs.writeFileSync(umdFile, umdFileContent)
+  plugins: [
+    react(),
+    {
+      name: 'ignore-css',
+      enforce: 'pre',
+      resolveId(source) {
+        if (/\.css(\?.*)?$/.test(source)) return `\0ignore-css:${source}`;
+        return null;
+      },
+      load(id) {
+        if (id.startsWith('\0ignore-css:')) return '';
+        return null;
+      },
+    },
+    {
+      name: 'revert Process.env',
+      apply: 'build',
+      async closeBundle() {
+        const umdFile = join(__dirname, 'dist/lib/index.umd.js')
+        if (fs.existsSync(umdFile)) {
+          const umdFileContent = fs.readFileSync(umdFile).toString().replace(/\(void 0\)\.TARO_ENV/g, 'process.env.TARO_ENV')
+          fs.writeFileSync(umdFile, umdFileContent)
+        }
+        console.log('File rewritten successfully!');
       }
-      console.log('File rewritten successfully!');
     }
-  }],
+  ],
   resolve: {
     alias: [
       // 把 react/jsx-runtime 指向垫片并打包进库，避免 React 19 下加载报错

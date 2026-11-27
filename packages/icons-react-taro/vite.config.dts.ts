@@ -20,5 +20,8 @@ export default defineConfig({
       entry: './src/buildEntry/lib-new-dts.ts',
       formats: ['es'],
     },
+    rollupOptions: {
+      external: [/\.css$/],
+    },
   }
 })
