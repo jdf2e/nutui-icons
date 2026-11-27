@@ -6,8 +6,11 @@
 
 - 图标资源升级为 48×48 网格（199 个图标），新增 `AlwaysBuyF`、`GiftOrder`，恢复 `AlwaysBuy`、`MinusF` 导出
 
-### Fixed
+### Changed
 
+- 拆分 `dist/style_icon.css` 并按需绑定到 `internal`、`IconFont`、`Loading`/`Loading1`，大幅缩减常规按需引入的 CSS 体积；内置动画类名（`nut-icon-am-*`）拆分至 `dist/style_icon_animate.css`。**迁移提示**：存量使用 `nut-icon-am-*` 动画类或仅通过 `<link>` 引入 `dist/style_icon.css` 的 UMD/CDN 场景，请按需补充引入 `dist/style_icon_animate.css`、`dist/style_icon_loading.css`、`dist/style_icon_img.css`，或直接改引全量 `dist/style_iconfont.css`
+
+### Fixed
 - 修复 React 19 兼容问题：ES 构建切换为 automatic JSX runtime（external `react/jsx-runtime`），UMD 构建接入 `jsx-runtime.shim.ts` 垫片（仅依赖 React 全局变量）
 - 修复 48×48 网格 SVG 生成逻辑：递归提取 `<g transform>` 内的 `<path>`，跳过 `<defs>/<clipPath>` 裁剪框，保留 `fillRule`/`clipRule="evenodd"` 及 `fillOpacity`/`stroke`/`strokeWidth`/`strokeOpacity` 属性
 - `IconFont` 的 props 改为可选，避免使用方必须传入全部属性

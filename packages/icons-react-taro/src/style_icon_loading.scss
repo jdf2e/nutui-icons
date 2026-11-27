@@ -1,3 +1,5 @@
+@use "./keyframes_rotation";
+
 .nut-icon {
     &-loading,
     &-loading1,
@@ -5,16 +7,5 @@
     &-Loading1 {
         display: inline-block;
         animation: rotation 1s infinite linear;
-    }
-}
-
-@keyframes rotation {
-    0% {
-        -webkit-transform: rotate(0deg);
-        transform: rotate(0deg);
-    }
-    100% {
-        -webkit-transform: rotate(360deg);
-        transform: rotate(360deg);
     }
 }

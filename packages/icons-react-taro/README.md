@@ -42,6 +42,16 @@ export default function Index() {
 
 ### 引入样式
 
+ESM 按需引入 SVG 图标组件时，基础尺寸样式（`style_icon.css`）、`IconFont` 图片样式（`style_icon_img.css`）及 `Loading`/`Loading1` 旋转样式（`style_icon_loading.css`）已随组件自动按需引入，无需手动导入。
+
+- 如需使用内置动画类名（`nut-icon-am-*`，如 `nut-icon-am-rotate`、`nut-icon-am-jump` 等），请按需引入动画样式：
+
+```tsx
+import '@nutui/icons-react-taro/dist/style_icon_animate.css'
+```
+
+- 如需使用 `IconFont` 字体模式（`fallback`）或全量样式（含图标字体与动画）：
+
 ```tsx
 import '@nutui/icons-react-taro/dist/style_iconfont.css'
 ```

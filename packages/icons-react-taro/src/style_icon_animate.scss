@@ -1,3 +1,5 @@
+@use "./keyframes_rotation";
+
 :root,
 page {
     --animate-duration: 1s;
@@ -12,9 +14,9 @@ page {
 
     &-am-jump {
         animation-name: nutJumpOne;
-        animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration, 1s);
         animation-timing-function: ease;
-        animation-delay: var(--animate-delay);
+        animation-delay: var(--animate-delay, 0s);
 
         &.nut-icon-am-infinite {
             animation-name: nutJump;
@@ -23,9 +25,9 @@ page {
 
     &-am-rotate {
         animation-name: rotation;
-        animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration, 1s);
         animation-timing-function: linear;
-        animation-delay: var(--animate-delay);
+        animation-delay: var(--animate-delay, 0s);
 
         &.nut-icon-am-infinite {
             animation-direction: normal;
@@ -34,30 +36,30 @@ page {
 
     &-am-blink {
         animation-name: nutBlink;
-        animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration, 1s);
         animation-timing-function: linear;
-        animation-delay: var(--animate-delay);
+        animation-delay: var(--animate-delay, 0s);
     }
 
     &-am-breathe {
         animation-name: nutBreathe;
-        animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration, 1s);
         animation-timing-function: ease-in-out;
-        animation-delay: var(--animate-delay);
+        animation-delay: var(--animate-delay, 0s);
     }
 
     &-am-flash {
         animation-name: nutFlash;
-        animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration, 1s);
         animation-timing-function: ease-in-out;
-        animation-delay: var(--animate-delay);
+        animation-delay: var(--animate-delay, 0s);
     }
 
     &-am-bounce {
         animation-name: nutBounce;
-        animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration, 1s);
         animation-timing-function: ease-in-out;
-        animation-delay: var(--animate-delay);
+        animation-delay: var(--animate-delay, 0s);
 
         &.nut-icon-am-infinite {
             animation-direction: normal;
@@ -66,18 +68,9 @@ page {
 
     &-am-shake {
         animation-name: nutShake;
-        animation-duration: var(--animate-duration);
+        animation-duration: var(--animate-duration, 1s);
         animation-timing-function: ease-in-out;
-        animation-delay: var(--animate-delay);
-    }
-}
-
-@keyframes rotation {
-    0% {
-        transform: rotate(0deg);
-    }
-    100% {
-        transform: rotate(360deg);
+        animation-delay: var(--animate-delay, 0s);
     }
 }
 
@@ -150,7 +143,7 @@ page {
         transform: translate3d(0, -15px, 0) scaleY(1.05);
     }
     80% {
-        transition-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
+        animation-timing-function: cubic-bezier(0.215, 0.61, 0.355, 1);
         transform: translate3d(0, 0, 0) scaleY(0.95);
     }
     90% {
