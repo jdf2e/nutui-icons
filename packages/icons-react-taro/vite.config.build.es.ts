@@ -10,6 +10,9 @@ let input = {
   internal: `./src/internal.ts`,
   IconFontConfig: `./src/buildEntry/iconFontConfig.ts`,
   SvgConfig: `./src/buildEntry/svgConfig.ts`,
+  IconSkylineTemplate: `./src/IconSkylineTemplate.tsx`,
+  IconHarmonyTemplate: `./src/IconHarmonyTemplate.tsx`,
+  IconTemplate: `./src/IconTemplate.tsx`,
 } as any;
 
 iconsConfig.map((name) => {
@@ -19,21 +22,31 @@ iconsConfig.map((name) => {
 // https://vitejs.dev/config/
 export default defineConfig({
   publicDir: false,
+  define: {
+    "process.env.TARO_ENV": "process.env.TARO_ENV",
+  },
   plugins: [
-    react({ jsxRuntime: "classic" }),
+    react(),
     {
       name: "revert Process.env",
       apply: "build",
       async closeBundle() {
-        const esFile = join(__dirname, "dist/es/icons/IconHarmonyTemplate.js");
-        const fileContent = fs
-          .readFileSync(esFile)
-          .toString()
-          .replace(
-            `(void 0).TARO_ENV === "h5"`,
-            `process.env.TARO_ENV === "h5"`
-          );
-        fs.writeFileSync(esFile, fileContent);
+        const iconsDir = join(__dirname, "dist/es/icons");
+        if (fs.existsSync(iconsDir)) {
+          const files = fs.readdirSync(iconsDir);
+          for (const file of files) {
+            if (file.endsWith(".js")) {
+              const filePath = join(iconsDir, file);
+              const content = fs.readFileSync(filePath).toString();
+              if (content.includes("(void 0).TARO_ENV")) {
+                fs.writeFileSync(
+                  filePath,
+                  content.replace(/\(void 0\)\.TARO_ENV/g, "process.env.TARO_ENV")
+                );
+              }
+            }
+          }
+        }
         console.log("File rewritten successfully!");
       },
     },
@@ -49,6 +62,7 @@ export default defineConfig({
       external: [
         "react",
         "react-dom",
+        "react/jsx-runtime",
         "classnames",
         "./internal",
         "./configure",
@@ -56,6 +70,7 @@ export default defineConfig({
       ],
       // input,
       output: {
+        hoistTransitiveImports: false,
         paths: (id) => {
           return /internal/.test(id) ? `./internal.js` : id;
         },

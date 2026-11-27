@@ -1,0 +1,17 @@
+<svg xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" fill="none" version="1.1"
+  viewBox="0 0 48 48">
+  <defs>
+    <clipPath id="relay_svg_uCclXc">
+      <path d="M0 0L48 0L48 48L0 48L0 0Z" />
+    </clipPath>
+  </defs>
+  <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0,0)">
+    <g clip-path="url(#relay_svg_uCclXc)">
+      <g style="mix-blend-mode:pass-through;opacity:1" transform="matrix(1,0,0,1,0.444091796875,3)">
+        <path
+          d="M8.143 0C4.995 0 2.383 2.433 2.158 5.573L0.016 35.573C-0.233 39.046 2.518 42 6 42L41.113 42C44.595 42 47.345 39.046 47.097 35.573L44.954 5.573C44.73 2.433 42.118 0 38.97 0L8.143 0ZM17.556 9.96L17.556 10.5C17.556 13.814 20.242 16.5 23.556 16.5C26.87 16.5 29.556 13.814 29.556 10.5L29.556 9.96C29.556 9.43 29.986 9 30.516 9L31.596 9C32.126 9 32.556 9.43 32.556 9.96L32.556 10.5C32.556 15.471 28.527 19.5 23.556 19.5C18.586 19.5 14.556 15.471 14.556 10.5L14.556 9.96C14.556 9.43 14.986 9 15.516 9L16.596 9C17.126 9 17.556 9.43 17.556 9.96Z"
+          fill-rule="NONZERO" fill="#171a26" fill-opacity="1" style="mix-blend-mode:normal" />
+      </g>
+    </g>
+  </g>
+</svg>

@@ -10,8 +10,8 @@ export default defineConfig({
     rollupTypes: true,
     copyDtsFiles: false,
     afterBuild: () => {
-      fsExtra.removeSync('./dist/types/icons-react.js')
-      fsExtra.appendFile('./dist/types/index.d.ts', 'export declare class IconFontConfig { [key: string]:any }')
+      fsExtra.removeSync('./dist/types/icons-react.mjs')
+      fsExtra.appendFile('./dist/types/index.d.ts', '\nexport declare const IconFontConfig: { name: string; data: Array<{ name: string; nameEn: string; icons: string[] }>; style: Array<{ name: string; nameEn: string; icons: Array<{ name: string; [key: string]: string }> }> };\n')
     }
   })],
   build: {

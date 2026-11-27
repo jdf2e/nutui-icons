@@ -65,8 +65,17 @@ import { configure } from '@nutui/icons-react-taro'
 
 configure({
   classPrefix: 'my-icon', // 默认 'nut-icon'
+  isSkyline: true,        // 开启微信小程序 Skyline 引擎支持
 })
 ```
+
+### 小程序 Skyline 渲染引擎支持
+
+`@nutui/icons-react-taro` 支持微信小程序的 **Skyline** 渲染引擎：
+
+1. **自动适配**：在运行期若当前页面声明了 `renderer: 'skyline'`，图标组件会自动切换为适配 Skyline 的渲染模式（基于 `<view>` + `background-image` 动态着色方案，fallback 字体模式使用 `<text>`）。
+2. **全局配置**：如果小程序全局使用 Skyline，可调用 `configure({ isSkyline: true })` 进行全局指定。
+3. **编译期支持**：支持 `process.env.TARO_ENV === 'skyline'` 条件编译，打包时自动分发至 Skyline 专属模板实现。
 
 ## 开源协议
 

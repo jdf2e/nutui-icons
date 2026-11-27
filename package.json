@@ -6,7 +6,9 @@
     "gen:vue": "tsc && node dist/generate.js",
     "gen:react": "tsc && node dist/generate-react.js",
     "gen:react:jdesign": "PROJECT_ID=jdesign tsc && PROJECT_ID=jdesign node dist/generate-react.js",
-    "generate": "tsc && node dist/generate.js && node dist/generate-react.js && PROJECT_ID=jdesign node dist/generate-react.js"
+    "generate": "tsc && node dist/generate.js && node dist/generate-react.js && PROJECT_ID=jdesign node dist/generate-react.js",
+    "verify": "bash scripts/verify-with-nutui-react.sh",
+    "generate:verify": "npm run generate && npm run verify"
   },
   "devDependencies": {
     "@types/fs-extra": "^9.0.13",
