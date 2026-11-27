@@ -1,5 +1,6 @@
 import React, {FunctionComponent, ReactHTML} from 'react'
 import {globalConfig} from "./internal";
+import "../../style_icon_img.css";
 
 export interface IconFontProps {
     name?: string

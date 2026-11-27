@@ -43,10 +43,13 @@ const collectPaths = (node: any, transform: string = '', paths: PathInfo[] = [])
     return paths
 }
 
+const LOADING_ICONS = new Set(['Loading', 'Loading1'])
+
 const getSvg = (componentName: string, viewBox: string, paths: PathInfo[]) => {
+    const loadingCssImport = LOADING_ICONS.has(componentName) ? `\nimport '../../style_icon_loading.css'` : ''
     const template = `
 import {FunctionComponent} from 'react'
-import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'
+import Icon, {defaultProps, SVG_IconProps} from '../IconTemplate'${loadingCssImport}
 
 const ${componentName}:FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     const realProps = { ...defaultProps, ...props }
@@ -102,12 +105,13 @@ export default IconSVG
 `
     }
     const svgSrc = (svgConfig as any)[iconFontName] || ''
+    const loadingCssImport = LOADING_ICONS.has(componentName) ? `\nimport '../../style_icon_loading.css'` : ''
     const template = `
 import {FunctionComponent} from 'react'
 import { defaultProps, SVG_IconProps } from '../internal'
 import Icon from '../IconTemplate'
 import { default as Icon2 } from '../IconHarmonyTemplate'
-import { default as Icon3, isSkyline } from '../IconSkylineTemplate'
+import { default as Icon3, isSkyline } from '../IconSkylineTemplate'${loadingCssImport}
 
 const svg64 = '${svg64String}'
 const svgSrc = '${svgSrc}'

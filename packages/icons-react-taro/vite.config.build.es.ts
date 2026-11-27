@@ -67,12 +67,15 @@ export default defineConfig({
         "./internal",
         "./configure",
         "@tarojs/components",
+        /\.css$/,
       ],
       // input,
       output: {
         hoistTransitiveImports: false,
         paths: (id) => {
-          return /internal/.test(id) ? `./internal.js` : id;
+          if (/internal/.test(id)) return `./internal.js`;
+          if (/\.css$/.test(id)) return `../../${id.split("/").pop()}`;
+          return id;
         },
         entryFileNames: "[name].js",
         chunkFileNames: "[name].js",

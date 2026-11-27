@@ -1,4 +1,5 @@
 import React from 'react'
+import '../../style_icon.css'
 
 export interface SVG_IconProps {
     className?: string
