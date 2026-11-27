@@ -1,40 +1,9 @@
 import React, { FunctionComponent } from "react";
-import { globalConfig } from "./internal";
+import { globalConfig, defaultProps, SVG_IconProps } from "./internal";
 import { Image } from "@tarojs/components";
 
-export interface SVG_IconProps {
-  className?: string;
-  style?: React.CSSProperties;
-  viewBox?: string;
-  name?: string;
-  color?: string;
-  width?: string | number;
-  height?: string | number;
-  size?: string | number;
-  svg64?: string;
-  svgSrc?: string;
-  ariaRole?: string;
-  ariaLabel?: string;
-  ariaRoledescription?: string;
-  ariaHidden?: boolean;
-  ariaChecked?: boolean;
-  ariaSelected?: boolean;
-  onClick?: (event: React.MouseEvent) => void;
-  children?: React.ReactNode;
-  fallback?: boolean;
-}
-
-export const defaultProps = {
-  className: "",
-  style: undefined,
-  name: "",
-  width: "",
-  height: "",
-  size: "",
-  svg64: "",
-  svgSrc: "",
-  onClick: () => undefined,
-} as SVG_IconProps;
+export { defaultProps };
+export type { SVG_IconProps };
 
 const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
   const classPrefix = globalConfig.classPrefix;

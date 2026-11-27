@@ -1,39 +1,8 @@
 import React, { FunctionComponent } from "react";
-import { globalConfig } from "./internal";
-import * as process from "process";
-export interface SVG_IconProps {
-  className?: string;
-  style?: React.CSSProperties;
-  viewBox?: string;
-  name?: string;
-  color?: string;
-  width?: string | number;
-  height?: string | number;
-  size?: string | number;
-  svg64?: string;
-  svgSrc?: string;
-  ariaRole?: string;
-  ariaLabel?: string;
-  ariaRoledescription?: string;
-  ariaHidden?: boolean;
-  ariaChecked?: boolean;
-  ariaSelected?: boolean;
-  onClick?: (event: React.MouseEvent) => void;
-  children?: React.ReactNode;
-  fallback?: boolean;
-}
+import { globalConfig, defaultProps, SVG_IconProps } from "./internal";
 
-export const defaultProps = {
-  className: "",
-  style: undefined,
-  name: "",
-  width: "",
-  height: "",
-  size: "",
-  svg64: "",
-  svgSrc: "",
-  onClick: () => undefined,
-} as SVG_IconProps;
+export { defaultProps };
+export type { SVG_IconProps };
 
 const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
   const classPrefix = globalConfig.classPrefix;
@@ -65,7 +34,19 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     return isNaN(Number(value)) ? String(value) : value + "px";
   };
   const classes = () => {
-    const iconName = fallback ? name?.toLowerCase() : name;
+    const iconName = fallback
+      ? name
+        ? /^Icon\d+/.test(name)
+          ? name
+              .replace(/([a-z0-9])([A-Z])/g, "$1_$2")
+              .replace(/([A-Za-z])(\d)/g, "$1_$2")
+              .toLowerCase()
+          : name
+              .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+              .replace(/([A-Za-z])(\d)/g, "$1-$2")
+              .toLowerCase()
+        : name
+      : name;
     return `${fallback ? globalConfig.fontClassName : ""} ${classPrefix} ${classPrefix}-${iconName} ${className}`;
   };
   const props2Style: any = {};

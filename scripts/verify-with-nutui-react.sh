@@ -2,7 +2,7 @@
 set -e
 
 ICONS_DIR="$(cd "$(dirname "$0")/.." && pwd)"
-REACT_DIR="$(cd "$ICONS_DIR/../nutui-react" 2>/dev/null && pwd)"
+REACT_CANDIDATE="$ICONS_DIR/../nutui-react"
 
 RED='\033[0;31m'
 GREEN='\033[0;32m'
@@ -14,11 +14,26 @@ log_warn() { echo -e "${YELLOW}⚠️  $1${NC}"; }
 log_error() { echo -e "${RED}❌ $1${NC}"; }
 log_ok() { echo -e "${GREEN}✅ $1${NC}"; }
 
-if [ ! -d "$REACT_DIR" ]; then
-    log_error "nutui-react 项目不存在: $ICONS_DIR/../nutui-react"
+if [ ! -d "$REACT_CANDIDATE" ]; then
+    log_error "nutui-react 项目不存在: $REACT_CANDIDATE"
     echo "请确保 nutui-react 与 nutui-icons 在同一目录下"
     exit 1
 fi
+
+REACT_DIR="$(cd "$REACT_CANDIDATE" && pwd)"
+LINKED=0
+
+cleanup() {
+    if [ "$LINKED" -eq 1 ]; then
+        log_step "清理: 取消 link"
+        cd "$REACT_DIR"
+        pnpm unlink "@nutui/icons-react" 2>/dev/null || true
+        pnpm unlink "@nutui/icons-react-taro" 2>/dev/null || true
+        pnpm install --frozen-lockfile 2>/dev/null || pnpm install
+        log_ok "Link 已清理"
+    fi
+}
+trap cleanup EXIT
 
 log_step "1/6 构建 icons-react"
 cd "$ICONS_DIR/packages/icons-react"
@@ -34,6 +49,7 @@ log_step "3/6 Link 本地 icons 到 nutui-react"
 cd "$REACT_DIR"
 pnpm link "$ICONS_DIR/packages/icons-react"
 pnpm link "$ICONS_DIR/packages/icons-react-taro"
+LINKED=1
 log_ok "Link 完成"
 
 VERIFY_FAILED=0
@@ -61,13 +77,6 @@ else
     log_error "单元测试失败"
     VERIFY_FAILED=1
 fi
-
-log_step "清理: 取消 link"
-cd "$REACT_DIR"
-pnpm unlink "@nutui/icons-react" 2>/dev/null || true
-pnpm unlink "@nutui/icons-react-taro" 2>/dev/null || true
-pnpm install
-log_ok "Link 已清理"
 
 echo ""
 if [ $VERIFY_FAILED -eq 0 ]; then

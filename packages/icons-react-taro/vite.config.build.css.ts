@@ -3,6 +3,9 @@ import { defineConfig } from 'vite';
 
 let input = {
   style_icon: `./src/style_icon.scss`,
+  style_icon_img: `./src/style_icon_img.scss`,
+  style_icon_loading: `./src/style_icon_loading.scss`,
+  style_icon_animate: `./src/style_icon_animate.scss`,
   style_iconfont: `./src/style_iconfont.scss`,
 };
 

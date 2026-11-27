@@ -1,3 +1,5 @@
+import '../../style_icon.css'
+
 export type Configure = {
     classPrefix?: string
     tag?: string

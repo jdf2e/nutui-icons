@@ -478,6 +478,10 @@
   content: "\f15b";
 }
 
+.nut-icon-always-buy::before {
+  content: "\ed73";
+}
+
 .nut-icon-always-buy-f::before {
   content: "\ed73";
 }
