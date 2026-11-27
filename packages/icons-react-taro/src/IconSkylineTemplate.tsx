@@ -98,6 +98,12 @@ const tintSvg64 = (svg64: string, color?: string): string => {
 
 const toKebabCase = (str?: string): string => {
   if (!str) return "";
+  if (/^Icon\d+/.test(str)) {
+    return str
+      .replace(/([a-z0-9])([A-Z])/g, "$1_$2")
+      .replace(/([A-Za-z])(\d)/g, "$1_$2")
+      .toLowerCase();
+  }
   return str
     .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
     .replace(/([A-Za-z])(\d)/g, "$1-$2")

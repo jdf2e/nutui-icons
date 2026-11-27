@@ -34,7 +34,19 @@ const Icon: FunctionComponent<SVG_IconProps> = (props: SVG_IconProps) => {
     return isNaN(Number(value)) ? String(value) : value + "px";
   };
   const classes = () => {
-    const iconName = fallback ? name?.toLowerCase() : name;
+    const iconName = fallback
+      ? name
+        ? /^Icon\d+/.test(name)
+          ? name
+              .replace(/([a-z0-9])([A-Z])/g, "$1_$2")
+              .replace(/([A-Za-z])(\d)/g, "$1_$2")
+              .toLowerCase()
+          : name
+              .replace(/([a-z0-9])([A-Z])/g, "$1-$2")
+              .replace(/([A-Za-z])(\d)/g, "$1-$2")
+              .toLowerCase()
+        : name
+      : name;
     return `${fallback ? globalConfig.fontClassName : ""} ${classPrefix} ${classPrefix}-${iconName} ${className}`;
   };
   const props2Style: any = {};
